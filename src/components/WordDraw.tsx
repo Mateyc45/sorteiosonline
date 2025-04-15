@@ -6,6 +6,8 @@ import { ShareButton } from './ShareButton';
 import { AdSpace } from './AdSpace';
 
 export function WordDraw() {
+  window.scrollTo(0, 0);
+  
   const [words, setWords] = useState<string[]>([]);
   const [newWord, setNewWord] = useState('');
   const [result, setResult] = useState<string | null>(null);

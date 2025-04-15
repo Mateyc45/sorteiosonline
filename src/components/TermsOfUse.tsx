@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { HomeIcon } from 'lucide-react';
 
 export function TermsOfUse() {
+  window.scrollTo(0, 0);
   return (
     <div className="mx-auto max-w-3xl px-4 py-8">
       <div className="mb-4">

@@ -6,6 +6,8 @@ import { ShareButton } from './ShareButton';
 import { AdSpace } from './AdSpace';
 
 export function SequenceDraw() {
+  window.scrollTo(0, 0);
+  
   const [start, setStart] = useState(1);
   const [end, setEnd] = useState(10);
   const [count, setCount] = useState(3);

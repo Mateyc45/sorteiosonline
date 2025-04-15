@@ -19,6 +19,9 @@ export function RaffleCard({
   className,
   gradient = 'from-gray-500 to-gray-400',
 }: RaffleCardProps) {
+  
+  window.scrollTo(0, 0);
+  
   return (
     <div
       className={cn(

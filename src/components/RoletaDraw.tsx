@@ -8,6 +8,7 @@ import { AdSpace } from './AdSpace';
 
 
 export function RoletaSorteio() {
+  window.scrollTo(0, 0);
 //const RoletaSorteio = () => {
   const [rotating, setRotating] = useState(false);
   const [result, setResult] = useState(null);

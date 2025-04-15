@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { BookOpenIcon, TagIcon, CalendarIcon, ChevronRightIcon } from 'lucide-react';
@@ -322,6 +323,9 @@ const blogPosts: BlogPost[] = [
 ];
 
 export function BlogList() {
+
+
+
   return (
     <div className="mx-auto max-w-4xl px-4 py-8">
       <div className="mb-4">

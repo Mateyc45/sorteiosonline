@@ -1745,6 +1745,8 @@ const blogPosts = {
 }
 
 export function BlogPost() {
+  window.scrollTo(0, 0);
+  
   const { slug } = useParams();
   
   if (!slug || !blogPosts[slug]) {

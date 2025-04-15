@@ -26,6 +26,8 @@ const secretSantaSchema = {
 };
 
 export function SecretSantaDraw() {
+  window.scrollTo(0, 0);
+  
   const [participants, setParticipants] = useState<Participant[]>([]);
   const [newParticipant, setNewParticipant] = useState({ name: '', email: '' });
   const [giftSuggestion, setGiftSuggestion] = useState('');
