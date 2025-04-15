@@ -5,7 +5,7 @@ import { BookOpenIcon, TagIcon, CalendarIcon, ChevronRightIcon } from 'lucide-re
 import { format } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
 import { AdSpace } from '../AdSpace';
-
+import {HomeIcon} from 'lucide-react';
 interface BlogPost {
   id: string;
   slug: string;
@@ -63,6 +63,15 @@ const blogPosts: BlogPost[] = [
 export function BlogList() {
   return (
     <div className="mx-auto max-w-4xl px-4 py-8">
+      <div className="mb-4">
+        <Link
+          to="/"
+          className="inline-flex items-center gap-2 rounded-lg bg-gray-100 px-4 py-2 text-sm font-medium text-gray-600 hover:bg-gray-200"
+        >
+          <HomeIcon className="h-4 w-4" />
+          Voltar para Início
+        </Link>
+      </div>
       <Helmet>
         <title>Blog - Sorteios Online | Dicas, Tutoriais e Novidades sobre Sorteios</title>
         <meta
