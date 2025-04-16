@@ -6,6 +6,9 @@ import { ShareButton } from './ShareButton';
 import { AdSpace } from './AdSpace';
 
 export function NumberDraw() {
+  window.scrollTo(0, 0);
+
+
   const [min, setMin] = useState(1);
   const [max, setMax] = useState(100);
   const [result, setResult] = useState<number | null>(null);

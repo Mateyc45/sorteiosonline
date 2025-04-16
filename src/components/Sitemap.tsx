@@ -93,6 +93,23 @@ export function Sitemap() {
               </li>
             </ul>
           </section>
+
+
+          <section>
+            <h2 className="text-lg font-semibold text-gray-900 mb-4">Portal de curiosidades</h2>
+            <ul className="space-y-3">
+              <li>
+                <Link to="/blog" className="text-blue-600 hover:underline">
+                  Blog
+                </Link>
+                <p className="text-sm text-gray-600 mt-1">
+                Um espaço dedicado a explorar curiosidades sobre sorteios.
+                </p>
+              </li>
+            </ul>
+          </section>
+
+          
         </div>
       </div>
     </div>
