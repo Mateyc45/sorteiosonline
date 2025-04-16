@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
@@ -323,8 +323,35 @@ const blogPosts: BlogPost[] = [
 ];
 
 export function BlogList() {
+  window.scrollTo(0, 0);
+  
+  const [SelecionarTag, setSelecionarTag] = useState('');
+  const [Sugestoes, setSugestoes] = useState<string[]>([]);
 
+  const todasAsTags = [...new Set(blogPosts.flatMap((post) => post.tags))];
 
+  const MudancaImput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const valor = e.target.value;
+    setSelecionarTag(valor);
+
+    if (valor) {
+      const tagsFiltradas = todasAsTags.filter((tag) =>
+        tag.toLowerCase().includes(valor.toLowerCase())
+      );
+      setSugestoes(tagsFiltradas);
+    } else {
+      setSugestoes([]);
+    }
+  };
+
+  const SugestoesLista = (tag: string) => {
+    setSelecionarTag(tag);
+    setSugestoes([]); // Limpar sugestões após selecionar
+  };
+
+  const PostsFiltrados = SelecionarTag
+    ? blogPosts.filter((post) => post.tags.includes(SelecionarTag))
+    : blogPosts;
 
   return (
     <div className="mx-auto max-w-4xl px-4 py-8">
@@ -359,9 +386,36 @@ export function BlogList() {
       </div>
 
       <AdSpace />
-
+      <div className="mb-6 ml-0">
+        <label htmlFor="tag-filter" className="block text-sm font-medium text-gray-700 mb-2 ml-2">
+          Filtrar por Tag:
+        </label>
+        <div className="ml-0 relative">
+          <input
+            id="tag-filter"
+            type="text"
+            value={SelecionarTag}
+            onChange={MudancaImput}
+            className="w-auto max-w-md rounded-lg border border-gray-300 px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500"
+            placeholder="Digite uma tag..."
+          />
+          {Sugestoes.length > 0 && (
+            <ul className="absolute z-10 mt-1 max-h-40 w-full overflow-y-auto rounded-lg border border-gray-300 bg-white shadow-lg">
+              {Sugestoes.map((tag) => (
+                <li
+                  key={tag}
+                  onClick={() => SugestoesLista(tag)}
+                  className="cursor-pointer px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                >
+                  {tag}
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
+      </div>
       <div className="grid gap-8 mt-8">
-        {blogPosts.map((post) => (
+        {PostsFiltrados.map((post) => (
           <article
             key={post.id}
             className="group relative rounded-xl border border-gray-200 bg-white p-6 shadow-sm transition-all hover:shadow-md"
