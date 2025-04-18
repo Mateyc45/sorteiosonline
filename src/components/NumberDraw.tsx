@@ -1,9 +1,41 @@
 import React, { useState } from 'react';
-import { Dice1Icon, HomeIcon, SparklesIcon } from 'lucide-react';
+import { HomeIcon, Dice1Icon, TextIcon, ListIcon, GiftIcon, SparklesIcon, StarIcon, ShieldCheckIcon, ClockIcon, LifeBuoy } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { generateRandomNumber } from '../lib/utils';
 import { ShareButton } from './ShareButton';
 import { AdSpace } from './AdSpace';
+import { RaffleCard } from '../components/RaffleCard';
+
+const raffleTypes = [
+  {
+    title: 'Sortear Palavras',
+    description: 'Sorteie palavras ou nomes de uma lista personalizada',
+    icon: <TextIcon className="h-6 w-6 text-green-600" />,
+    path: '/word-draw',
+    gradient: 'from-green-500 to-emerald-400',
+  },
+  {
+    title: 'Sortear uma sequência',
+    description: 'Gere sequências numéricas aleatórias para diversos fins',
+    icon: <ListIcon className="h-6 w-6 text-purple-600" />,
+    path: '/sequence-draw',
+    gradient: 'from-purple-500 to-pink-400',
+  },
+  {
+    title: 'Amigo Secreto',
+    description: 'Organize seu amigo secreto com envio automático por email',
+    icon: <GiftIcon className="h-6 w-6 text-red-600" />,
+    path: '/secret-santa',
+    gradient: 'from-red-500 to-orange-400',
+  },
+    {
+    title: 'Roleta',
+    description: 'Faça um sorteio utilizando uma roleta',
+    icon: <LifeBuoy className="h-6 w-6 text-red-600" />,
+    path: '/roleta',
+    gradient: 'from-yellow-400 to-yellow-100',
+  },
+];
 
 export function NumberDraw() {
   window.scrollTo(0, 0);
@@ -120,7 +152,25 @@ export function NumberDraw() {
       </div>
 
       <AdSpace />
+      
+      <div className="mt-8 space-y-8 rounded-xl border border-gray-200 bg-white p-8 shadow-sm">
+      <h2 className="mb-4 text-2xl font-bold text-gray-900">Outros tipos de sorteios</h2>
+        <p className="mb-6 text-gray-600">Explore outros tipos de sorteios disponíveis na nossa plataforma.</p>
 
+      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-2">
+              {raffleTypes.map((raffle) => (
+                <Link key={raffle.title} to={raffle.path}>
+                  <RaffleCard
+                    title={raffle.title}
+                    description={raffle.description}
+                    icon={raffle.icon}
+                    gradient={raffle.gradient}
+                    onClick={() => {}}
+                  />
+                </Link>
+              ))}
+        </div>
+      </div>        
       <div className="mt-8 space-y-8 rounded-xl border border-gray-200 bg-white p-8 shadow-sm">
         <div>
           <h3 className="text-2xl font-bold text-gray-900">Como funciona o sorteio de números?</h3>

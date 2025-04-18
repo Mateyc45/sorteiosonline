@@ -14,7 +14,7 @@ import { Sitemap } from './components/Sitemap';
 import { BlogList } from './components/Blog/BlogList';
 import { BlogPost } from './components/Blog/BlogPost';
 import BannerAd from './components/BannerAd';
-import Footer from './components/Footer';
+import Footer from '/components/Footer';
 import logo from './lib/image/logo3.png';
 
 // Schema markup for rich snippets
