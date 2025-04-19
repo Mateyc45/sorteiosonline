@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
-import { ListIcon, HomeIcon, SparklesIcon, ShuffleIcon, TargetIcon, BrainIcon, UsersIcon, TrophyIcon } from 'lucide-react';
+import { LifeBuoy, ListIcon, TextIcon, HomeIcon, GiftIcon, SparklesIcon, ShuffleIcon, TargetIcon, BrainIcon, UsersIcon, TrophyIcon, Dice1Icon } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { shuffleArray } from '../lib/utils';
 import { ShareButton } from './ShareButton';
 import { AdSpace } from './AdSpace';
+import { RaffleCard } from '../components/RaffleCard';
 
 export function SequenceDraw() {
   window.scrollTo(0, 0);
@@ -28,6 +29,38 @@ export function SequenceDraw() {
     setResult(sequence);
     setIsDrawing(false);
   };
+
+  const raffleTypes = [
+    {
+      title: 'Sortear Palavras',
+      description: 'Sorteie palavras ou nomes de uma lista personalizada',
+      icon: <TextIcon className="h-6 w-6 text-green-600" />,
+      path: '/word-draw',
+      gradient: 'from-green-500 to-emerald-400',
+    },
+    {
+      title: 'Sortear um número',
+      description: 'Sortei um número aleatório agora mesmo',
+      icon: <Dice1Icon className="h-6 w-6 text-blue-600" />,
+      path: '/number-draw',
+      gradient: 'from-blue-500 to-blue-400',
+    },
+    {
+      title: 'Amigo Secreto',
+      description: 'Organize seu amigo secreto com envio automático por email',
+      icon: <GiftIcon className="h-6 w-6 text-red-600" />,
+      path: '/secret-santa',
+      gradient: 'from-red-500 to-orange-400',
+    },
+      {
+      title: 'Roleta',
+      description: 'Faça um sorteio utilizando uma roleta',
+      icon: <LifeBuoy className="h-6 w-6 text-red-600" />,
+      path: '/roleta',
+      gradient: 'from-yellow-400 to-yellow-100',
+    },
+  ];
+
 
   return (
     <div className="mx-auto max-w-2xl">
@@ -141,6 +174,26 @@ export function SequenceDraw() {
       </div>
 
       <AdSpace />
+
+      <div className="mt-8 space-y-8 rounded-xl border border-gray-200 bg-white p-8 shadow-sm">
+            <h2 className="mb-4 text-2xl font-bold text-gray-900">Outros tipos de sorteios</h2>
+              <p className="mb-6 text-gray-600">Explore outros tipos de sorteios disponíveis na nossa plataforma.</p>
+      
+            <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-2">
+                    {raffleTypes.map((raffle) => (
+                      <Link key={raffle.title} to={raffle.path}>
+                        <RaffleCard
+                          title={raffle.title}
+                          description={raffle.description}
+                          icon={raffle.icon}
+                          gradient={raffle.gradient}
+                          onClick={() => {}}
+                        />
+                      </Link>
+                    ))}
+              </div>
+            </div>
+
 
       <div className="mt-8 space-y-8 rounded-xl border border-gray-200 bg-white p-8 shadow-sm">
         <div>
