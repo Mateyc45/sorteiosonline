@@ -5,7 +5,7 @@ import { generateRandomNumber } from '../lib/utils';
 import { ShareButton } from './ShareButton';
 import { AdSpace } from './AdSpace';
 import { RaffleCard } from '../components/RaffleCard';
-
+import { Helmet } from 'react-helmet-async';
 
 export function RoletaSorteio() {
   window.scrollTo(0, 0);
@@ -183,6 +183,12 @@ export function RoletaSorteio() {
 
   return (
  <div className="mx-auto max-w-2xl">
+        <Helmet> 
+                <title>Roleta - Sorteios Online</title>
+                <meta name="description" content="Personalize e rode sua roleta para descobrir qual será o resultado!" />
+                <meta name="robots" content="index, follow" />
+                <link rel="canonical" href="https://sorteiosonline.netlify.app/roleta" />
+        </Helmet>
       <div className="mb-4">
         <Link
           to="/"

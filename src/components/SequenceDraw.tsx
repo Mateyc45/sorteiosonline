@@ -5,6 +5,7 @@ import { shuffleArray } from '../lib/utils';
 import { ShareButton } from './ShareButton';
 import { AdSpace } from './AdSpace';
 import { RaffleCard } from '../components/RaffleCard';
+import { Helmet } from 'react-helmet-async';
 
 export function SequenceDraw() {
   window.scrollTo(0, 0);
@@ -64,6 +65,12 @@ export function SequenceDraw() {
 
   return (
     <div className="mx-auto max-w-2xl">
+            <Helmet> 
+                    <title>Sortear Sequência - Sorteios Online</title>
+                    <meta name="description" content="Sorteie uma sequência números de forma simples e rápida no Sorteios Online." />
+                    <meta name="robots" content="index, follow" />
+                    <link rel="canonical" href="https://sorteiosonline.netlify.app/sequence-draw" />
+            </Helmet>
       <div className="mb-4">
         <Link
           to="/"

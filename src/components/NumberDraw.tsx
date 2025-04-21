@@ -5,6 +5,7 @@ import { generateRandomNumber } from '../lib/utils';
 import { ShareButton } from './ShareButton';
 import { AdSpace } from './AdSpace';
 import { RaffleCard } from '../components/RaffleCard';
+import { Helmet } from 'react-helmet-async';
 
 const raffleTypes = [
   {
@@ -59,6 +60,12 @@ export function NumberDraw() {
 
   return (
     <div className="mx-auto max-w-2xl">
+      <Helmet> 
+        <title>Sorteio de Números - Sorteios Online</title>
+        <meta name="description" content="Sorteie números de forma simples e rápida no Sorteios Online." />
+        <meta name="robots" content="index, follow" />
+        <link rel="canonical" href="https://sorteiosonline.netlify.app/number-draw" />
+      </Helmet>
       <div className="mb-4">
         <Link
           to="/"

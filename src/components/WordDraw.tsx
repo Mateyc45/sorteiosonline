@@ -5,6 +5,7 @@ import { shuffleArray } from '../lib/utils';
 import { ShareButton } from './ShareButton';
 import { AdSpace } from './AdSpace';
 import { RaffleCard } from '../components/RaffleCard';
+import { Helmet } from 'react-helmet-async';
 
 export function WordDraw() {
   window.scrollTo(0, 0);
@@ -73,6 +74,12 @@ export function WordDraw() {
 
   return (
     <div className="mx-auto max-w-2xl">
+            <Helmet> 
+                    <title>Sortear Palavras - Sorteios Online</title>
+                    <meta name="description" content="Sorteie palavras de forma simples, rápida e personalizada no Sorteios Online." />
+                    <meta name="robots" content="index, follow" />
+                    <link rel="canonical" href="https://sorteiosonline.netlify.app/word-draw" />
+            </Helmet>
       <div className="mb-4">
         <Link
           to="/"

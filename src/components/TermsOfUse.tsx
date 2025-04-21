@@ -1,11 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { HomeIcon } from 'lucide-react';
+import { Helmet } from 'react-helmet-async';
 
 export function TermsOfUse() {
   window.scrollTo(0, 0);
   return (
     <div className="mx-auto max-w-3xl px-4 py-8">
+            <Helmet> 
+                    <title>Termo de Uso - Sorteios Online</title>
+                    <meta name="description" content="Descubra quais são nossos termos de uso" />
+                    <meta name="robots" content="index, follow" />
+                    <link rel="canonical" href="https://sorteiosonline.netlify.app/terms" />
+            </Helmet>
       <div className="mb-4">
         <Link
           to="/"

@@ -1,12 +1,19 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { HomeIcon, MapIcon } from 'lucide-react';
+import { Helmet } from 'react-helmet-async';
 
 export function Sitemap() {
   window.scrollTo(0, 0);
   
   return (
     <div className="mx-auto max-w-3xl px-4 py-8">
+            <Helmet> 
+                    <title>Mapa do Site - Sorteios Online</title>
+                    <meta name="description" content="Explore todas as páginas de nosso site!" />
+                    <meta name="robots" content="index, follow" />
+                    <link rel="canonical" href="https://sorteiosonline.netlify.app/sitemap" />
+            </Helmet>
       <div className="mb-4">
         <Link
           to="/"

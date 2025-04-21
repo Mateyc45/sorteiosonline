@@ -14,8 +14,8 @@ import { Sitemap } from './components/Sitemap';
 import { BlogList } from './components/Blog/BlogList';
 import { BlogPost } from './components/Blog/BlogPost';
 import BannerAd from './components/BannerAd';
-import Footer from '/components/Footer';
 import logo from './lib/image/logo3.png';
+import { Helmet } from 'react-helmet-async';
 
 // Schema markup for rich snippets
 const websiteSchema = {
@@ -177,6 +177,12 @@ function App() {
 function HomePage({ raffleTypes }) {
   return (
     <div className="space-y-12">
+      <Helmet> 
+          <title>Sorteios Online - O Jeito Mais Fácil e Simples de sortear algo!</title>
+          <meta name="description" content="Sorteie números de forma simples e rápida no Sorteios Online." />
+          <meta name="robots" content="index, follow" />
+          <link rel="canonical" href="https://sorteiosonline.netlify.app/" />
+      </Helmet>
       {/* Hero Section */}
       <div className="text-center">
         <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-pink-500 to-violet-500 text-white text-sm font-medium mb-6">
