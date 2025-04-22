@@ -25,7 +25,7 @@ export function RaffleCard({
   return (
     <div
       className={cn(
-        'group cursor-pointer rounded-xl bg-white p-6 shadow-sm transition-all hover:shadow-md border border-gray-200/50 relative overflow-hidden',
+        'group cursor-pointer rounded-xl bg-white p-6 shadow-sm transition-all hover:shadow-md border border-gray-200/50 relative overflow-hidden h-full',
         className
       )}
       onClick={onClick}

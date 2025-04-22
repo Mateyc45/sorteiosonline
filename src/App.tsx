@@ -190,18 +190,28 @@ function HomePage({ raffleTypes }) {
           <span>Mais de 10.000 sorteios realizados!</span>
         </div>
         <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl mb-4">
-          Sorteios Online Grátis
+          Vamos Sortear Online  e Grátis
         </h1>
-        <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-          A maneira mais simples, rápida e segura de realizar seus sorteios. 
-          Escolha uma das opções e comece agora mesmo, sem cadastro!
+        <p className="text-xl text-gray-600 max-w-4xl mx-auto mb-2">
+          Precisa realizar sorteios de forma rápida, segura e transparente? 
+          O VamoSortear é a solução ideal para você! Nossa plataforma simplifica todo o processo em apenas alguns cliques.
+        </p>
+        <p className="text-xl text-gray-600 max-w-4xl mx-auto mb-2">
+          Sorteie nomes, números ou itens com resultados 100% confiáveis. 
+          Perfeito para empresas, influenciadores e qualquer pessoa que busque praticidade.
+        </p>
+        <p className="text-xl text-gray-600 max-w-4xl mx-auto mb-2">
+          Escolha uma das opções e comece agora mesmo, sem cadastro! 
+        </p>
+        <p className="text-xl text-gray-600 max-w-5xl mx-auto">
+          COMECE SEU SORTEIO AGORA! Junte-se aos milhares de brasileiros que já confiam em nossa plataforma.
         </p>
       </div>
 
       {/* Features Grid */}
-      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-2">
+      <div className="flex flex-wrap justify-center gap-6">
         {raffleTypes.map((raffle) => (
-          <Link key={raffle.title} to={raffle.path}>
+          <Link key={raffle.title} to={raffle.path} className="w-[550px] min-h-[100px]">
             <RaffleCard
               title={raffle.title}
               description={raffle.description}
@@ -212,8 +222,6 @@ function HomePage({ raffleTypes }) {
           </Link>
         ))}
       </div>
-
-      <BannerAd />
 
       {/* Benefits Section */}
       <div className="bg-white rounded-2xl p-8 shadow-sm border border-gray-200">
