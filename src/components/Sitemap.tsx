@@ -37,7 +37,7 @@ export function Sitemap() {
             <h2 className="text-lg font-semibold text-gray-900 mb-4">Sorteios</h2>
             <ul className="space-y-3">
               <li>
-                <Link to="/number-draw" className="text-blue-600 hover:underline">
+                <Link to="/Sortear-Numero" className="text-blue-600 hover:underline">
                   Sorteio de Números
                 </Link>
                 <p className="text-sm text-gray-600 mt-1">
@@ -45,7 +45,7 @@ export function Sitemap() {
                 </p>
               </li>
               <li>
-                <Link to="/word-draw" className="text-blue-600 hover:underline">
+                <Link to="/Sortear-Palavras" className="text-blue-600 hover:underline">
                   Sorteio de Palavras
                 </Link>
                 <p className="text-sm text-gray-600 mt-1">
@@ -53,7 +53,7 @@ export function Sitemap() {
                 </p>
               </li>
               <li>
-                <Link to="/sequence-draw" className="text-blue-600 hover:underline">
+                <Link to="/Sortear-Sequencia" className="text-blue-600 hover:underline">
                   Sorteio de Sequência
                 </Link>
                 <p className="text-sm text-gray-600 mt-1">
@@ -61,7 +61,7 @@ export function Sitemap() {
                 </p>
               </li>
               <li>
-                <Link to="/secret-santa" className="text-blue-600 hover:underline">
+                <Link to="/Amigo-Secreto" className="text-blue-600 hover:underline">
                   Amigo Secreto Online
                 </Link>
                 <p className="text-sm text-gray-600 mt-1">
@@ -75,7 +75,7 @@ export function Sitemap() {
             <h2 className="text-lg font-semibold text-gray-900 mb-4">Informações</h2>
             <ul className="space-y-3">
               <li>
-                <Link to="/privacy" className="text-blue-600 hover:underline">
+                <Link to="/privacidade" className="text-blue-600 hover:underline">
                   Política de Privacidade
                 </Link>
                 <p className="text-sm text-gray-600 mt-1">
@@ -83,7 +83,7 @@ export function Sitemap() {
                 </p>
               </li>
               <li>
-                <Link to="/terms" className="text-blue-600 hover:underline">
+                <Link to="/termos" className="text-blue-600 hover:underline">
                   Termos de Uso
                 </Link>
                 <p className="text-sm text-gray-600 mt-1">

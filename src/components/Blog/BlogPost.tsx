@@ -20,7 +20,7 @@ const blogPosts = {
         transformando os sorteios e criando novas possibilidades para marcas e participantes.
       </p>
 
-      <p> Experimente organizar um amigo secreto com nossas ferramentas clicando <a href="/secret-santa" class="text-blue-500 hover:underline"> aqui </a>.</p>
+      <p> Experimente organizar um amigo secreto com nossas ferramentas clicando <a href="/Amigo-Secreto" class="text-blue-500 hover:underline"> aqui </a>.</p>
   
       <h2>1. Automação no Processo de Sorteio</h2>
       <p>
@@ -159,7 +159,7 @@ const blogPosts = {
       <p>
         As datas comemorativas são momentos perfeitos para realizar sorteios estratégicos. Aproveitar a emoção e o clima dessas datas pode aumentar o engajamento e atrair uma nova audiência para sua marca. Neste artigo, vamos explorar como realizar sorteios baseados em temas sazonais e como essas datas podem ser um grande diferencial nas suas campanhas de marketing.
       </p>
-      <p> Organize um amigo secreto utilizando nossas ferramentas clicando <a href="/secret-santa" class="text-blue-500 hover:underline"> aqui </a>.</p>
+      <p> Organize um amigo secreto utilizando nossas ferramentas clicando <a href="/Amigo-Secreto" class="text-blue-500 hover:underline"> aqui </a>.</p>
       <h2>1. Aproveite o Clima de Compras</h2>
       <p>
         Datas como Black Friday, Natal e Dia das Mães são associadas a grandes compras. Ao realizar sorteios nesses períodos, você consegue se conectar com o público que já está buscando ofertas e promoções. O sorteio pode ser uma forma de aumentar o interesse pela sua marca e gerar mais tráfego para suas redes sociais ou website.
@@ -800,7 +800,7 @@ const blogPosts = {
       A escolha do prêmio certo é uma das estratégias mais poderosas para atrair participantes e aumentar as conversões nos seus sorteios. Seja criativo, considere o que o seu público deseja e alinhe os prêmios com a identidade da sua marca. Com os prêmios certos, você pode transformar um simples sorteio em uma campanha de sucesso! 🎉
     </p>
     <p>
-        Realize um sorteio com seus seguidores clicando <a href="/secret-santa" class="text-blue-500 hover:underline"> aqui </a>.
+        Realize um sorteio com seus seguidores clicando <a href="/Amigo-Secreto" class="text-blue-500 hover:underline"> aqui </a>.
     </p>
   `,
   category: 'Estratégia',
@@ -1093,7 +1093,7 @@ const blogPosts = {
         Seja criativo e ousado! Com ideias inovadoras, prêmios únicos e um pouco de ousadia, seu sorteio pode se tornar um grande sucesso. Ao gerar burburinho e engajamento nas redes sociais, você não só atrai mais participantes, mas também fortalece sua marca e sua presença digital. Prepare-se para surpreender seu público! 🌟
       </p>   
       <p>
-        Realize um sorteio sazonal utilizando nossas ferramentas clicando <a href="/secret-santa" class="text-blue-500 hover:underline"> aqui </a>.
+        Realize um sorteio sazonal utilizando nossas ferramentas clicando <a href="/Amigo-Secreto" class="text-blue-500 hover:underline"> aqui </a>.
       </p>   `,
     category: 'Inovação',
     tags: ['Criatividade', 'Sorteios', 'Marketing Inovador', 'Tendências'],

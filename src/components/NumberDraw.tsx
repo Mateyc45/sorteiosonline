@@ -12,21 +12,21 @@ const raffleTypes = [
     title: 'Sortear Palavras',
     description: 'Sorteie palavras ou nomes de uma lista personalizada',
     icon: <TextIcon className="h-6 w-6 text-green-600" />,
-    path: '/word-draw',
+    path: '/Sortear-Palavras',
     gradient: 'from-green-500 to-emerald-400',
   },
   {
     title: 'Sortear uma sequência',
     description: 'Gere sequências numéricas aleatórias para diversos fins',
     icon: <ListIcon className="h-6 w-6 text-purple-600" />,
-    path: '/sequence-draw',
+    path: '/Sortear-Sequencia',
     gradient: 'from-purple-500 to-pink-400',
   },
   {
     title: 'Amigo Secreto',
     description: 'Organize seu amigo secreto com envio automático por email',
     icon: <GiftIcon className="h-6 w-6 text-red-600" />,
-    path: '/secret-santa',
+    path: '/Amigo-Secreto',
     gradient: 'from-red-500 to-orange-400',
   },
     {
@@ -64,7 +64,7 @@ export function NumberDraw() {
         <title>Sorteio de Números - Sorteios Online</title>
         <meta name="description" content="Sorteie números de forma simples e rápida no Sorteios Online." />
         <meta name="robots" content="index, follow" />
-        <link rel="canonical" href="http://vamosortear.com.br/number-draw" />
+        <link rel="canonical" href="http://vamosortear.com.br/Sortear-Numero" />
       </Helmet>
       <div className="mb-4">
         <Link

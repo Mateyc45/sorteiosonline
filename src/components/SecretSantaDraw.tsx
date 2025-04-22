@@ -33,21 +33,21 @@ const raffleTypes = [
     title: 'Sortear um número',
     description: 'Sorteie números aleatórios de forma rápida e confiável',
     icon: <Dice1Icon className="h-6 w-6 text-blue-600" />,
-    path: '/number-draw',
+    path: '/Sortear-Numero',
     gradient: 'from-blue-500 to-cyan-400',
   },
   {
     title: 'Sortear Palavras',
     description: 'Sorteie palavras ou nomes de uma lista personalizada',
     icon: <TextIcon className="h-6 w-6 text-green-600" />,
-    path: '/word-draw',
+    path: '/Sortear-Palavras',
     gradient: 'from-green-500 to-emerald-400',
   },
   {
     title: 'Sortear uma sequência',
     description: 'Gere sequências numéricas aleatórias para diversos fins',
     icon: <ListIcon className="h-6 w-6 text-purple-600" />,
-    path: '/sequence-draw',
+    path: '/Sortear-Sequencia',
     gradient: 'from-purple-500 to-pink-400',
   },
   {
@@ -204,7 +204,7 @@ export function SecretSantaDraw() {
                     <title>Amigo Secreto - Sorteios Online</title>
                     <meta name="description" content="Realize a organização de um amigo secreto de modo automático, via email, usando nossa ferramenta!" />
                     <meta name="robots" content="index, follow" />
-                    <link rel="canonical" href="http://vamosortear.com.br/secret-santa" />
+                    <link rel="canonical" href="http://vamosortear.com.br/Amigo-Secreto" />
             </Helmet>
       <div className="mb-4">
         <Link

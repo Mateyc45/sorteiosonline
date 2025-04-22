@@ -45,21 +45,21 @@ export function WordDraw() {
       title: 'Sortear um número',
       description: 'Sorteie números aleatórios de forma rápida e confiável',
       icon: <Dice1Icon className="h-6 w-6 text-blue-600" />,
-      path: '/number-draw',
+      path: '/Sortear-Numero',
       gradient: 'from-blue-500 to-cyan-400',
     },
     {
       title: 'Sortear uma sequência',
       description: 'Gere sequências numéricas aleatórias para diversos fins',
       icon: <ListIcon className="h-6 w-6 text-purple-600" />,
-      path: '/sequence-draw',
+      path: '/Sortear-Sequencia',
       gradient: 'from-purple-500 to-pink-400',
     },
     {
       title: 'Amigo Secreto',
       description: 'Organize seu amigo secreto com envio automático por email',
       icon: <GiftIcon className="h-6 w-6 text-red-600" />,
-      path: '/secret-santa',
+      path: '/Amigo-Secreto',
       gradient: 'from-red-500 to-orange-400',
     },
       {
@@ -78,7 +78,7 @@ export function WordDraw() {
                     <title>Sortear Palavras - Sorteios Online</title>
                     <meta name="description" content="Sorteie palavras de forma simples, rápida e personalizada no Sorteios Online." />
                     <meta name="robots" content="index, follow" />
-                    <link rel="canonical" href="http://vamosortear.com.br/word-draw" />
+                    <link rel="canonical" href="http://vamosortear.com.br/Sortear-Palavras" />
             </Helmet>
       <div className="mb-4">
         <Link

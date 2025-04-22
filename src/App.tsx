@@ -87,28 +87,28 @@ function App() {
       title: 'Sortear um número',
       description: 'Sorteie números aleatórios de forma rápida e confiável',
       icon: <Dice1Icon className="h-6 w-6 text-blue-600" />,
-      path: '/number-draw',
+      path: '/Sortear-Numero',
       gradient: 'from-blue-500 to-cyan-400',
     },
     {
       title: 'Sortear Palavras',
       description: 'Sorteie palavras ou nomes de uma lista personalizada',
       icon: <TextIcon className="h-6 w-6 text-green-600" />,
-      path: '/word-draw',
+      path: '/Sortear-Palavras',
       gradient: 'from-green-500 to-emerald-400',
     },
     {
       title: 'Sortear uma sequência',
       description: 'Gere sequências numéricas aleatórias para diversos fins',
       icon: <ListIcon className="h-6 w-6 text-purple-600" />,
-      path: '/sequence-draw',
+      path: '/Sortear-Sequencia',
       gradient: 'from-purple-500 to-pink-400',
     },
     {
       title: 'Amigo Secreto',
       description: 'Organize seu amigo secreto com envio automático por email',
       icon: <GiftIcon className="h-6 w-6 text-red-600" />,
-      path: '/secret-santa',
+      path: '/Amigo-Secreto',
       gradient: 'from-red-500 to-orange-400',
     },
       {
@@ -128,7 +128,7 @@ function App() {
             <div className="mx-auto max-w-7xl px-4 py-4 sm:px-6 lg:px-8">
               <div className="flex items-center justify-between">
                 <Link to="/" className="text-2xl font-bold tracking-tight text-gray-900">
-                  <img src={logo} alt="Logo Sorteios Online - Plataforma de Sorteios Grátis" className="h-16 w-auto" />
+                  <img src={logo} alt="Logo Sorteios Online - Plataforma de Sorteios Grátis" className="h-24 w-full" />
                 </Link>
                 <nav className="flex gap-6">
                   <Link to="/blog" className="text-gray-600 hover:text-gray-900">Blog</Link>
@@ -141,13 +141,13 @@ function App() {
             <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
               <Routes>
                 <Route path="/" element={<HomePage raffleTypes={raffleTypes} />} />
-                <Route path="/number-draw" element={<NumberDraw />} />
-                <Route path="/word-draw" element={<WordDraw />} />
-                <Route path="/sequence-draw" element={<SequenceDraw />} />
-                <Route path="/secret-santa" element={<SecretSantaDraw />} />
+                <Route path="/Sortear-Numero" element={<NumberDraw />} />
+                <Route path="/Sortear-Palavras" element={<WordDraw />} />
+                <Route path="/Sortear-Sequencia" element={<SequenceDraw />} />
+                <Route path="/Amigo-Secreto" element={<SecretSantaDraw />} />
                 <Route path="/roleta" element={<RoletaSorteio />} />
-                <Route path="/privacy" element={<PrivacyPolicy />} />
-                <Route path="/terms" element={<TermsOfUse />} />
+                <Route path="/privacidade" element={<PrivacyPolicy />} />
+                <Route path="/termos" element={<TermsOfUse />} />
                 <Route path="/sitemap" element={<Sitemap />} />
                 <Route path="/blog" element={<BlogList />} />
                 <Route path="/blog/:slug" element={<BlogPost />} />
@@ -158,8 +158,8 @@ function App() {
           <footer className="bg-white border-t">
             <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
               <div className="flex justify-center space-x-6 text-sm text-gray-500">
-                <Link to="/privacy" className="hover:text-gray-900">Política de Privacidade</Link>
-                <Link to="/terms" className="hover:text-gray-900">Termos de Uso</Link>
+                <Link to="/privacidade" className="hover:text-gray-900">Política de Privacidade</Link>
+                <Link to="/termos" className="hover:text-gray-900">Termos de Uso</Link>
                 <Link to="/sitemap" className="hover:text-gray-900">Mapa do Site</Link>
                 <Link to="/blog" className="hover:text-gray-900">Blog</Link>
               </div>

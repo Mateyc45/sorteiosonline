@@ -11,7 +11,7 @@ export function PrivacyPolicy() {
               <title>Política de Privacidade - Sorteios Online</title>
               <meta name="description" content="Explore nossa política de privacidade" />
               <meta name="robots" content="index, follow" />
-              <link rel="canonical" href="http://vamosortear.com.br/privacy" />
+              <link rel="canonical" href="http://vamosortear.com.br/privacidade" />
       </Helmet>
       <div className="mb-4">
         <Link

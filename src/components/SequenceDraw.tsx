@@ -36,21 +36,21 @@ export function SequenceDraw() {
       title: 'Sortear Palavras',
       description: 'Sorteie palavras ou nomes de uma lista personalizada',
       icon: <TextIcon className="h-6 w-6 text-green-600" />,
-      path: '/word-draw',
+      path: '/Sortear-Palavras',
       gradient: 'from-green-500 to-emerald-400',
     },
     {
       title: 'Sortear um número',
       description: 'Sortei um número aleatório agora mesmo',
       icon: <Dice1Icon className="h-6 w-6 text-blue-600" />,
-      path: '/number-draw',
+      path: '/Sortear-Numero',
       gradient: 'from-blue-500 to-blue-400',
     },
     {
       title: 'Amigo Secreto',
       description: 'Organize seu amigo secreto com envio automático por email',
       icon: <GiftIcon className="h-6 w-6 text-red-600" />,
-      path: '/secret-santa',
+      path: '/Amigo-Secreto',
       gradient: 'from-red-500 to-orange-400',
     },
       {
@@ -69,7 +69,7 @@ export function SequenceDraw() {
                     <title>Sortear Sequência - Sorteios Online</title>
                     <meta name="description" content="Sorteie uma sequência números de forma simples e rápida no Sorteios Online." />
                     <meta name="robots" content="index, follow" />
-                    <link rel="canonical" href="http://vamosortear.com.br/sequence-draw" />
+                    <link rel="canonical" href="http://vamosortear.com.br/Sortear-Sequencia" />
             </Helmet>
       <div className="mb-4">
         <Link
