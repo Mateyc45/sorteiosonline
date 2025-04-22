@@ -23,7 +23,7 @@ const websiteSchema = {
   "@type": "WebApplication",
   "name": "Sorteios Online",
   "description": "Plataforma gratuita para realizar sorteios online. Sorteie números, palavras, sequências e organize amigo secreto com envio automático por email.",
-  "url": "https://sorteiosonline.netlify.app",
+  "url": "http://vamosortear.com.br/",
   "applicationCategory": "UtilityApplication",
   "operatingSystem": "Any",
   "offers": {
@@ -52,7 +52,7 @@ function App() {
       { property: 'og:title', content: seoMetadata.title },
       { property: 'og:description', content: seoMetadata.description },
       { property: 'og:type', content: 'website' },
-      { property: 'og:url', content: 'https://sorteiosonline.netlify.app' },
+      { property: 'og:url', content: 'http://vamosortear.com.br/' },
       { name: 'twitter:card', content: 'summary_large_image' },
       { name: 'twitter:title', content: seoMetadata.title },
       { name: 'twitter:description', content: seoMetadata.description }
@@ -181,7 +181,7 @@ function HomePage({ raffleTypes }) {
           <title>Sorteios Online - O Jeito Mais Fácil e Simples de sortear algo!</title>
           <meta name="description" content="Sorteie números de forma simples e rápida no Sorteios Online." />
           <meta name="robots" content="index, follow" />
-          <link rel="canonical" href="https://sorteiosonline.netlify.app/" />
+          <link rel="canonical" href="http://vamosortear.com.br/" />
       </Helmet>
       {/* Hero Section */}
       <div className="text-center">

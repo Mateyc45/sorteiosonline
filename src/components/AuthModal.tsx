@@ -40,7 +40,7 @@ export function AuthModal({ isOpen, onClose }: AuthModalProps) {
           }}
           providers={[]}
           theme="light"
-          redirectTo="https://sorteiosonline.netlify.app"
+          redirectTo="http://vamosortear.com.br/"
         />
       </div>
     </div>

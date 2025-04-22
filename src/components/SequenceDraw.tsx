@@ -69,7 +69,7 @@ export function SequenceDraw() {
                     <title>Sortear Sequência - Sorteios Online</title>
                     <meta name="description" content="Sorteie uma sequência números de forma simples e rápida no Sorteios Online." />
                     <meta name="robots" content="index, follow" />
-                    <link rel="canonical" href="https://sorteiosonline.netlify.app/sequence-draw" />
+                    <link rel="canonical" href="http://vamosortear.com.br/sequence-draw" />
             </Helmet>
       <div className="mb-4">
         <Link

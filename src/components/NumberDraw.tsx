@@ -64,7 +64,7 @@ export function NumberDraw() {
         <title>Sorteio de Números - Sorteios Online</title>
         <meta name="description" content="Sorteie números de forma simples e rápida no Sorteios Online." />
         <meta name="robots" content="index, follow" />
-        <link rel="canonical" href="https://sorteiosonline.netlify.app/number-draw" />
+        <link rel="canonical" href="http://vamosortear.com.br/number-draw" />
       </Helmet>
       <div className="mb-4">
         <Link

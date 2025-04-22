@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://sorteiosonline.netlify.app/sitemap.xml
+Sitemap: http://vamosortear.com.br/sitemap.xml

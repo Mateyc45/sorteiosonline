@@ -204,7 +204,7 @@ export function SecretSantaDraw() {
                     <title>Amigo Secreto - Sorteios Online</title>
                     <meta name="description" content="Realize a organização de um amigo secreto de modo automático, via email, usando nossa ferramenta!" />
                     <meta name="robots" content="index, follow" />
-                    <link rel="canonical" href="https://sorteiosonline.netlify.app/secret-santa" />
+                    <link rel="canonical" href="http://vamosortear.com.br/secret-santa" />
             </Helmet>
       <div className="mb-4">
         <Link
