@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: http://vamosortear.com.br/sitemap.xml
+Sitemap: https://vamosortear.com.br/sitemap.xml
