@@ -21,9 +21,9 @@ import { Helmet } from 'react-helmet-async';
 const websiteSchema = {
   "@context": "https://schema.org",
   "@type": "WebApplication",
-  "name": "Sorteios Online",
-  "description": "Plataforma gratuita para realizar sorteios online. Sorteie números, palavras, sequências e organize amigo secreto com envio automático por email.",
-  "url": "http://vamosortear.com.br/",
+  "name": "Vamo Sortear",
+  "description": "Plataforma gratuita para realizar sorteios online. Sorteie números, palavras, sequências, roletas e organize amigo secreto com envio automático por email.",
+  "url": "https://vamosortear.com.br/",
   "applicationCategory": "UtilityApplication",
   "operatingSystem": "Any",
   "offers": {
@@ -35,9 +35,9 @@ const websiteSchema = {
 
 // SEO metadata
 const seoMetadata = {
-  title: 'Sorteios Online - O Jeito Mais Fácil e Simples de sortear algo!',
-  description: 'Plataforma gratuita para realizar sorteios online. Sorteie números, palavras, sequências e organize amigo secreto com envio automático por email.',
-  keywords: 'sorteio online, sorteio grátis, amigo secreto, sorteio de números, sorteio de palavras, sorteio de sequência, gerador de números aleatórios, sorteio automático',
+  title: 'VamoSortear - O Jeito Mais Fácil e Simples de sortear algo! Totalmente Gratis',
+  description: 'Plataforma gratuita para realizar sorteios online. Sorteie números, palavras, sequências, roletas e organize amigo secreto com envio automático por email. Além de acompanhar nosso blog de curiosidade sobre sorteios',
+  keywords: 'sorteio online, sorteio grátis, amigo secreto, sorteio de números, sorteio de palavras, sorteio de sequência, sorteio de roleta, gerador de números aleatórios, sorteio automático',
 };
 
 function App() {
@@ -52,7 +52,7 @@ function App() {
       { property: 'og:title', content: seoMetadata.title },
       { property: 'og:description', content: seoMetadata.description },
       { property: 'og:type', content: 'website' },
-      { property: 'og:url', content: 'http://vamosortear.com.br/' },
+      { property: 'og:url', content: 'https://vamosortear.com.br/' },
       { name: 'twitter:card', content: 'summary_large_image' },
       { name: 'twitter:title', content: seoMetadata.title },
       { name: 'twitter:description', content: seoMetadata.description }
@@ -178,10 +178,10 @@ function HomePage({ raffleTypes }) {
   return (
     <div className="space-y-12">
       <Helmet> 
-          <title>Sorteios Online - O Jeito Mais Fácil e Simples de sortear algo!</title>
-          <meta name="description" content="Sorteie números de forma simples e rápida no Sorteios Online." />
+          <title>VamoSortear - O Jeito Mais Fácil e Simples de sortear algo! Totalmente Gratis</title>
+          <meta name="description" content="Sorteie números de forma simples e rápida no VamoSortear. Totalmente Gratis" />
           <meta name="robots" content="index, follow" />
-          <link rel="canonical" href="http://vamosortear.com.br/" />
+          <link rel="canonical" href="https://vamosortear.com.br/" />
       </Helmet>
       {/* Hero Section */}
       <div className="text-center">
@@ -253,7 +253,7 @@ function HomePage({ raffleTypes }) {
         </div>
       </div>
 
-      <BannerAd />
+      {/* <BannerAd />
 
       {/* Use Cases Section */}
       <div className="bg-white rounded-2xl p-8 shadow-sm border border-gray-200">
