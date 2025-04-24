@@ -184,7 +184,7 @@ export function RoletaSorteio() {
   return (
  <div className="mx-auto max-w-2xl">
         <Helmet> 
-                <title>Roleta - Sorteios Online</title>
+                <title>Roleta - Vamo Sortear</title>
                 <meta name="description" content="Personalize e rode sua roleta para descobrir qual será o resultado!" />
                 <meta name="robots" content="index, follow" />
                 <link rel="canonical" href="http://vamosortear.com.br/roleta" />

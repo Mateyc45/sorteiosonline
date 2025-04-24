@@ -8,7 +8,7 @@ export function TermsOfUse() {
   return (
     <div className="mx-auto max-w-3xl px-4 py-8">
             <Helmet> 
-                    <title>Termo de Uso - Sorteios Online</title>
+                    <title>Termo de Uso - Vamo Sortear</title>
                     <meta name="description" content="Descubra quais são nossos termos de uso" />
                     <meta name="robots" content="index, follow" />
                     <link rel="canonical" href="http://vamosortear.com.br/termos" />
@@ -33,7 +33,7 @@ export function TermsOfUse() {
           <p>Ao acessar e usar este site, você aceita e concorda em cumprir estes termos e condições de uso.</p>
 
           <h2 className="text-xl font-semibold mt-6 mb-4">2. Uso do Serviço</h2>
-          <p>Nosso serviço de sorteios online deve ser usado apenas para fins legais e de acordo com estes termos.</p>
+          <p>Nosso serviço de Vamo Sortear deve ser usado apenas para fins legais e de acordo com estes termos.</p>
           <p>Você concorda em não:</p>
           <ul className="list-disc pl-6 mb-4">
             <li>Usar o serviço para fins ilegais</li>

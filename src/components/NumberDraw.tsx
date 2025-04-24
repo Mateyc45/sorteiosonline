@@ -61,8 +61,8 @@ export function NumberDraw() {
   return (
     <div className="mx-auto max-w-2xl">
       <Helmet> 
-        <title>Sorteio de Números - Sorteios Online</title>
-        <meta name="description" content="Sorteie números de forma simples e rápida no Sorteios Online." />
+        <title>Sorteio de Números - Vamo Sortear</title>
+        <meta name="description" content="Sorteie números de forma simples e rápida no Vamo Sortear." />
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href="http://vamosortear.com.br/Sortear-Numero" />
       </Helmet>

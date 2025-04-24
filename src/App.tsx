@@ -128,7 +128,7 @@ function App() {
             <div className="mx-auto max-w-7xl px-4 py-4 sm:px-6 lg:px-8">
               <div className="flex items-center justify-between">
                 <Link to="/" className="text-2xl font-bold tracking-tight text-gray-900">
-                  <img src={logo} alt="Logo Sorteios Online - Plataforma de Sorteios Grátis" className="h-24 w-full" />
+                  <img src={logo} alt="Logo Vamo Sortear - Plataforma de Sorteios Grátis" className="h-24 w-full" />
                 </Link>
                 <nav className="flex gap-6">
                   <Link to="/blog" className="text-gray-600 hover:text-gray-900">Blog</Link>
@@ -164,7 +164,7 @@ function App() {
                 <Link to="/blog" className="hover:text-gray-900">Blog</Link>
               </div>
               <p className="mt-4 text-center text-sm text-gray-500">
-                © {new Date().getFullYear()} Sorteios Online. Todos os direitos reservados.
+                © {new Date().getFullYear()} Vamo Sortear. Todos os direitos reservados.
               </p>
             </div>
           </footer>
