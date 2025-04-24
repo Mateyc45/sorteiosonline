@@ -1,4 +1,5 @@
 # Redirecionamento para HTTPS (opcional)
 http://vamosortear.com.br/*    https://vamosortear.com.br/:splat
 
-/blog/* /blog/:splat 200
+# Redirecionamento do Blog
+/blog/*    /blog/index.html    200
