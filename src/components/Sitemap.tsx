@@ -10,7 +10,7 @@ export function Sitemap() {
     <div className="mx-auto max-w-3xl px-4 py-8">
             <Helmet> 
                     <title>Mapa do Site - Vamo Sortear</title>
-                    <meta name="description" content="Explore todas as páginas de nosso site!" />
+                    <meta name="description" content="Explore todas as páginas de nosso site e descubra todos os sorteios que podem te interessar, desde números até roleta e amigo secreto! Vem sortear no vamosortear.com.br" />
                     <meta name="robots" content="index, follow" />
                     <link rel="canonical" href="https://vamosortear.com.br/sitemap" />
                     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />

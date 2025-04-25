@@ -9,7 +9,7 @@ export function PrivacyPolicy() {
     <div className="mx-auto max-w-3xl px-4 py-8">
       <Helmet> 
               <title>Política de Privacidade - Vamo Sortear</title>
-              <meta name="description" content="Explore nossa política de privacidade" />
+              <meta name="description" content="Explore nossa política de privacidade e como seus dados são utilizados por nós do VamoSortear.com.br" />
               <meta name="robots" content="index, follow" />
               <link rel="canonical" href="https://vamosortear.com.br/privacidade" />
               <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />

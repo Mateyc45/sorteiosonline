@@ -62,7 +62,7 @@ export function NumberDraw() {
     <div className="mx-auto max-w-2xl">
       <Helmet> 
         <title>Sorteio de Números - Vamo Sortear</title>
-        <meta name="description" content="Sorteie números de forma simples e rápida no Vamo Sortear." />
+        <meta name="description" content="Sorteie números dentro de um intervalo de forma simples e rápida no Vamo Sortear." />
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href="https://vamosortear.com.br/Sortear-Numero" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />

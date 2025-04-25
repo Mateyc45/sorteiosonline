@@ -393,7 +393,7 @@ export function BlogList() {
         <title>Blog - Sorteios Online | Dicas, Tutoriais e Novidades sobre Sorteios</title>
         <meta
           name="description"
-          content="Confira artigos, tutoriais e dicas sobre sorteios online, organização de amigo secreto, conformidade com LGPD e muito mais. Mantenha-se atualizado com as melhores práticas!"
+          content="Confira artigos, tutoriais e dicas sobre sorteios online, organização de amigo secreto, conformidade com LGPD e muito mais. Mantenha-se atualizado com as melhores práticas para todas as modalidades de sorteio! Aproveite tambem nossas funcionalidades que vão desde sortear um numero até o amigo secreto ou ao giro de uma roleta, tudo online e grátis!"
         />
         <meta
           name="keywords"

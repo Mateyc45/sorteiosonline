@@ -67,7 +67,7 @@ export function SequenceDraw() {
     <div className="mx-auto max-w-2xl">
             <Helmet> 
                     <title>Sortear Sequência - Vamo Sortear</title>
-                    <meta name="description" content="Sorteie uma sequência números de forma simples e rápida no Vamo Sortear." />
+                    <meta name="description" content="Sorteie uma sequência números num intervalo personalizado de forma simples e rápida no Vamo Sortear!!!" />
                     <meta name="robots" content="index, follow" />
                     <link rel="canonical" href="https://vamosortear.com.br/Sortear-Sequencia" />
                     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />

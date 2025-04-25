@@ -9,7 +9,7 @@ export function TermsOfUse() {
     <div className="mx-auto max-w-3xl px-4 py-8">
             <Helmet> 
                     <title>Termo de Uso - Vamo Sortear</title>
-                    <meta name="description" content="Descubra quais são nossos termos de uso" />
+                    <meta name="description" content="Descubra quais são nossos termos de uso para realizar seus sorteios online sabendo tudo!!!" />
                     <meta name="robots" content="index, follow" />
                     <link rel="canonical" href="https://vamosortear.com.br/termos" />
                     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />

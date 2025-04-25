@@ -76,7 +76,7 @@ export function WordDraw() {
     <div className="mx-auto max-w-2xl">
             <Helmet> 
                     <title>Sortear Palavras - Vamo Sortear</title>
-                    <meta name="description" content="Sorteie palavras de forma simples, rápida e personalizada no Vamo Sortear." />
+                    <meta name="description" content="Sorteie palavras escolhidas por você de forma simples, rápida, personalizada e online no Vamo Sortear. Vem sortear com a gente!" />
                     <meta name="robots" content="index, follow" />
                     <link rel="canonical" href="https://vamosortear.com.br/Sortear-Palavras" />
                     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
