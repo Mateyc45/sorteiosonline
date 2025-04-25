@@ -18,7 +18,7 @@ interface BlogPost {
   imageUrl: string;
 }
 
-const blogPosts: BlogPost[] = [
+export const blogPosts: BlogPost[] = [
   {
     id: '30',
     slug: 'inteligencia-artificial-em-sorteios',
