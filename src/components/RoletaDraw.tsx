@@ -188,6 +188,10 @@ export function RoletaSorteio() {
                 <meta name="description" content="Personalize e rode sua roleta para descobrir qual será o resultado!" />
                 <meta name="robots" content="index, follow" />
                 <link rel="canonical" href="https://vamosortear.com.br/roleta" />
+                <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+        <meta name="keywords" content="sorteio, sorteios, vamo sortear, sorteio online, roleta, roleta online, roleta personalizada, roleta simples" />
+        <meta name="author" content="Marcos & Matheus"></meta>
         </Helmet>
       <div className="mb-4">
         <Link

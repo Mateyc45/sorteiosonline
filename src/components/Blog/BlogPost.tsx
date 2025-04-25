@@ -1859,6 +1859,10 @@ export function BlogPost() {
         <meta property="og:description" content={post.excerpt} />
         <meta property="og:image" content={post.imageUrl} />
         <meta property="og:url" content={shareUrl} />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+        <meta name="keywords" content="sorteio, sorteios, vamo sortear, sorteio online, sortear numero, sortear numeros, sorteando numero" />
+        <meta name="author" content="Marcos & Matheus"></meta>
       </Helmet>
 
       <div className="mb-4">

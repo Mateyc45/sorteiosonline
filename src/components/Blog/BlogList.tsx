@@ -373,6 +373,10 @@ export function BlogList() {
           name="keywords"
           content="blog sorteios, dicas sorteios online, tutorial amigo secreto, LGPD sorteios, sorteios seguros"
         />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+        <meta name="keywords" content="sorteio, sorteios, vamo sortear, sorteio online, sortear numero, sortear numeros, sorteando numero" />
+        <meta name="author" content="Marcos & Matheus"></meta>
       </Helmet>
 
       <div className="mb-8">

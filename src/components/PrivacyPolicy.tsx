@@ -12,6 +12,10 @@ export function PrivacyPolicy() {
               <meta name="description" content="Explore nossa política de privacidade" />
               <meta name="robots" content="index, follow" />
               <link rel="canonical" href="https://vamosortear.com.br/privacidade" />
+              <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+        <meta name="keywords" content="sorteio, sorteios, vamo sortear, sorteio online, politica de privacidade, privacidade" />
+        <meta name="author" content="Marcos & Matheus"></meta>
       </Helmet>
       <div className="mb-4">
         <Link

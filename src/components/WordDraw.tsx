@@ -79,6 +79,10 @@ export function WordDraw() {
                     <meta name="description" content="Sorteie palavras de forma simples, rápida e personalizada no Vamo Sortear." />
                     <meta name="robots" content="index, follow" />
                     <link rel="canonical" href="https://vamosortear.com.br/Sortear-Palavras" />
+                    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+        <meta name="keywords" content="sorteio, sorteios, vamo sortear, sorteio online, sortear palavras, sortear varias palavras, sortear palavras personalizadas" />
+        <meta name="author" content="Marcos & Matheus"></meta>
             </Helmet>
       <div className="mb-4">
         <Link
