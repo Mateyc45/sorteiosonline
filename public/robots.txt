@@ -1,4 +1,6 @@
 User-agent: *
 Allow: /
 
+Host: https://vamosortear.com.br
+
 Sitemap: https://vamosortear.com.br/sitemap.xml

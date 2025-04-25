@@ -16,6 +16,7 @@ import { BlogPost } from './components/Blog/BlogPost';
 import BannerAd from './components/BannerAd';
 import logo from './lib/image/logo3.png';
 import { Helmet } from 'react-helmet-async';
+import Analytics from './Analytics';
 
 // Schema markup for rich snippets
 const websiteSchema = {
@@ -123,6 +124,21 @@ function App() {
   return (
     <HelmetProvider>
       <Router>
+        <Helmet>
+            {/* Script do Google Analytics */}
+            <script async src="https://www.googletagmanager.com/gtag/js?id=G-F0M7EK8WZ9"></script>
+            <script>
+              {`
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', 'G-F0M7EK8WZ9'); 
+              `}
+            </script>
+          </Helmet>
+
+          <Analytics/>
+
         <div className="min-h-screen flex flex-col bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50">
           <header className="border-b bg-white/80 backdrop-blur-sm shadow-sm sticky top-0 z-50">
             <div className="mx-auto max-w-7xl px-4 py-4 sm:px-6 lg:px-8">
