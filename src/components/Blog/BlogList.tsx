@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { BookOpenIcon, TagIcon, CalendarIcon, ChevronRightIcon } from 'lucide-react';
@@ -321,6 +321,8 @@ export const blogPosts: BlogPost[] = [
   },
 ];
 
+
+
 export function BlogList() {
   window.scrollTo(0, 0);
   
@@ -346,12 +348,36 @@ export function BlogList() {
   const SugestoesLista = (tag: string) => {
     setSelecionarTag(tag);
     setSugestoes([]); // Limpar sugestões após selecionar
+    setPagina_atual(1); // Resetar a página atual para 1 ao selecionar uma tag
   };
 
   const PostsFiltrados = SelecionarTag
     ? blogPosts.filter((post) => post.tags.includes(SelecionarTag))
     : blogPosts;
 
+  // Definir o número de posts por página
+    const posts_por_pagina = 5;
+
+    const [Pagina_atual, setPagina_atual] = useState(1);
+
+    // Calcular o índice inicial e final dos posts da página atual
+    const inicio = (Pagina_atual - 1) * posts_por_pagina;
+    const final = inicio + posts_por_pagina;
+    const posts_atuais = PostsFiltrados.slice(inicio, final);
+  
+    // Calcular o número total de páginas
+    const total_paginas = Math.ceil(PostsFiltrados.length / posts_por_pagina);
+  
+    // Funções para mudar de página
+    const paginaanterior = () => {
+      if (Pagina_atual > 1) setPagina_atual(Pagina_atual - 1);
+    };
+  
+    const goToNextPage = () => {
+      if (Pagina_atual < total_paginas) setPagina_atual(Pagina_atual + 1);
+    };
+
+  
   return (
     <div className="mx-auto max-w-4xl px-4 py-8">
       <div className="mb-4">
@@ -418,7 +444,7 @@ export function BlogList() {
         </div>
       </div>
       <div className="grid gap-8 mt-8">
-        {PostsFiltrados.map((post) => (
+        {posts_atuais.map((post) => (
           <article
             key={post.id}
             className="group relative rounded-xl border border-gray-200 bg-white p-6 shadow-sm transition-all hover:shadow-md"
@@ -481,6 +507,30 @@ export function BlogList() {
       </div>
 
       <AdSpace />
+
+      <div className="flex justify-center items-center space-x-4 mt-8">
+        <button
+          onClick={paginaanterior}
+          disabled={Pagina_atual === 1}
+          className={`px-4 py-2 rounded-md ${
+            Pagina_atual === 1 ? 'bg-gray-300 text-gray-500 cursor-not-allowed' : 'bg-blue-500 text-white hover:bg-blue-600'
+          }`}
+        >
+          Anterior
+        </button>
+        <span className="text-gray-700">
+          Página {Pagina_atual} de {total_paginas}
+        </span>
+        <button
+          onClick={goToNextPage}
+          disabled={Pagina_atual === total_paginas}
+          className={`px-4 py-2 rounded-md ${
+            Pagina_atual === total_paginas ? 'bg-gray-300 text-gray-500 cursor-not-allowed' : 'bg-blue-500 text-white hover:bg-blue-600'
+          }`}
+        >
+          Próxima
+        </button>
+      </div>
     </div>
   );
 }
