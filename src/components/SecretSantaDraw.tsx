@@ -61,7 +61,9 @@ const raffleTypes = [
 
 
 export function SecretSantaDraw() {
-  window.scrollTo(0, 0);
+  useEffect(() => {
+        window.scrollTo(0, 0);
+      }, []);
   
   const [participants, setParticipants] = useState<Participant[]>([]);
   const [newParticipant, setNewParticipant] = useState({ name: '', email: '' });
@@ -266,7 +268,7 @@ export function SecretSantaDraw() {
               Adicionar Participantes
             </h3>
             <div className="space-y-4">
-              <div className="flex gap-3">
+              <div className="flex flex-col sm:flex-row gap-3">
                 <input
                   type="text"
                   value={newParticipant.name}
@@ -283,7 +285,7 @@ export function SecretSantaDraw() {
                 />
                 <button
                   onClick={handleAddParticipant}
-                  className="flex items-center gap-2 rounded-lg bg-gradient-to-r from-red-600 to-pink-600 px-6 py-3 font-semibold text-white shadow-md hover:from-red-500 hover:to-pink-500 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
+                  className="flex items-center justify-center gap-2 rounded-lg bg-gradient-to-r from-red-600 to-pink-600 px-6 py-3 font-semibold text-white shadow-md hover:from-red-500 hover:to-pink-500 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2"
                 >
                   <PlusIcon className="h-5 w-5" />
                   Adicionar

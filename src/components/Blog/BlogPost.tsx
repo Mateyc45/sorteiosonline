@@ -1900,7 +1900,7 @@ export function BlogPost() {
             className="rounded-xl w-full h-[400px] object-cover mb-6"
           />
 
-          <div className="flex items-center justify-between border-t border-b border-gray-200 py-4">
+          <div className="flex flex-col sm:flex-row gap-2 items-center justify-between border-t border-b border-gray-200 py-4">
             <div className="flex items-center gap-3">
               <div className="rounded-full bg-gray-100 p-2">
                 <BookOpenIcon className="h-5 w-5 text-gray-600" />
@@ -1955,7 +1955,7 @@ export function BlogPost() {
         <footer className="mt-8 border-t border-gray-200 pt-8">
           <div className="flex items-center gap-2">
             <TagIcon className="h-4 w-4 text-gray-400" />
-            <div className="flex gap-2">
+            <div className="flex flex-col sm:flex-row gap-2">
               {post.tags.map((tag: string) => (
                 <span
                   key={tag}

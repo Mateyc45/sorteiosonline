@@ -451,15 +451,15 @@ export function BlogList() {
             key={post.id}
             className="group relative rounded-xl border border-gray-200 bg-white p-6 shadow-sm transition-all hover:shadow-md"
           >
-            <div className="flex gap-6">
-              <div className="w-1/3">
+            <div className="flex flex-col sm:flex-row gap-6 max-w-full">
+              <div className="w-full sm:w-1/3">
                 <img
                   src={post.imageUrl}
                   alt={post.title}
-                  className="rounded-lg object-cover w-full h-48"
+                  className="rounded-lg object-cover w-full sm:w-full h-48"
                 />
               </div>
-              <div className="w-2/3">
+              <div className="sm:w-2/3">
                 <div className="flex items-center gap-4 text-sm text-gray-600 mb-3">
                   <span className="flex items-center gap-1">
                     <BookOpenIcon className="h-4 w-4" />
@@ -482,7 +482,7 @@ export function BlogList() {
                 <div className="flex items-center justify-between">
                   <div className="flex items-center gap-2">
                     <TagIcon className="h-4 w-4 text-gray-400" />
-                    <div className="flex gap-2">
+                    <div className="flex flex-col sm:flex-row gap-2">
                       {post.tags.map((tag) => (
                         <span
                           key={tag}

@@ -80,9 +80,9 @@ export function WordDraw() {
                     <meta name="robots" content="index, follow" />
                     <link rel="canonical" href="https://vamosortear.com.br/Sortear-Palavras" />
                     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
-        <meta name="keywords" content="sorteio, sorteios, vamo sortear, sorteio online, sortear palavras, sortear varias palavras, sortear palavras personalizadas" />
-        <meta name="author" content="Marcos & Matheus"></meta>
+                    <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+                    <meta name="keywords" content="sorteio, sorteios, vamo sortear, sorteio online, sortear palavras, sortear varias palavras, sortear palavras personalizadas" />
+                    <meta name="author" content="Marcos & Matheus"></meta>
             </Helmet>
       <div className="mb-4">
         <Link
@@ -118,7 +118,7 @@ export function WordDraw() {
             <label className="block text-sm font-medium text-gray-700 mb-2">
               Adicionar Palavra ou Nome
             </label>
-            <div className="flex gap-2">
+            <div className="flex flex-col sm:flex-row gap-2">
               <input
                 type="text"
                 value={newWord}
@@ -133,7 +133,7 @@ export function WordDraw() {
               />
               <button
                 onClick={handleAddWord}
-                className="flex items-center gap-2 rounded-md bg-gradient-to-r from-green-600 to-emerald-600 px-6 py-3 font-semibold text-white shadow-md transition-all hover:scale-[1.02] hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
+                className="flex items-center justify-center gap-2 rounded-md bg-gradient-to-r from-green-600 to-emerald-600 px-6 py-3 font-semibold text-white shadow-md transition-all hover:scale-[1.02] hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2"
               >
                 <PlusIcon className="h-5 w-5" />
                 Adicionar
