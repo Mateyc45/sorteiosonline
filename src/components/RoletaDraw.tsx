@@ -8,7 +8,9 @@ import { RaffleCard } from '../components/RaffleCard';
 import { Helmet } from 'react-helmet-async';
 
 export function RoletaSorteio() {
-  window.scrollTo(0, 0);
+  useEffect(() => {
+        window.scrollTo(0, 0);
+      }, []);
 //const RoletaSorteio = () => {
   const [rotating, setRotating] = useState(false);
   const [result, setResult] = useState(null);

@@ -1,10 +1,12 @@
-import React from 'react';
+import React, { useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import { HomeIcon } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
 
 export function PrivacyPolicy() {
-  window.scrollTo(0, 0);
+  useEffect(() => {
+      window.scrollTo(0, 0);
+    }, []);
   return (
     <div className="mx-auto max-w-3xl px-4 py-8">
       <Helmet> 

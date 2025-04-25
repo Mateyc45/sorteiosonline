@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { Share2Icon } from 'lucide-react';
 import { cn } from '../lib/utils';
 
@@ -20,8 +20,9 @@ export function RaffleCard({
   gradient = 'from-gray-500 to-gray-400',
 }: RaffleCardProps) {
   
-  window.scrollTo(0, 0);
-  
+  useEffect(() => {
+        window.scrollTo(0, 0);
+      }, []);
   return (
     <div
       className={cn(

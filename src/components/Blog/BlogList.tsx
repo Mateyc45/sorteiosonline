@@ -324,7 +324,9 @@ export const blogPosts: BlogPost[] = [
 
 
 export function BlogList() {
-  window.scrollTo(0, 0);
+  useEffect(() => {
+      window.scrollTo(0, 0);
+    }, []);
   
   const [SelecionarTag, setSelecionarTag] = useState('');
   const [Sugestoes, setSugestoes] = useState<string[]>([]);

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { HomeIcon, BookOpenIcon, TagIcon, CalendarIcon, ShareIcon, FacebookIcon, TwitterIcon, LinkedinIcon } from 'lucide-react';
@@ -1839,7 +1839,9 @@ const blogPosts = {
 }
 
 export function BlogPost() {
-  window.scrollTo(0, 0);
+  useEffect(() => {
+      window.scrollTo(0, 0);
+    }, []);
   const { slug } = useParams();
   
   if (!slug || !blogPosts[slug]) {

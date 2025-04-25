@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect  } from 'react';
 import { HomeIcon, Dice1Icon, TextIcon, ListIcon, GiftIcon, SparklesIcon, StarIcon, ShieldCheckIcon, ClockIcon, LifeBuoy } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { generateRandomNumber } from '../lib/utils';
@@ -39,8 +39,9 @@ const raffleTypes = [
 ];
 
 export function NumberDraw() {
-  window.scrollTo(0, 0);
-
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const [min, setMin] = useState(1);
   const [max, setMax] = useState(100);

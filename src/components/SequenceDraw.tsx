@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { LifeBuoy, ListIcon, TextIcon, HomeIcon, GiftIcon, SparklesIcon, ShuffleIcon, TargetIcon, BrainIcon, UsersIcon, TrophyIcon, Dice1Icon } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { shuffleArray } from '../lib/utils';
@@ -8,8 +8,9 @@ import { RaffleCard } from '../components/RaffleCard';
 import { Helmet } from 'react-helmet-async';
 
 export function SequenceDraw() {
-  window.scrollTo(0, 0);
-  
+  useEffect(() => {
+        window.scrollTo(0, 0);
+      }, []);
   const [start, setStart] = useState(1);
   const [end, setEnd] = useState(10);
   const [count, setCount] = useState(3);
