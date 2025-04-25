@@ -40,7 +40,7 @@ export function AuthModal({ isOpen, onClose }: AuthModalProps) {
           }}
           providers={[]}
           theme="light"
-          redirectTo="http://vamosortear.com.br/"
+          redirectTo="https://vamosortear.com.br/"
         />
       </div>
     </div>

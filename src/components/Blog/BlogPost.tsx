@@ -1522,7 +1522,7 @@ const blogPosts = {
       <h2>💡 Conclusão</h2>
       <p>Um sorteio bem planejado é muito mais que um simples presente — é uma <strong>estratégia de engajamento</strong> poderosa!</p>
       <p>Use essas dicas, planeje bem sua campanha e colha resultados reais nas suas redes sociais.</p>
-      <p>Comece hoje mesmo a criar seu sorteio acessando: <a href="http://vamosortear.com.br/">vamosortear.com.br</a> 🎉</p>
+      <p>Comece hoje mesmo a criar seu sorteio acessando: <a href="https://vamosortear.com.br/">vamosortear.com.br</a> 🎉</p>
     `,
     category: 'Marketing',
     tags: ['Engajamento', 'Redes Sociais', 'Sorteios', 'Marketing'],
@@ -1541,7 +1541,7 @@ const blogPosts = {
       <h2>🔍 1. Escolha uma Plataforma Confiável</h2>
       <p>A melhor forma de evitar fraudes em sorteios é utilizar <strong>ferramentas confiáveis e imparciais</strong>. Aqui no Sorteios online você tem a total segurança para isso.</p>
       <ul>
-        <li><strong>Sorteios Online</strong> (<a href="http://vamosortear.com.br/">vamosortear.com.br</a>)</li>
+        <li><strong>Sorteios Online</strong> (<a href="https://vamosortear.com.br/">vamosortear.com.br</a>)</li>
       </ul>
       <p>Plataformas seguras garantem que o sorteio ocorra de forma justa, sem manipulações ou favoritismos.</p>
 
@@ -1596,7 +1596,7 @@ const blogPosts = {
 
       <h2>🚀 Conclusão</h2>
       <p>Fazer um <strong>sorteio seguro e confiável</strong> não é difícil, basta seguir boas práticas. Utilize plataformas confiáveis, crie regras claras, previna fraudes e seja transparente com os participantes.</p>
-      <p>Agora que você já sabe como evitar fraudes, que tal <strong>criar seu sorteio online de forma segura?</strong> Acesse <a href="http://vamosortear.com.br/">vamosortear.com.br</a> e comece agora mesmo! 🎉</p>
+      <p>Agora que você já sabe como evitar fraudes, que tal <strong>criar seu sorteio online de forma segura?</strong> Acesse <a href="https://vamosortear.com.br/">vamosortear.com.br</a> e comece agora mesmo! 🎉</p>
     `,
     category: 'Segurança',
     tags: ['Segurança', 'Fraudes', 'Boas Práticas', 'Sorteios Online'],

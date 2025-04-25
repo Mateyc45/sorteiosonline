@@ -69,7 +69,7 @@ export function SequenceDraw() {
                     <title>Sortear Sequência - Vamo Sortear</title>
                     <meta name="description" content="Sorteie uma sequência números de forma simples e rápida no Vamo Sortear." />
                     <meta name="robots" content="index, follow" />
-                    <link rel="canonical" href="http://vamosortear.com.br/Sortear-Sequencia" />
+                    <link rel="canonical" href="https://vamosortear.com.br/Sortear-Sequencia" />
             </Helmet>
       <div className="mb-4">
         <Link

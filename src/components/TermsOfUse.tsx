@@ -11,7 +11,7 @@ export function TermsOfUse() {
                     <title>Termo de Uso - Vamo Sortear</title>
                     <meta name="description" content="Descubra quais são nossos termos de uso" />
                     <meta name="robots" content="index, follow" />
-                    <link rel="canonical" href="http://vamosortear.com.br/termos" />
+                    <link rel="canonical" href="https://vamosortear.com.br/termos" />
             </Helmet>
       <div className="mb-4">
         <Link

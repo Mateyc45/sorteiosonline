@@ -11,7 +11,7 @@ export function PrivacyPolicy() {
               <title>Política de Privacidade - Vamo Sortear</title>
               <meta name="description" content="Explore nossa política de privacidade" />
               <meta name="robots" content="index, follow" />
-              <link rel="canonical" href="http://vamosortear.com.br/privacidade" />
+              <link rel="canonical" href="https://vamosortear.com.br/privacidade" />
       </Helmet>
       <div className="mb-4">
         <Link

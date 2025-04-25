@@ -204,7 +204,7 @@ export function SecretSantaDraw() {
                     <title>Amigo Secreto - Vamo Sortear</title>
                     <meta name="description" content="Realize a organização de um amigo secreto de modo automático, via email, usando nossa ferramenta!" />
                     <meta name="robots" content="index, follow" />
-                    <link rel="canonical" href="http://vamosortear.com.br/Amigo-Secreto" />
+                    <link rel="canonical" href="https://vamosortear.com.br/Amigo-Secreto" />
             </Helmet>
       <div className="mb-4">
         <Link

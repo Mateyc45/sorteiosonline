@@ -12,7 +12,7 @@ export function Sitemap() {
                     <title>Mapa do Site - Vamo Sortear</title>
                     <meta name="description" content="Explore todas as páginas de nosso site!" />
                     <meta name="robots" content="index, follow" />
-                    <link rel="canonical" href="http://vamosortear.com.br/sitemap" />
+                    <link rel="canonical" href="https://vamosortear.com.br/sitemap" />
             </Helmet>
       <div className="mb-4">
         <Link
