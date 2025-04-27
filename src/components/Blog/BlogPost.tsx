@@ -693,7 +693,7 @@ const blogPosts = {
   imageUrl: 'https://images.unsplash.com/photo-1542744095-291d1f67b221?auto=format&fit=crop&w=800&q=80',
   publishedAt: new Date('2024-04-03'),
   author: {
-    name: 'Equipe Sorteios Online',
+    name: 'Equipe Vamo Sortear',
     role: 'Especialistas em Marketing Digital',
   },
 },
@@ -752,7 +752,7 @@ const blogPosts = {
   imageUrl: 'https://cdn.pixabay.com/photo/2015/10/21/08/22/media-998990_1280.jpg',
   publishedAt: new Date('2024-04-01'),
   author: {
-    name: 'Equipe Sorteios Online',
+    name: 'Equipe Vamo Sortear',
     role: 'Especialistas em Marketing Digital',
   },
 },
@@ -808,7 +808,7 @@ const blogPosts = {
   imageUrl: 'https://cdn.pixabay.com/photo/2020/05/11/04/28/couple-5156442_1280.jpg',
   publishedAt: new Date('2024-03-30'),
   author: {
-    name: 'Equipe Sorteios Online',
+    name: 'Equipe Vamo Sortear',
     role: 'Especialistas em Estratégias de Marketing Digital',
   },
 },
@@ -859,7 +859,7 @@ const blogPosts = {
   imageUrl: 'https://cdn.pixabay.com/photo/2020/01/22/00/48/entrepreneur-4784289_1280.jpg',
   publishedAt: new Date('2024-03-28'),
   author: {
-    name: 'Equipe Sorteios Online',
+    name: 'Equipe Vamo Sortear',
     role: 'Especialistas em Legislação e Estratégias de Marketing',
   },
 },
@@ -905,7 +905,7 @@ const blogPosts = {
   imageUrl: 'https://cdn.pixabay.com/photo/2015/01/08/18/29/entrepreneur-593358_1280.jpg',
   publishedAt: new Date('2024-03-26'),
   author: {
-    name: 'Equipe Sorteios Online',
+    name: 'Equipe Vamo Sortear',
     role: 'Especialistas em Estratégias de Crescimento e Pesquisa',
   },
 },
@@ -956,7 +956,7 @@ const blogPosts = {
   imageUrl: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80',
   publishedAt: new Date('2024-03-25'),
   author: {
-    name: 'Equipe Sorteios Online',
+    name: 'Equipe Vamo Sortear',
     role: 'Especialistas em Estratégias de Marketing Digital',
   },
 },
@@ -1007,7 +1007,7 @@ const blogPosts = {
   imageUrl: 'https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80',
   publishedAt: new Date('2024-03-22'),
   author: {
-    name: 'Equipe Sorteios Online',
+    name: 'Equipe Vamo Sortear',
     role: 'Especialistas em Design e Marketing Digital',
   },
 },
@@ -1055,7 +1055,7 @@ const blogPosts = {
   imageUrl: 'https://cdn.pixabay.com/photo/2020/06/25/04/51/legal-5338513_1280.jpg',
   publishedAt: new Date('2024-03-20'),
   author: {
-    name: 'Equipe Sorteios Online',
+    name: 'Equipe Vamo Sortear',
     role: 'Especialistas em Legislação e Marketing Digital',
   },
 },
@@ -1100,7 +1100,7 @@ const blogPosts = {
     imageUrl: 'https://cdn.pixabay.com/photo/2017/08/10/01/10/lights-2616730_1280.jpg',
     publishedAt: new Date('2024-03-18'),
     author: {
-    name: 'Equipe Sorteios Online',
+    name: 'Equipe Vamo Sortear',
     role: 'Especialistas em Estratégias Criativas',
     },
   },
@@ -1150,7 +1150,7 @@ const blogPosts = {
   imageUrl: 'https://cdn.pixabay.com/photo/2020/06/23/08/46/cat-5331883_1280.jpg',
   publishedAt: new Date('2024-03-15'),
   author: {
-    name: 'Equipe Sorteios Online',
+    name: 'Equipe Vamo Sortear',
     role: 'Especialistas em Estratégias de Sorteios',
   },
 },
@@ -1211,7 +1211,7 @@ const blogPosts = {
   imageUrl: 'https://images.unsplash.com/photo-1593642634443-44adaa06623a?auto=format&fit=crop&w=800&q=80',
   publishedAt: new Date('2024-03-12'),
   author: {
-    name: 'Equipe Sorteios Online',
+    name: 'Equipe Vamo Sortear',
     role: 'Especialistas em Estratégias de Marketing Digital',
   },
 },
@@ -1277,7 +1277,7 @@ const blogPosts = {
   publishedAt: new Date('2024-03-08'),
   imageUrl: 'https://cdn.pixabay.com/photo/2016/07/15/23/36/kid-1520705_1280.jpg',
   author: {
-    name: 'Equipe Sorteios Online',
+    name: 'Equipe Vamo Sortear',
     role: 'Especialistas em Estratégias de Vendas e Marketing Digital',
   },
 },
@@ -1356,7 +1356,7 @@ const blogPosts = {
   publishedAt: new Date('2024-03-05'),
   imageUrl: 'https://images.unsplash.com/photo-1581090700227-1e37b190418e?auto=format&fit=crop&w=800&q=80',
   author: {
-    name: 'Equipe Sorteios Online',
+    name: 'Equipe Vamo Sortear',
     role: 'Especialistas em Estratégias de Marketing Digital',
   },
 },
@@ -1411,7 +1411,7 @@ const blogPosts = {
   publishedAt: new Date('2024-02-20'),
   imageUrl: 'https://images.unsplash.com/photo-1549924231-f129b911e442?auto=format&fit=crop&w=800&q=80',
   author: {
-    name: 'Equipe Sorteios Online',
+    name: 'Equipe Vamo Sortear',
     role: 'Especialistas em Psicologia de Marketing e Sorteios',
   },
 },
@@ -1469,7 +1469,7 @@ const blogPosts = {
     publishedAt: new Date('2024-03-28'),
     imageUrl: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=800&q=80',
     author: {
-      name: 'Equipe Sorteios Online',
+      name: 'Equipe Vamo Sortear',
       role: 'Especialistas em Sorteios e Estratégias Digitais',
     },
 },
@@ -1529,7 +1529,7 @@ const blogPosts = {
     publishedAt: new Date('2024-01-15'),
     imageUrl: 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80',
     author: {
-      name: 'Equipe Sorteios Online',
+      name: 'Equipe Vamo Sortear',
       role: 'Especialistas em Sorteios e Marketing Digital',
     },
 },
@@ -1603,7 +1603,7 @@ const blogPosts = {
     publishedAt: new Date('2024-02-21'),
     imageUrl: 'https://images.unsplash.com/photo-1560264280-88b68371db39?auto=format&fit=crop&w=800&q=80',
     author: {
-      name: 'Equipe Sorteios Online',
+      name: 'Equipe Vamo Sortear',
       role: 'Especialistas em Sorteios e Segurança Digital',
     },
   },
@@ -1667,7 +1667,7 @@ const blogPosts = {
     publishedAt: new Date('2024-02-20'),
     imageUrl: 'https://images.unsplash.com/photo-1560264280-88b68371db39?auto=format&fit=crop&w=800&q=80',
     author: {
-      name: 'Equipe Sorteios Online',
+      name: 'Equipe Vamo Sortear',
       role: 'Especialistas em Sorteios e Compliance',
     },
   },
@@ -1748,7 +1748,7 @@ const blogPosts = {
     publishedAt: new Date('2024-03-10'),
     imageUrl: 'https://images.unsplash.com/photo-1555685812-4b943f1cb0eb?auto=format&fit=crop&w=800&q=80',
     author: {
-      name: 'Equipe Sorteios Online',
+      name: 'Equipe Vamo Sortear',
       role: 'Especialistas em Sorteios e Marketing Digital',
     }
 },
@@ -1832,7 +1832,7 @@ const blogPosts = {
     publishedAt: new Date('2024-03-10'),
     imageUrl: 'https://images.unsplash.com/photo-1599658880436-c61792e70672?auto=format&fit=crop&w=800&q=80',
     author: {
-      name: 'Equipe Sorteios Online',
+      name: 'Equipe Vamo Sortear',
       role: 'Especialistas em Estratégias de Sorteios',
     }
   }
@@ -1854,7 +1854,7 @@ export function BlogPost() {
   return (
     <div className="mx-auto max-w-4xl px-4 py-8">
       <Helmet>
-        <title>{post.title} - Sorteios Online Blog</title>
+        <title>{post.title} - Vamo Sortear Blog</title>
         <meta name="description" content={post.excerpt} />
         <meta name="keywords" content={post.tags.join(', ')} />
         <meta property="og:title" content={post.title} />
