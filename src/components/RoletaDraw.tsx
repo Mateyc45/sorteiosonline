@@ -328,7 +328,7 @@ export function RoletaSorteio() {
         </div>
       </div>
   
-   <AdSpace />
+
 
    <div className="mt-8 space-y-8 rounded-xl border border-gray-200 bg-white p-8 shadow-sm">
          <h2 className="mb-4 text-2xl font-bold text-gray-900">Outros tipos de sorteios</h2>
@@ -439,7 +439,7 @@ export function RoletaSorteio() {
         </div>
       </div>
 
-      <AdSpace />
+
       
     </div>
    </div>

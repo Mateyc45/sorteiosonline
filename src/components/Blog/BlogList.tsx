@@ -416,7 +416,7 @@ export function BlogList() {
         </p>
       </div>
 
-      <AdSpace />
+
       <div className="mb-6 ml-0">
         <label htmlFor="tag-filter" className="block text-sm font-medium text-gray-700 mb-2 ml-2">
           Filtrar por Tag:
@@ -508,7 +508,7 @@ export function BlogList() {
         ))}
       </div>
 
-      <AdSpace />
+
 
       <div className="flex justify-center items-center space-x-4 mt-8">
         <button

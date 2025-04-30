@@ -232,7 +232,7 @@ export function SecretSantaDraw() {
         </p>
       </div>
 
-      <AdSpace />
+
 
       <div className="rounded-xl border border-gray-200 bg-gradient-to-br from-red-50 via-pink-50 to-orange-50 p-8 shadow-lg mb-8">
         <div className="mb-6 flex items-center gap-3">
@@ -367,7 +367,7 @@ export function SecretSantaDraw() {
         </div>
       </div>
 
-      <AdSpace />
+
 
       <div className="mt-8 mb-5 space-y-8 rounded-xl border border-gray-200 bg-white p-8 shadow-sm">
                <h2 className="mb-4 text-2xl font-bold text-gray-900">Outros tipos de sorteios</h2>
@@ -530,7 +530,7 @@ export function SecretSantaDraw() {
         </section>
       </div>
 
-      <AdSpace />
+
     </div>
   );
 }

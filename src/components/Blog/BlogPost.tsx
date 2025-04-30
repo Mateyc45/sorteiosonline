@@ -1943,14 +1943,14 @@ export function BlogPost() {
           </div>
         </header>
 
-        <AdSpace />
+
 
         <div
           className="prose prose-lg prose-blue max-w-none mt-8"
           dangerouslySetInnerHTML={{ __html: post.content }}
         />
 
-        <AdSpace />
+
 
         <footer className="mt-8 border-t border-gray-200 pt-8">
           <div className="flex items-center gap-2">
@@ -1969,7 +1969,7 @@ export function BlogPost() {
         </footer>
       </article>
 
-      <AdSpace />
+
     </div>
   );
 }
