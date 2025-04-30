@@ -226,9 +226,18 @@ export function SequenceDraw() {
         <div>
           <h3 className="text-2xl font-bold text-gray-900">Como funciona o sorteio de sequência?</h3>
           <p className="mt-4 text-gray-600 leading-relaxed">
-            O sorteio de sequência é uma ferramenta avançada e versátil que permite gerar uma série de números aleatórios únicos dentro de um intervalo específico. 
-            Nosso sistema utiliza um algoritmo sofisticado de aleatorização que garante que cada número seja sorteado apenas uma vez, mantendo a integridade e 
-            imparcialidade do processo. Esta ferramenta é especialmente útil quando você precisa selecionar múltiplos números de forma aleatória em uma única operação.
+          O sorteio de sequência é uma ferramenta avançada, 
+          extremamente versátil e precisa, projetada para gerar uma série de números aleatórios únicos dentro de um intervalo específico, 
+          atendendo a uma ampla variedade de necessidades e aplicações. 
+          Nosso sistema utiliza um algoritmo sofisticado de aleatorização, 
+          desenvolvido com a mais alta tecnologia para garantir que cada número sorteado seja único e que não haja repetições no processo de seleção. 
+          Isso mantém a total integridade e imparcialidade do sorteio, 
+          assegurando que os resultados sejam verdadeiramente aleatórios, 
+          sem qualquer tipo de viés ou manipulação. 
+          A ferramenta foi pensada para ser altamente eficaz, 
+          especialmente em situações onde você precisa selecionar múltiplos números de forma aleatória e rápida, 
+          em uma única operação, seja para sorteios, sorteios de prêmios, distribuição de vagas ou qualquer outro tipo de seleção que exija confiabilidade, 
+          precisão e total transparência. Com ela, é possível garantir resultados seguros e justos em todas as suas operações.
           </p>
         </div>
 

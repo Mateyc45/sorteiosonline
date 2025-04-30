@@ -236,9 +236,12 @@ export function WordDraw() {
         <div>
           <h3 className="text-2xl font-bold text-gray-900">Como funciona o sorteio de palavras?</h3>
           <p className="mt-4 text-gray-600 leading-relaxed">
-            O sorteio de palavras é uma ferramenta versátil e eficiente que permite selecionar aleatoriamente uma palavra ou nome de uma lista predefinida. 
-            Nosso sistema utiliza um algoritmo avançado de aleatorização que garante total imparcialidade no processo de seleção, tornando-o ideal para 
-            diversos tipos de sorteios e seleções aleatórias.
+          O sorteio de palavras é uma ferramenta extremamente versátil e eficiente,
+          projetada para permitir a seleção aleatória de uma palavra ou nome de uma lista predefinida,
+          com total segurança e confiabilidade. Nosso sistema se baseia em um algoritmo avançado de aleatorização,
+          desenvolvido para garantir total imparcialidade no processo de seleção, eliminando qualquer chance de viés ou manipulação dos resultados.
+          Isso torna a ferramenta ideal para diversos tipos de sorteios, seleções aleatórias ou mesmo para momentos em que você precisa de uma escolha imparcial e justa.
+          Seja em sorteios de concursos, sorteios de prêmios, ou outras aplicações que exijam seleção aleatória, nossa plataforma oferece uma solução simples, eficaz e segura.
           </p>
         </div>
 

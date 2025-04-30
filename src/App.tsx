@@ -254,21 +254,21 @@ function HomePage({ raffleTypes }) {
               <StarIcon className="h-6 w-6 text-blue-600" />
             </div>
             <h3 className="font-semibold text-gray-900">100% Gratuito</h3>
-            <p className="text-gray-600">Realize quantos sorteios quiser, sem limites e sem custos</p>
+            <p className="text-gray-600">Realize quantos sorteios quiser, sem limites de quantidade e totalmente gratuito, aproveitando a liberdade de fazer sorteios sempre que desejar, sem pagar nada por isso.</p>
           </div>
           <div className="text-center space-y-3">
             <div className="mx-auto w-12 h-12 rounded-full bg-green-100 flex items-center justify-center">
               <ShieldCheckIcon className="h-6 w-6 text-green-600" />
             </div>
             <h3 className="font-semibold text-gray-900">Seguro e Confiável</h3>
-            <p className="text-gray-600">Algoritmo avançado que garante resultados totalmente aleatórios</p>
+            <p className="text-gray-600">Este algoritmo avançado garante resultados totalmente aleatórios, utilizando métodos sofisticados para assegurar sorteios justos, sem viés ou padrões detectáveis.</p>
           </div>
           <div className="text-center space-y-3">
             <div className="mx-auto w-12 h-12 rounded-full bg-purple-100 flex items-center justify-center">
               <ClockIcon className="h-6 w-6 text-purple-600" />
             </div>
             <h3 className="font-semibold text-gray-900">Rápido e Fácil</h3>
-            <p className="text-gray-600">Interface intuitiva, resultados instantâneos e compartilhamento simples</p>
+            <p className="text-gray-600">Interface intuitiva, resultados rápidos e compartilhamento fácil, tudo com apenas alguns cliques.</p>
           </div>
         </div>
       </div>
@@ -282,39 +282,57 @@ function HomePage({ raffleTypes }) {
         </h2>
         <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
           <div className="rounded-lg bg-gray-50 p-6">
-            <h3 className="font-semibold text-gray-900 mb-2">🎯 Rifas e Bingos</h3>
+            <h3 className="font-semibold text-center text-gray-900 mb-2">🎯 Rifas e Bingos</h3>
             <p className="text-gray-600">
-              Perfeito para sorteios de rifas, bingos e eventos beneficentes
+              Perfeito para sorteios de rifas, bingos e eventos beneficentes.
+              Ideal para escolas, igrejas, comunidades, ONGs e qualquer iniciativa que precise arrecadar fundos ou promover entretenimento.
+              Com ele, você organiza sorteios de forma prática, divertida e eficiente, garantindo transparência e engajamento entre os participantes.
+              Seja em festas juninas, almoços solidários, campanhas de doações ou eventos familiares, essa é a solução ideal para tornar tudo mais especial, animado e inesquecível!
             </p>
           </div>
-          <div className="rounded-lg bg-gray-50 p-6">
+          <div className="rounded-lg text-center bg-gray-50 p-6">
             <h3 className="font-semibold text-gray-900 mb-2">🎓 Educação</h3>
             <p className="text-gray-600">
-              Ideal para professores sortearem alunos ou formar grupos
+            Ideal para professores sortearem alunos ou formarem grupos de maneira prática e imparcial.
+            Perfeito para dinamizar atividades em sala de aula, incentivar a participação e tornar as aulas mais interativas.
+            Com essa ferramenta, é possível montar grupos aleatórios, escolher alunos para apresentações ou responder questões, tudo com agilidade e transparência.
+            Seja no ensino fundamental, médio ou superior, ela contribui para uma gestão mais organizada da turma.
             </p>
           </div>
-          <div className="rounded-lg bg-gray-50 p-6">
+          <div className="rounded-lg text-center bg-gray-50 p-6">
             <h3 className="font-semibold text-gray-900 mb-2">🎁 Amigo Secreto</h3>
             <p className="text-gray-600">
-              Organize amigos secretos com envio automático por email
+            Organize amigos secretos com praticidade e envio automático por e-mail para todos os participantes.
+            Perfeito para confraternizações de fim de ano, festas escolares, empresas, grupos de amigos ou reuniões familiares.
+            A ferramenta garante sigilo, evita sorteios repetidos e facilita toda a dinâmica, mesmo com participantes em diferentes locais.
+            Com poucos cliques, cada pessoa recebe seu amigo secreto por e-mail, de forma segura, rápida e personalizada!
             </p>
           </div>
-          <div className="rounded-lg bg-gray-50 p-6">
+          <div className="rounded-lg text-center bg-gray-50 p-6">
             <h3 className="font-semibold text-gray-900 mb-2">🎮 Lives e Eventos</h3>
             <p className="text-gray-600">
-              Sorteie prêmios e brindes durante transmissões ao vivo
+            Sorteie prêmios e brindes durante transmissões ao vivo de forma simples, rápida e interativa.
+            Perfeito para lives em redes sociais, eventos online, webinars, workshops ou campanhas de marketing digital.
+            Engaje seu público com sorteios em tempo real, aumentando a participação, a audiência e o alcance da sua transmissão.
+            Com uma ferramenta prática e segura, você garante transparência nos resultados e cria momentos inesquecíveis para seus seguidores, clientes ou participantes!
             </p>
           </div>
           <div className="rounded-lg bg-gray-50 p-6">
-            <h3 className="font-semibold text-gray-900 mb-2">👥 Empresas</h3>
+            <h3 className="font-semibold text-center text-gray-900 mb-2">👥 Empresas</h3>
             <p className="text-gray-600">
-              Sorteios para funcionários, clientes ou promoções
+            Realize sorteios para funcionários, clientes ou promoções de forma prática, segura e personalizada.
+            Ideal para empresas que desejam reconhecer colaboradores, fidelizar clientes ou promover ações de marketing.
+            Com essa solução, você organiza sorteios internos, premiações de metas ou campanhas promocionais de forma profissional e transparente.
+            Aumente o engajamento, valorize seu público e fortaleça a imagem da sua marca com sorteios que fazem a diferença em qualquer ocasião!
             </p>
           </div>
           <div className="rounded-lg bg-gray-50 p-6">
-            <h3 className="font-semibold text-gray-900 mb-2">🎲 Jogos e Diversão</h3>
+            <h3 className="font-semibold text-center text-gray-900 mb-2">🎲 Jogos e Diversão</h3>
             <p className="text-gray-600">
-              Crie jogos e brincadeiras com sorteios aleatórios
+            Crie jogos e brincadeiras com sorteios aleatórios para animar qualquer ocasião de forma divertida e criativa.
+            Ideal para festas, encontros familiares, dinâmicas escolares, eventos corporativos ou momentos de lazer entre amigos.
+            A ferramenta permite gerar sorteios rápidos e imparciais, criando desafios, duplas, tarefas ou rodadas de perguntas com total praticidade.
+            Transforme suas atividades em experiências envolventes, espontâneas e inesquecíveis.
             </p>
           </div>
         </div>

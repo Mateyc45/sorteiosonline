@@ -353,7 +353,7 @@ export function RoletaSorteio() {
         <div>
           <h3 className="text-2xl font-bold text-gray-900">Como funciona o sorteio com Roleta?</h3>
           <p className="mt-4 text-gray-600 leading-relaxed">
-            O sorteio de roleta é uma ferramenta versátil e poderosa para realizar sorteios aleatórios entre as opções definidas garantindo resultados justos e imparciais. Nossa plataforma foi desenvolvida pensando na simplicidade e eficiência, permitindo que você realize sorteios de forma rápida e confiável.
+          O sorteio de roleta é uma ferramenta versátil e poderosa, projetada para realizar sorteios aleatórios de forma divertida e eficiente entre as opções definidas, garantindo resultados totalmente justos, equilibrados e imparciais. Utilizando tecnologia de ponta, nosso sistema assegura que cada opção tenha a mesma chance de ser escolhida, sem qualquer viés ou interferência externa. A plataforma foi desenvolvida com foco na simplicidade e eficiência, oferecendo uma interface intuitiva que permite a realização de sorteios de maneira rápida, confiável e totalmente transparente. Seja para sorteios de prêmios, distribuições de tarefas ou decisões em grupo, nossa ferramenta oferece uma solução prática e eficaz, proporcionando uma experiência agradável e sem complicações. Com o sorteio de roleta, você pode garantir a imparcialidade e a diversão em qualquer tipo de evento ou atividade.
           </p>
         </div>
 

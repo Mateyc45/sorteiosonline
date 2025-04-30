@@ -212,7 +212,7 @@ export function NumberDraw() {
         <div>
           <h3 className="text-2xl font-bold text-gray-900">Como funciona o sorteio de números?</h3>
           <p className="mt-4 text-gray-600 leading-relaxed">
-            O sorteio de números é uma ferramenta versátil e poderosa que utiliza um algoritmo avançado de geração de números aleatórios para garantir resultados justos e imparciais. Nossa plataforma foi desenvolvida pensando na simplicidade e eficiência, permitindo que você realize sorteios de forma rápida e confiável.
+          O sorteio de números é uma ferramenta extremamente versátil e poderosa, desenvolvida com base em um algoritmo avançado de geração de números aleatórios que assegura resultados justos, totalmente imparciais e completamente imprevisíveis. Ao utilizar métodos sofisticados e de alta precisão, nossa plataforma proporciona uma experiência de sorteio sem qualquer viés, garantindo que cada sorteio seja realizado de maneira transparente e confiável. Foi projetada pensando na simplicidade e eficiência, com um design intuitivo que facilita o uso para qualquer pessoa, independentemente de seu nível de experiência. Com essa plataforma, você pode realizar sorteios rapidamente, sem complicações, e com total confiança de que os resultados são seguros, transparentes e não manipulados, permitindo que você compartilhe os resultados de maneira simples e rápida, sem qualquer custo ou dificuldade.
           </p>
         </div>
 

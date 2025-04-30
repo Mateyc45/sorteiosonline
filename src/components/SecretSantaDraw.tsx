@@ -395,7 +395,12 @@ export function SecretSantaDraw() {
           <h2 className="text-2xl font-bold text-gray-900 mb-6">
             Como Funciona o Amigo Secreto Online?
           </h2>
-          
+          <p className="mt-4 text-gray-600 leading-relaxed mb-4">
+          O sorteio de amigo secreto é uma ferramenta prática e eficiente, desenvolvida para facilitar a seleção aleatória dos participantes em uma troca de presentes. Utilizando um algoritmo avançado de aleatorização, nosso sistema garante que cada pessoa seja sorteada de forma imparcial, sem repetições ou erros, preservando a surpresa e a diversão do processo. A plataforma foi projetada para ser simples e rápida, permitindo que você organize sorteios de amigo secreto com facilidade, seja entre amigos, familiares ou colegas de trabalho. Com apenas alguns cliques, todos os participantes são distribuídos de maneira justa, assegurando que cada sorteio seja completamente aleatório e transparente. Ideal para qualquer ocasião de troca de presentes, essa ferramenta traz praticidade e confiança para o seu evento de amigo secreto.
+          </p>
+          <h2 className="text-2xl font-bold text-gray-900 mb-6">
+            Recursos e Benefícios
+          </h2>
           <div className="grid gap-6 md:grid-cols-2">
             <div className="space-y-4">
               <div className="flex items-start gap-3">
