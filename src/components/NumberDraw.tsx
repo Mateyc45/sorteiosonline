@@ -47,10 +47,18 @@ export function NumberDraw() {
   const [max, setMax] = useState(100);
   const [result, setResult] = useState<number | null>(null);
   const [isDrawing, setIsDrawing] = useState(false);
+  const [sorteioTime, setsorteioTime] = useState<string | null>(null);
+  const [minValor, setMinValor] = useState(0);
+  const [maxValor, setMaxValor] = useState(0);
 
   const handleDraw = async () => {
     setIsDrawing(true);
     setResult(null);
+
+    const currentTime = new Date().toLocaleString(); // Formata a data e hora como string legível
+    setsorteioTime(currentTime);
+    setMinValor(min);
+    setMaxValor(max);
     
     await new Promise(resolve => setTimeout(resolve, 1500));
     
@@ -58,6 +66,7 @@ export function NumberDraw() {
     setResult(drawnNumber);
     setIsDrawing(false);
   };
+  
 
   return (
     <div className="mx-auto max-w-2xl">
@@ -165,8 +174,20 @@ export function NumberDraw() {
             </div>
           </div>
         )}
+        {result !== null &&(
+          <div className="mt-8 flex flex-col md:flex-row items-center justify-center gap-4">
+            <div className="w-full md:w-2/3 flex flex-col items-center justify-center rounded-lg bg-white p-6 shadow-lg gap-2">
+              <p className="text-mt font-medium text-gray-500">Data do sorteio</p>
+              <p className="mt-1 text-2xl font-bold text-gray-900 center">{sorteioTime}</p>
+            </div>
+            <div className="w-full md:w-1/3 flex flex-col items-center justify-center rounded-lg bg-white p-6 shadow-lg gap-2">
+              <p className="text-mt font-medium text-gray-500">Intervalo</p>
+              <p className="mt-1 text-2xl font-bold text-gray-900 center">{minValor} a {maxValor}</p>
+            </div>
+          </div>
+        )}
+    
       </div>
-
       <AdSpace />
       
       <div className="mt-8 space-y-8 rounded-xl border border-gray-200 bg-white p-8 shadow-sm">

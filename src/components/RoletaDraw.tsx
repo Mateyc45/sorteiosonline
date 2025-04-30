@@ -19,10 +19,11 @@ export function RoletaSorteio() {
   const [rotationDegree, setRotationDegree] = useState(0);
   const [resultHistory, setResultHistory] = useState([]);
   const [showHistory, setShowHistory] = useState(false);
+  const [sorteioTime, setsorteioTime] = useState<string | null>(null);
 
   const canvasRef = useRef(null);
 
-  const colors = ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF', '#FF9F40', '#C9CBCF', '#7BC043', '#F37736', '#FFC425'];
+  const colors = ['#4389bf', '#3a77a6'];
 
   const raffleTypes = [
     {
@@ -85,6 +86,9 @@ export function RoletaSorteio() {
       ctx.fillStyle = colors[index % colors.length];
       ctx.fill();
       
+      const currentTime = new Date().toLocaleString(); // Formata a data e hora como string legível
+      setsorteioTime(currentTime);
+
       // Draw text
       ctx.save();
       ctx.translate(centerX, centerY);
@@ -236,6 +240,14 @@ export function RoletaSorteio() {
               <p className="text-4xl font-bold text-center text-green-600">{result}</p>
             </div>
           )}
+          {result &&(
+          <div className="mt-8 flex flex-col md:flex-row items-center justify-center gap-4">
+            <div className="w-full flex flex-col items-center justify-center rounded-lg bg-white p-6 shadow-lg gap-2">
+              <p className="text-mt font-medium text-gray-500">Data do sorteio</p>
+              <p className="mt-1 text-2xl font-bold text-gray-900 center">{sorteioTime}</p>
+            </div>
+          </div>
+        )}
         </div>
         
         <div className="w-full md:w-1/3">

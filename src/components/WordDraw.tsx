@@ -14,6 +14,7 @@ export function WordDraw() {
   const [newWord, setNewWord] = useState('');
   const [result, setResult] = useState<string | null>(null);
   const [isDrawing, setIsDrawing] = useState(false);
+  const [sorteioTime, setsorteioTime] = useState<string | null>(null);
 
   const handleAddWord = () => {
     if (newWord.trim()) {
@@ -30,7 +31,10 @@ export function WordDraw() {
     if (words.length > 0) {
       setIsDrawing(true);
       setResult(null);
-      
+
+      const currentTime = new Date().toLocaleString();
+      setsorteioTime(currentTime);
+
       await new Promise(resolve => setTimeout(resolve, 1500));
       
       const drawnWord = shuffleArray(words)[0];
@@ -195,7 +199,17 @@ export function WordDraw() {
             </div>
           </div>
         )}
+        {result &&(
+          <div className="mt-8 flex flex-col md:flex-row items-center justify-center gap-4">
+            <div className="w-full flex flex-col items-center justify-center rounded-lg bg-white p-6 shadow-lg gap-2">
+              <p className="text-mt font-medium text-gray-500">Data do sorteio</p>
+              <p className="mt-1 text-2xl font-bold text-gray-900 center">{sorteioTime}</p>
+            </div>
+          </div>
+        )}
       </div>
+      
+    
 
       <AdSpace />
 

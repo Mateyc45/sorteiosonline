@@ -16,10 +16,14 @@ export function SequenceDraw() {
   const [count, setCount] = useState(3);
   const [result, setResult] = useState<number[] | null>(null);
   const [isDrawing, setIsDrawing] = useState(false);
+  const [sorteioTime, setsorteioTime] = useState<string | null>(null);
 
   const handleDraw = async () => {
     setIsDrawing(true);
     setResult(null);
+
+    const currentTime = new Date().toLocaleString(); // Formata a data e hora como string legível
+    setsorteioTime(currentTime);
     
     await new Promise(resolve => setTimeout(resolve, 1500));
     
@@ -183,6 +187,14 @@ export function SequenceDraw() {
               <div className="rounded-full bg-purple-100 p-3">
                 <SparklesIcon className="h-6 w-6 text-purple-600" />
               </div>
+            </div>
+          </div>
+        )}
+        {result &&(
+          <div className="mt-8 flex flex-col md:flex-row items-center justify-center gap-4">
+            <div className="w-full flex flex-col items-center justify-center rounded-lg bg-white p-6 shadow-lg gap-2">
+              <p className="text-mt font-medium text-gray-500">Data do sorteio</p>
+              <p className="mt-1 text-2xl font-bold text-gray-900 center">{sorteioTime}</p>
             </div>
           </div>
         )}
