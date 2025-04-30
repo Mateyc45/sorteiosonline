@@ -172,7 +172,7 @@ export function RoletaSorteio() {
   };
 
   const removeOption = (index) => {
-    if (options.length > 2) {
+    if (options.length > 1) {
       const newOptions = [...options];
       newOptions.splice(index, 1);
       setOptions(newOptions);
@@ -242,7 +242,7 @@ export function RoletaSorteio() {
           <div className="bg-white p-4 rounded-lg shadow-md">
             <h2 className="text-xl font-bold mb-4">Opções da Roleta</h2>
             
-            <div className="mb-4 flex">
+            <div className="mb-4 flex flex-col gap-2">
              
               <input
                 type="text"
@@ -260,9 +260,9 @@ export function RoletaSorteio() {
               <button
                 onClick={addOption}
                 disabled={!newOption.trim() || options.length >= 12}
-                className="bg-green-500 hover:bg-green-600 text-white p-2 rounded-r"
+                className="bg-green-500 hover:bg-green-600 text-white p-2 rounded"
               >
-                Adicionar
+                + Adicionar
               </button>
             </div>
             
@@ -273,7 +273,7 @@ export function RoletaSorteio() {
                     <span className="font-medium">{option}</span>
                     <button
                       onClick={() => removeOption(index)}
-                      disabled={options.length <= 2}
+                      disabled={options.length <= 1}
                       className="text-red-500 hover:text-red-700"
                     >
                       ✕

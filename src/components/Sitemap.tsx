@@ -65,6 +65,14 @@ export function Sitemap() {
                 </p>
               </li>
               <li>
+                <Link to="/roleta" className="text-blue-600 hover:underline">
+                  Roleta
+                </Link>
+                <p className="text-sm text-gray-600 mt-1">
+                  Gire a roleta e descubra o resultado de forma veloz e personalizada!
+                </p>
+              </li>
+              <li>
                 <Link to="/Amigo-Secreto" className="text-blue-600 hover:underline">
                   Amigo Secreto Online
                 </Link>

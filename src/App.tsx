@@ -37,7 +37,7 @@ const websiteSchema = {
 // SEO metadata
 const seoMetadata = {
   title: 'VamoSortear - O Jeito Mais Fácil e Simples de sortear algo! Totalmente Gratis',
-  description: 'Plataforma gratuita para realizar sorteios online. Sorteie números, palavras, sequências, roletas e organize amigo secreto com envio automático por email. Além de acompanhar nosso blog de curiosidade sobre sorteios',
+  description: 'Plataforma 100% segura, gratuita e online para realizar sorteios. Sorteie números, roletas, palavras, sequências e organize seu amigo secreto com envio automático por email. Além de acompanhar nosso blog de curiosidade sobre sorteios',
   keywords: 'sorteio online, sorteio grátis, amigo secreto, sorteio de números, sorteio de palavras, sorteio de sequência, sorteio de roleta, gerador de números aleatórios, sorteio automático',
 };
 
