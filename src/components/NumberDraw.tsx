@@ -152,9 +152,12 @@ export function NumberDraw() {
         {result !== null && (
           <div className="mt-8 overflow-hidden rounded-lg bg-white p-6 shadow-lg">
             <div className="flex items-center justify-between">
-              <div>
-                <p className="text-sm font-medium text-gray-500">Resultado do Sorteio</p>
-                <p className="mt-1 text-4xl font-bold text-gray-900">{result}</p>
+              <div className="rounded-full bg-blue-100 p-3">
+                <SparklesIcon className="h-6 w-6 text-blue-600" />
+              </div>
+              <div className="flex flex-col items-center justify-center">
+                <p className="text-mt font-medium text-gray-500">Resultado do Sorteio</p>
+                <p className="mt-1 text-6xl font-bold text-gray-900 center">{result}</p>
               </div>
               <div className="rounded-full bg-blue-100 p-3">
                 <SparklesIcon className="h-6 w-6 text-blue-600" />

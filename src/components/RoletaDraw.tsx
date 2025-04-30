@@ -231,9 +231,9 @@ export function RoletaSorteio() {
           </button>
           
           {result && (
-            <div className="mt-6 p-4 border-2 border-green-500 rounded-lg bg-green-100 shadow-md">
+            <div className="mt-6 p-8 border-2 border-green-500 rounded-lg bg-green-100 shadow-md">
               <h2 className="text-xl font-bold text-center">Resultado:</h2>
-              <p className="text-2xl font-bold text-center text-green-600">{result}</p>
+              <p className="text-4xl font-bold text-center text-green-600">{result}</p>
             </div>
           )}
         </div>

@@ -173,9 +173,12 @@ export function SequenceDraw() {
         {result && (
           <div className="mt-8 overflow-hidden rounded-lg bg-white p-6 shadow-lg">
             <div className="flex items-center justify-between">
-              <div>
+              <div className="rounded-full bg-purple-100 p-3">
+                <SparklesIcon className="h-6 w-6 text-purple-600" />
+              </div>
+              <div className="text-center">
                 <p className="text-sm font-medium text-gray-500">Sequência Sorteada</p>
-                <p className="mt-1 text-4xl font-bold text-gray-900">{result.join(' - ')}</p>
+                <p className="mt-1 text-5xl font-bold text-gray-900">{result.join(' - ')}</p>
               </div>
               <div className="rounded-full bg-purple-100 p-3">
                 <SparklesIcon className="h-6 w-6 text-purple-600" />
