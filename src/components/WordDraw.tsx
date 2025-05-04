@@ -6,6 +6,7 @@ import { ShareButton } from './ShareButton';
 import { AdSpace } from './AdSpace';
 import { RaffleCard } from '../components/RaffleCard';
 import { Helmet } from 'react-helmet-async';
+import Perguntas from './perguntas';
 
 export function WordDraw() {
   window.scrollTo(0, 0);
@@ -327,7 +328,9 @@ export function WordDraw() {
         </div>
       </div>
 
-
+      <div className="bg-white rounded-2xl p-4 shadow-sm border border-gray-200 mt-4">
+        <Perguntas />
+      </div>                 
     </div>
   );
 }

@@ -18,6 +18,7 @@ import logo from './lib/image/logo3.png';
 import { Helmet } from 'react-helmet-async';
 import Analytics from './Analytics';
 import Breadcrumbs from './components/Breadcrumbs';
+import Perguntas from './components/perguntas';
 
 // Schema markup for rich snippets
 const websiteSchema = {
@@ -43,6 +44,8 @@ const seoMetadata = {
 };
 
 function App() {
+  
+
   // Add SEO metadata and schema markup
   React.useEffect(() => {
     // Update metadata
@@ -122,6 +125,8 @@ function App() {
     },
   ];
   
+  const isBlogPage = location.pathname.endsWith('/blog');
+
   return (
     <HelmetProvider>
       <Router>
@@ -176,8 +181,11 @@ function App() {
                 <Route path="/blog" element={<BlogList />} />
                 <Route path="/blog/:slug" element={<BlogPost />} />
               </Routes>
+            
             </div>
           </main>
+
+
 
           <footer className="bg-white border-t">
             <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
@@ -350,6 +358,10 @@ function HomePage({ raffleTypes }) {
             </p>
           </div>
         </div>
+        
+      </div>
+      <div className="bg-white rounded-2xl p-4 shadow-sm border border-gray-200 mt-4">
+        <Perguntas />
       </div>
     </div>
   );

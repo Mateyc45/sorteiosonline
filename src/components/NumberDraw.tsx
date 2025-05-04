@@ -6,6 +6,7 @@ import { ShareButton } from './ShareButton';
 import { AdSpace } from './AdSpace';
 import { RaffleCard } from '../components/RaffleCard';
 import { Helmet } from 'react-helmet-async';
+import Perguntas from './perguntas';
 
 const raffleTypes = [
   {
@@ -288,7 +289,9 @@ export function NumberDraw() {
           </div>
         </div>
       </div>
-
+      <div className="bg-white rounded-2xl p-4 shadow-sm border border-gray-200 mt-4">
+        <Perguntas />
+      </div>        
     </div>
   );
 }

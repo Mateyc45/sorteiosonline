@@ -7,6 +7,7 @@ import { AdSpace } from './AdSpace';
 import { sendEmail } from '../lib/email';
 import { RaffleCard } from '../components/RaffleCard';
 import { Helmet } from 'react-helmet-async';
+import Perguntas from './perguntas';
 
 interface Participant {
   name: string;
@@ -530,7 +531,9 @@ export function SecretSantaDraw() {
         </section>
       </div>
 
-
+      <div className="bg-white rounded-2xl p-4 shadow-sm border border-gray-200 mt-4">
+        <Perguntas />
+      </div>                    
     </div>
   );
 }
