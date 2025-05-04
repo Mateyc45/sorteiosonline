@@ -24,6 +24,7 @@ export function RaffleCard({
         window.scrollTo(0, 0);
       }, []);
   return (
+    
     <div
       className={cn(
         'group cursor-pointer rounded-xl bg-white p-6 shadow-sm transition-all hover:shadow-md border border-gray-200/50 relative overflow-hidden h-full',
@@ -39,7 +40,9 @@ export function RaffleCard({
             "rounded-lg p-3 transition-colors",
             `bg-gradient-to-r ${gradient}`
           )}>
-            <div className="text-white">{icon}</div>
+            <div className="text-white" title={`Ícone de ${title}`} aria-label={`Ícone de ${title}`}>
+              {icon}
+            </div>
           </div>
           <div>
             <h3 className="font-semibold text-gray-900">{title}</h3>

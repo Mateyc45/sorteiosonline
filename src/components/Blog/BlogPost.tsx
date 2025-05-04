@@ -1865,6 +1865,13 @@ export function BlogPost() {
         <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
         <meta name="keywords" content="sorteio, sorteios, vamo sortear, sorteio online, sortear numero, sortear numeros, sorteando numero" />
         <meta name="author" content="Marcos & Matheus"></meta>
+        <meta property="og:description" content={post.excerpt} />
+        <meta property="og:type" content="article" />
+
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={post.title} />
+        <meta name="twitter:description" content={post.excerpt} />
+        <meta name="twitter:image" content={post.imageUrl} />
       </Helmet>
 
       <div className="mb-4">

@@ -454,8 +454,9 @@ export function BlogList() {
             <div className="flex flex-col sm:flex-row gap-6 max-w-full">
               <div className="w-full sm:w-1/3">
                 <img
-                  src={post.imageUrl}
+                  src={post.imageUrl} //Aqui é onde está a meta tag da imagem
                   alt={post.title}
+                  title={post.title}
                   className="rounded-lg object-cover w-full sm:w-full h-48"
                 />
               </div>

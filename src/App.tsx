@@ -145,7 +145,7 @@ function App() {
             <div className="mx-auto max-w-7xl px-4 py-4 sm:px-6 lg:px-8">
               <div className="flex items-center justify-between">
                 <Link to="/" className="text-2xl font-bold tracking-tight text-gray-900">
-                  <img src={logo} alt="Logo Vamo Sortear - Plataforma de Sorteios Grátis" className="h-24 w-full" />
+                  <img src={logo} alt="Logo Vamo Sortear - Plataforma de Sorteios Grátis(Sortear números, roleta, amigo secreto e muito mais sorteios da sorte)" title="Logo Vamo Sortear - Plataforma de Sorteios Grátis(Sortear números, roleta, amigo secreto e muito mais sorteios da sorte)" className="h-24 w-full" /> 
                 </Link>
                 <nav className="flex gap-6">
                   <Link to="/blog" className="text-gray-600 hover:text-gray-900">Blog</Link>
@@ -207,14 +207,20 @@ function HomePage({ raffleTypes }) {
           <meta name="robots" content="index, follow" />
           <link rel="canonical" href="https://vamosortear.com.br/" />
           <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
-        <meta name="keywords" content="sorteio, sorteios, vamo sortear, sorteio online, sortear numero, sortear numeros, sorteando numero, amigo secreto, sortear palavra, roleta, roleta online" />
-        <meta name="author" content="Marcos & Matheus"></meta>
+          <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+          <meta name="keywords" content="sorteio, sorteios, vamo sortear, sorteio online, sortear numero, sortear numeros, sorteando numero, amigo secreto, sortear palavra, roleta, roleta online" />
+          <meta name="author" content="Marcos & Matheus"></meta>
+
+          <meta property="og:image" content="https://vamosortear.com.br/logo.png" />
+          <meta property="og:image:alt" content="Logo Vamo Sortear - Plataforma de Sorteios Grátis" />
+          <meta property="og:image:type" content="image/png" />
+          <meta property="og:image:width" content="1200" />
+          <meta property="og:image:height" content="630" />
       </Helmet>
       {/* Hero Section */}
       <div className="text-center">
         <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-pink-500 to-violet-500 text-white text-sm font-medium mb-6">
-          <SparklesIcon className="h-4 w-4" />
+          <SparklesIcon className="h-4 w-4"  />
           <span>Mais de 10.000 sorteios realizados!</span>
         </div>
         <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl mb-4">
