@@ -17,6 +17,7 @@ import BannerAd from './components/BannerAd';
 import logo from './lib/image/logo3.png';
 import { Helmet } from 'react-helmet-async';
 import Analytics from './Analytics';
+import Breadcrumbs from './components/Breadcrumbs';
 
 // Schema markup for rich snippets
 const websiteSchema = {
@@ -153,7 +154,14 @@ function App() {
             </div>
           </header>
 
+
+
           <main className="flex-1">
+
+            <div className="mx-auto max-w-7xl text-gray-500 px-4 py-6 sm:px-6 lg:px-8">
+              <Breadcrumbs />
+            </div>
+
             <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
               <Routes>
                 <Route path="/" element={<HomePage raffleTypes={raffleTypes} />} />
