@@ -457,6 +457,7 @@ export function BlogList() {
                   src={post.imageUrl} //Aqui é onde está a meta tag da imagem
                   alt={post.title}
                   title={post.title}
+                  loading="lazy" // Lazy loading habilitado
                   className="rounded-lg object-cover w-full sm:w-full h-48"
                 />
               </div>
