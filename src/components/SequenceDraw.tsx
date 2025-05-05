@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { LifeBuoy, ListIcon, TextIcon, HomeIcon, GiftIcon, SparklesIcon, ShuffleIcon, TargetIcon, BrainIcon, UsersIcon, TrophyIcon, Dice1Icon } from 'lucide-react';
+import { Users, LifeBuoy, ListIcon, TextIcon, HomeIcon, GiftIcon, SparklesIcon, ShuffleIcon, TargetIcon, BrainIcon, UsersIcon, TrophyIcon, Dice1Icon } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { shuffleArray } from '../lib/utils';
 import { ShareButton } from './ShareButton';
@@ -65,6 +65,13 @@ export function SequenceDraw() {
       icon: <LifeBuoy className="h-6 w-6 text-red-600" />,
       path: '/roleta',
       gradient: 'from-yellow-400 to-yellow-100',
+    },
+    {
+        title: 'Sortear Equipes',
+        description: 'Faça o sorteio de equipes para diversas atividades',
+        icon: <Users className="h-6 w-6" style={{ color: '#0F766E' }}/>,
+        path: '/Sortear-Equipes',
+        gradient: 'from-teal-400 to-teal-100',
     },
   ];
 

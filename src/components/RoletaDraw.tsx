@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
-import { HomeIcon, Dice1Icon, TextIcon, ListIcon, GiftIcon, SparklesIcon} from 'lucide-react';
+import { Users, HomeIcon, Dice1Icon, TextIcon, ListIcon, GiftIcon, SparklesIcon} from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { generateRandomNumber } from '../lib/utils';
 import { ShareButton } from './ShareButton';
@@ -54,6 +54,13 @@ export function RoletaSorteio() {
       icon: <GiftIcon className="h-6 w-6 text-red-600" />,
       path: '/Amigo-Secreto',
       gradient: 'from-red-500 to-orange-400',
+    },
+    {
+      title: 'Sortear Equipes',
+      description: 'Faça o sorteio de equipes para diversas atividades',
+      icon: <Users className="h-6 w-6" style={{ color: '#0F766E' }}/>,
+      path: '/Sortear-Equipes',
+      gradient: 'from-teal-400 to-teal-100',
     },
   ];
 

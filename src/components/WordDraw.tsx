@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Dice1Icon, TextIcon, PlusIcon, XIcon, HomeIcon, BookOpenIcon, BrainIcon, UsersIcon, GraduationCapIcon, ListIcon, GiftIcon, SparklesIcon, LifeBuoy  } from 'lucide-react';
+import { Users, Dice1Icon, TextIcon, PlusIcon, XIcon, HomeIcon, BookOpenIcon, BrainIcon, UsersIcon, GraduationCapIcon, ListIcon, GiftIcon, SparklesIcon, LifeBuoy  } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { shuffleArray } from '../lib/utils';
 import { ShareButton } from './ShareButton';
@@ -73,6 +73,13 @@ export function WordDraw() {
       icon: <LifeBuoy className="h-6 w-6 text-red-600" />,
       path: '/roleta',
       gradient: 'from-yellow-400 to-yellow-100',
+    },
+    {
+        title: 'Sortear Equipes',
+        description: 'Faça o sorteio de equipes para diversas atividades',
+        icon: <Users className="h-6 w-6" style={{ color: '#0F766E' }}/>,
+        path: '/Sortear-Equipes',
+        gradient: 'from-teal-400 to-teal-100',
     },
   ];
 

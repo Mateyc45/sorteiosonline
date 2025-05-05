@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
-import { Dice1Icon, TextIcon, ListIcon, GiftIcon, SparklesIcon, StarIcon, ShieldCheckIcon, ClockIcon, LifeBuoy } from 'lucide-react';
+import { Dice1Icon, TextIcon, ListIcon, GiftIcon, SparklesIcon, StarIcon, ShieldCheckIcon, ClockIcon, LifeBuoy, Users } from 'lucide-react';
 import { RaffleCard } from './components/RaffleCard';
 import { NumberDraw } from './components/NumberDraw';
 import { WordDraw } from './components/WordDraw';
@@ -19,6 +19,7 @@ import { Helmet } from 'react-helmet-async';
 import Analytics from './Analytics';
 import Breadcrumbs from './components/Breadcrumbs';
 import Perguntas from './components/perguntas';
+import { SortearEquipes } from './components/SortearEquipes';
 
 // Schema markup for rich snippets
 const websiteSchema = {
@@ -116,12 +117,19 @@ function App() {
       path: '/Amigo-Secreto',
       gradient: 'from-red-500 to-orange-400',
     },
-      {
+    {
       title: 'Roleta',
       description: 'Faça um sorteio utilizando uma roleta',
       icon: <LifeBuoy className="h-6 w-6 text-red-600" />,
       path: '/roleta',
       gradient: 'from-yellow-400 to-yellow-100',
+    },
+    {
+      title: 'Sortear Equipes',
+      description: 'Faça o sorteio de equipes para diversas atividades',
+      icon: <Users className="h-6 w-6" style={{ color: '#0F766E' }}/>,
+      path: '/Sortear-Equipes',
+      gradient: 'from-teal-400 to-teal-100',
     },
   ];
   
@@ -175,6 +183,7 @@ function App() {
                 <Route path="/Sortear-Sequencia" element={<SequenceDraw />} />
                 <Route path="/Amigo-Secreto" element={<SecretSantaDraw />} />
                 <Route path="/roleta" element={<RoletaSorteio />} />
+                <Route path="/Sortear-Equipes" element={<SortearEquipes />} />
                 <Route path="/privacidade" element={<PrivacyPolicy />} />
                 <Route path="/termos" element={<TermsOfUse />} />
                 <Route path="/sitemap" element={<Sitemap />} />
