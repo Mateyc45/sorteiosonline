@@ -79,15 +79,23 @@ export function NumberDraw() {
   return (
     <div className="mx-auto max-w-2xl">
       <Helmet> 
-        <title>Sorteio de Números - Vamo Sortear</title>
-        <meta name="description" content="Sorteie números dentro de um intervalo de forma simples e rápida no Vamo Sortear." />
+        <title>Sorteio de Números Online Grátis - Vamo Sortear</title>
+        <meta name="description" content="Realize sorteios de números online de forma rápida, fácil e gratuita. Escolha um intervalo e descubra o número sorteado no Vamo Sortear." />
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href="https://vamosortear.com.br/Sortear-Numero" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
-        <meta name="keywords" content="sorteio, sorteios, vamo sortear, sorteio online, sortear numero, sortear numeros, sorteando numero" />
+        <meta name="keywords" content="sorteio de números, sorteio online grátis, sortear número, sorteio aleatório, ferramenta de sorteio, sorteio de números online, sorteio fácil, sorteio confiável, sorteio rápido, sorteio seguro" />
         <meta name="author" content="Marcos & Matheus"></meta>
-        
+        <meta property="og:title" content="Sorteio de Números Online Grátis - Vamo Sortear" />
+        <meta property="og:description" content="Sorteie números aleatórios online de forma simples e gratuita. Ideal para rifas, jogos e decisões rápidas." />
+        <meta property="og:url" content="https://vamosortear.com.br/Sortear-Numero" />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://vamosortear.com.br/assets/sorteio-numeros.png" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Sorteio de Números Online Grátis - Vamo Sortear" />
+        <meta name="twitter:description" content="Sorteie números aleatórios online de forma simples e gratuita. Ideal para rifas, jogos e decisões rápidas." />
+        <meta name="twitter:image" content="https://vamosortear.com.br/assets/sorteio-numeros.png" />
       </Helmet>
       <div className="mb-4">
         <Link
@@ -199,23 +207,35 @@ export function NumberDraw() {
 
       
       <div className="mt-8 space-y-8 rounded-xl border border-gray-200 bg-white p-8 shadow-sm">
-      <h2 className="mb-4 text-2xl font-bold text-gray-900">Outros tipos de sorteios</h2>
-        <p className="mb-6 text-gray-600">Explore outros tipos de sorteios disponíveis na nossa plataforma.</p>
-
-      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-2">
-              {raffleTypes.map((raffle) => (
-                <Link key={raffle.title} to={raffle.path}>
-                  <RaffleCard
-                    title={raffle.title}
-                    description={raffle.description}
-                    icon={raffle.icon}
-                    gradient={raffle.gradient}
-                    onClick={() => {}}
-                  />
-                </Link>
-              ))}
-        </div>
-      </div>        
+              <h2 className="mb-4 text-2xl font-bold text-gray-900">Outros tipos de sorteios</h2>
+              <p className="mb-6 text-gray-600">Explore outros tipos de sorteios disponíveis na nossa plataforma.</p>
+      
+              <div
+                className={`grid gap-6 sm:grid-cols-2 lg:grid-cols-2 ${
+                  raffleTypes.length % 2 !== 0 ? 'lg:grid-cols-2 lg:justify-items-center' : ''
+                }`}
+              >
+                {raffleTypes.map((raffle, index) => (
+                  <Link
+                    key={index}
+                    to={raffle.path}
+                    className={`${
+                raffleTypes.length % 2 !== 0 && index === raffleTypes.length - 1
+                  ? 'lg:col-span-2 lg:justify-self-center w-full'
+                  : ''
+                    }`}
+                  >
+                    <RaffleCard
+                title={raffle.title}
+                description={raffle.description}
+                icon={raffle.icon}
+                gradient={raffle.gradient}
+                onClick={() => {}}
+                    />
+                  </Link>
+                ))}
+              </div>
+            </div>  
       <div className="mt-8 space-y-8 rounded-xl border border-gray-200 bg-white p-8 shadow-sm">
         <div>
           <h3 className="text-2xl font-bold text-gray-900">Como funciona o sorteio de números?</h3>

@@ -392,19 +392,27 @@ export function BlogList() {
         </Link>
       </div>
       <Helmet>
-        <title>Blog - Sorteios Online | Dicas, Tutoriais e Novidades sobre Sorteios</title>
+        <title>Blog Sorteios Online | Dicas, Tutoriais e Novidades sobre Sorteios</title>
         <meta
           name="description"
-          content="Confira artigos, tutoriais e dicas sobre sorteios online, organização de amigo secreto, conformidade com LGPD e muito mais. Mantenha-se atualizado com as melhores práticas para todas as modalidades de sorteio! Aproveite tambem nossas funcionalidades que vão desde sortear um numero até o amigo secreto ou ao giro de uma roleta, tudo online e grátis!"
+          content="Descubra dicas, tutoriais e novidades sobre sorteios online, amigo secreto, LGPD e muito mais. Aprenda as melhores práticas para criar sorteios seguros, engajantes e eficazes. Explore funcionalidades como sorteio de números, roletas e amigo secreto, tudo online e grátis!"
         />
         <meta
           name="keywords"
-          content="blog sorteios, dicas sorteios online, tutorial amigo secreto, LGPD sorteios, sorteios seguros"
+          content="blog sorteios online, dicas sorteios, tutorial amigo secreto, LGPD sorteios, sorteios seguros, sorteio de números, roleta online, sorteios grátis"
         />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
-        <meta name="keywords" content="sorteio, sorteios, vamo sortear, sorteio online, sortear numero, sortear numeros, sorteando numero" />
-        <meta name="author" content="Marcos & Matheus"></meta>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="author" content="Marcos & Matheus" />
+        <meta property="og:title" content="Blog Sorteios Online | Dicas, Tutoriais e Novidades sobre Sorteios" />
+        <meta property="og:description" content="Confira artigos e tutoriais sobre sorteios online, amigo secreto, LGPD e muito mais. Descubra funcionalidades incríveis para criar sorteios grátis e engajantes!" />
+        <meta property="og:image" content="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80" />
+        <meta property="og:url" content="https://www.seusite.com/blog" />
+        <meta property="og:type" content="website" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Blog Sorteios Online | Dicas, Tutoriais e Novidades sobre Sorteios" />
+        <meta name="twitter:description" content="Dicas e tutoriais sobre sorteios online, amigo secreto, LGPD e muito mais. Descubra funcionalidades incríveis para criar sorteios grátis e engajantes!" />
+        <meta name="twitter:image" content="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80" />
       </Helmet>
 
       <div className="mb-8">

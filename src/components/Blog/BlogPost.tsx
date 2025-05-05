@@ -1857,21 +1857,24 @@ export function BlogPost() {
         <title>{post.title} - Vamo Sortear Blog</title>
         <meta name="description" content={post.excerpt} />
         <meta name="keywords" content={post.tags.join(', ')} />
-        <meta property="og:title" content={post.title} />
+        <meta property="og:title" content={`${post.title} - Vamo Sortear Blog`} />
         <meta property="og:description" content={post.excerpt} />
         <meta property="og:image" content={post.imageUrl} />
         <meta property="og:url" content={shareUrl} />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
-        <meta name="keywords" content="sorteio, sorteios, vamo sortear, sorteio online, sortear numero, sortear numeros, sorteando numero" />
-        <meta name="author" content="Marcos & Matheus"></meta>
-        <meta property="og:description" content={post.excerpt} />
         <meta property="og:type" content="article" />
+        <meta property="og:site_name" content="Vamo Sortear Blog" />
 
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={post.title} />
+        <meta name="twitter:title" content={`${post.title} - Vamo Sortear Blog`} />
         <meta name="twitter:description" content={post.excerpt} />
         <meta name="twitter:image" content={post.imageUrl} />
+        <meta name="twitter:site" content="@VamoSortear" />
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="author" content="Equipe Vamo Sortear" />
+        <meta name="robots" content="index, follow" />
+        <link rel="canonical" href={shareUrl} />
       </Helmet>
 
       <div className="mb-4">

@@ -211,14 +211,24 @@ export function SecretSantaDraw() {
   return (
     <div className="mx-auto max-w-3xl">
       <Helmet> 
-        <title>Amigo Secreto - Vamo Sortear</title>
-        <meta name="description" content="Organize um amigo secreto de modo automático, via email, usando nossa ferramenta aqui no vamosortear.com.br! " />
+        <title>Amigo Secreto Online Grátis - Organize e Sorteie com Facilidade</title>
+        <meta name="description" content="Organize seu amigo secreto online de forma fácil, rápida e gratuita. Sorteio automático com envio de emails personalizados para cada participante. Experimente agora!" />
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href="https://vamosortear.com.br/Amigo-Secreto" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="keywords" content="sorteio, sorteios, vamo sortear, sorteio online, amigo secreto, amigo secreto online, amigo secreto automatico, amigo secreto gratis" />
+        <meta name="keywords" content="amigo secreto online, sorteio amigo secreto, sorteio online, amigo oculto, sorteio grátis, sorteio automático, organizar amigo secreto, ferramenta amigo secreto" />
         <meta name="author" content="Marcos & Matheus"></meta>
+        <meta property="og:title" content="Amigo Secreto Online Grátis - Organize e Sorteie com Facilidade" />
+        <meta property="og:description" content="Facilite seu amigo secreto com nossa ferramenta online gratuita. Sorteio automático e envio de emails personalizados. Ideal para amigos, família e empresas!" />
+        <meta property="og:url" content="https://vamosortear.com.br/Amigo-Secreto" />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://vamosortear.com.br/assets/amigo-secreto-banner.jpg" />
+        <meta property="og:locale" content="pt_BR" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Amigo Secreto Online Grátis - Organize e Sorteie com Facilidade" />
+        <meta name="twitter:description" content="Facilite seu amigo secreto com nossa ferramenta online gratuita. Sorteio automático e envio de emails personalizados. Ideal para amigos, família e empresas!" />
+        <meta name="twitter:image" content="https://vamosortear.com.br/assets/amigo-secreto-banner.jpg" />
       </Helmet>
       <div className="mb-4">
         <Link
@@ -377,24 +387,36 @@ export function SecretSantaDraw() {
 
 
 
-      <div className="mt-8 mb-5 space-y-8 rounded-xl border border-gray-200 bg-white p-8 shadow-sm">
-               <h2 className="mb-4 text-2xl font-bold text-gray-900">Outros tipos de sorteios</h2>
-                 <p className="mb-6 text-gray-600">Explore outros tipos de sorteios disponíveis na nossa plataforma.</p>
-         
-               <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-2">
-                       {raffleTypes.map((raffle) => (
-                         <Link key={raffle.title} to={raffle.path}>
-                           <RaffleCard
-                             title={raffle.title}
-                             description={raffle.description}
-                             icon={raffle.icon}
-                             gradient={raffle.gradient}
-                             onClick={() => {}}
-                           />
-                         </Link>
-                       ))}
-                 </div>
-               </div>
+      <div className="mt-8 space-y-8 rounded-xl border border-gray-200 bg-white p-8 shadow-sm">
+              <h2 className="mb-4 text-2xl font-bold text-gray-900">Outros tipos de sorteios</h2>
+              <p className="mb-6 text-gray-600">Explore outros tipos de sorteios disponíveis na nossa plataforma.</p>
+      
+              <div
+                className={`grid gap-6 sm:grid-cols-2 lg:grid-cols-2 ${
+                  raffleTypes.length % 2 !== 0 ? 'lg:grid-cols-2 lg:justify-items-center' : ''
+                }`}
+              >
+                {raffleTypes.map((raffle, index) => (
+                  <Link
+                    key={index}
+                    to={raffle.path}
+                    className={`${
+                raffleTypes.length % 2 !== 0 && index === raffleTypes.length - 1
+                  ? 'lg:col-span-2 lg:justify-self-center w-full'
+                  : ''
+                    }`}
+                  >
+                    <RaffleCard
+                title={raffle.title}
+                description={raffle.description}
+                icon={raffle.icon}
+                gradient={raffle.gradient}
+                onClick={() => {}}
+                    />
+                  </Link>
+                ))}
+              </div>
+            </div>
 
 
       {/* Rich content section for SEO */}
