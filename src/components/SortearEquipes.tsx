@@ -44,7 +44,38 @@ export function SortearEquipes() {
     window.scrollTo(0, 0);
   }, []);
 
+  const [Participantes, setParticipantes] = useState<string[]>([]);
+  const [NewParticipantes, setNewParticipantes] = useState('');
+  const [Resultado, setResultado] = useState<string | null>(null);
+  const [Sorteando, setSorteando] = useState(false);
+  const [sorteioTime, setsorteioTime] = useState<string | null>(null);
+
   return (
-    <h1></h1>
+    <div className="mx-auto max-w-2xl">
+      <Helmet> 
+        <title>Sortear Equipes Online - Rápido e Fácil | Vamo Sortear</title>
+        <meta name="description" content="Sortear equipes online de forma simples, rápida e personalizada. Organize seus sorteios com facilidade no Vamo Sortear. Experimente agora!" />
+        <meta name="robots" content="index, follow" />
+        <link rel="canonical" href="https://vamosortear.com.br/Sortear-Equipes" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+        <meta name="keywords" content="sortear equipes, sorteio online, sortear times, organizar equipes, sorteio personalizado, vamo sortear, sorteio rápido" />
+        <meta name="author" content="Marcos & Matheus"></meta>
+        <meta property="og:title" content="Sortear Equipes Online - Rápido e Fácil | Vamo Sortear" />
+        <meta property="og:description" content="Sortear equipes online de forma simples, rápida e personalizada. Organize seus sorteios com facilidade no Vamo Sortear. Experimente agora!" />
+        <meta property="og:url" content="https://vamosortear.com.br/Sortear-Equipes" />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://vamosortear.com.br/assets/sortear-equipes-thumbnail.jpg" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Sortear Equipes Online - Rápido e Fácil | Vamo Sortear" />
+        <meta name="twitter:description" content="Sortear equipes online de forma simples, rápida e personalizada. Organize seus sorteios com facilidade no Vamo Sortear. Experimente agora!" />
+        <meta name="twitter:image" content="https://vamosortear.com.br/assets/sortear-equipes-thumbnail.jpg" />
+      </Helmet>
+
+      
+
+
+
+    </div>
   );
 }

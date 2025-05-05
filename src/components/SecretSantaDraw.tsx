@@ -211,14 +211,24 @@ export function SecretSantaDraw() {
   return (
     <div className="mx-auto max-w-3xl">
       <Helmet> 
-        <title>Amigo Secreto - Vamo Sortear</title>
-        <meta name="description" content="Organize um amigo secreto de modo automático, via email, usando nossa ferramenta aqui no vamosortear.com.br! " />
+        <title>Amigo Secreto Online Grátis - Organize e Sorteie com Facilidade</title>
+        <meta name="description" content="Organize seu amigo secreto online de forma fácil, rápida e gratuita. Sorteio automático com envio de emails personalizados para cada participante. Experimente agora!" />
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href="https://vamosortear.com.br/Amigo-Secreto" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="keywords" content="sorteio, sorteios, vamo sortear, sorteio online, amigo secreto, amigo secreto online, amigo secreto automatico, amigo secreto gratis" />
+        <meta name="keywords" content="amigo secreto online, sorteio amigo secreto, sorteio online, amigo oculto, sorteio grátis, sorteio automático, organizar amigo secreto, ferramenta amigo secreto" />
         <meta name="author" content="Marcos & Matheus"></meta>
+        <meta property="og:title" content="Amigo Secreto Online Grátis - Organize e Sorteie com Facilidade" />
+        <meta property="og:description" content="Facilite seu amigo secreto com nossa ferramenta online gratuita. Sorteio automático e envio de emails personalizados. Ideal para amigos, família e empresas!" />
+        <meta property="og:url" content="https://vamosortear.com.br/Amigo-Secreto" />
+        <meta property="og:type" content="website" />
+        <meta property="og:image" content="https://vamosortear.com.br/assets/amigo-secreto-banner.jpg" />
+        <meta property="og:locale" content="pt_BR" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content="Amigo Secreto Online Grátis - Organize e Sorteie com Facilidade" />
+        <meta name="twitter:description" content="Facilite seu amigo secreto com nossa ferramenta online gratuita. Sorteio automático e envio de emails personalizados. Ideal para amigos, família e empresas!" />
+        <meta name="twitter:image" content="https://vamosortear.com.br/assets/amigo-secreto-banner.jpg" />
       </Helmet>
       <div className="mb-4">
         <Link

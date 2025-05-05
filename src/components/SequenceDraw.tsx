@@ -79,14 +79,23 @@ export function SequenceDraw() {
   return (
     <div className="mx-auto max-w-2xl">
             <Helmet> 
-                    <title>Sortear Sequência - Vamo Sortear</title>
-                    <meta name="description" content="Sorteie uma sequência números num intervalo personalizado de forma simples e rápida no Vamo Sortear!!!" />
-                    <meta name="robots" content="index, follow" />
-                    <link rel="canonical" href="https://vamosortear.com.br/Sortear-Sequencia" />
-                    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
-        <meta name="keywords" content="sorteio, sorteios, vamo sortear, sorteio online, sortear sequencia, sortear sequecia de numeros" />
-        <meta name="author" content="Marcos & Matheus"></meta>
+              <title>Sortear Sequência de Números Online - Vamo Sortear</title>
+              <meta name="description" content="Sorteie sequências de números aleatórios de forma personalizada, rápida e fácil. Experimente agora no Vamo Sortear!" />
+              <meta name="robots" content="index, follow" />
+              <link rel="canonical" href="https://vamosortear.com.br/Sortear-Sequencia" />
+              <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+              <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+              <meta name="keywords" content="sorteio online, sortear sequência de números, sorteio de números, ferramenta de sorteio, sorteio personalizado, Vamo Sortear" />
+              <meta name="author" content="Marcos & Matheus" />
+              <meta property="og:title" content="Sortear Sequência de Números Online - Vamo Sortear" />
+              <meta property="og:description" content="Crie sorteios de sequência de números personalizados com facilidade. Descubra a ferramenta ideal para sorteios online!" />
+              <meta property="og:url" content="https://vamosortear.com.br/Sortear-Sequencia" />
+              <meta property="og:type" content="website" />
+              <meta property="og:image" content="https://vamosortear.com.br/assets/images/sorteio-sequencia.png" />
+              <meta name="twitter:card" content="summary_large_image" />
+              <meta name="twitter:title" content="Sortear Sequência de Números Online - Vamo Sortear" />
+              <meta name="twitter:description" content="Sorteie sequências de números aleatórios de forma personalizada e rápida. Experimente agora no Vamo Sortear!" />
+              <meta name="twitter:image" content="https://vamosortear.com.br/assets/images/sorteio-sequencia.png" />
             </Helmet>
       <div className="mb-4">
         <Link

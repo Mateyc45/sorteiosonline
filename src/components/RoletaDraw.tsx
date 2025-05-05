@@ -198,14 +198,23 @@ export function RoletaSorteio() {
   return (
  <div className="mx-auto max-w-2xl">
         <Helmet> 
-                <title>Roleta - Vamo Sortear</title>
-                <meta name="description" content="Personalize sua roleta online e rode para descobrir qual será o resultado!" />
-                <meta name="robots" content="index, follow" />
-                <link rel="canonical" href="https://vamosortear.com.br/roleta" />
-                <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
-        <meta name="keywords" content="sorteio, sorteios, vamo sortear, sorteio online, roleta, roleta online, roleta personalizada, roleta simples" />
-        <meta name="author" content="Marcos & Matheus"></meta>
+          <title>Roleta Online Personalizada - Vamo Sortear</title>
+          <meta name="description" content="Crie e personalize sua roleta online para sorteios divertidos e justos. Descubra o resultado com um clique!" />
+          <meta name="robots" content="index, follow" />
+          <link rel="canonical" href="https://vamosortear.com.br/roleta" />
+          <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+          <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+          <meta name="keywords" content="sorteio online, roleta online, roleta personalizada, sorteios divertidos, sorteio justo, roleta virtual, criar roleta, sorteio de prêmios, sorteio de tarefas, sorteio de equipes" />
+          <meta name="author" content="Marcos & Matheus"></meta>
+          <meta property="og:title" content="Roleta Online Personalizada - Vamo Sortear" />
+          <meta property="og:description" content="Crie e personalize sua roleta online para sorteios divertidos e justos. Descubra o resultado com um clique!" />
+          <meta property="og:url" content="https://vamosortear.com.br/roleta" />
+          <meta property="og:type" content="website" />
+          <meta property="og:image" content="https://vamosortear.com.br/assets/roleta-preview.png" />
+          <meta name="twitter:card" content="summary_large_image" />
+          <meta name="twitter:title" content="Roleta Online Personalizada - Vamo Sortear" />
+          <meta name="twitter:description" content="Crie e personalize sua roleta online para sorteios divertidos e justos. Descubra o resultado com um clique!" />
+          <meta name="twitter:image" content="https://vamosortear.com.br/assets/roleta-preview.png" />
         </Helmet>
       <div className="mb-4">
         <Link

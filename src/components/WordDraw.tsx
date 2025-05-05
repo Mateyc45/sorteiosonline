@@ -87,14 +87,23 @@ export function WordDraw() {
   return (
     <div className="mx-auto max-w-2xl">
             <Helmet> 
-                    <title>Sortear Palavras - Vamo Sortear</title>
-                    <meta name="description" content="Sorteie palavras escolhidas por você de forma simples, rápida, personalizada e online no Vamo Sortear. Vem sortear com a gente!" />
-                    <meta name="robots" content="index, follow" />
-                    <link rel="canonical" href="https://vamosortear.com.br/Sortear-Palavras" />
-                    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
-                    <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
-                    <meta name="keywords" content="sorteio, sorteios, vamo sortear, sorteio online, sortear palavras, sortear varias palavras, sortear palavras personalizadas" />
-                    <meta name="author" content="Marcos & Matheus"></meta>
+                <title>Sortear Palavras Online - Sorteios Personalizados | Vamo Sortear</title>
+                <meta name="description" content="Sorteie palavras ou nomes de forma simples, rápida e personalizada. Experimente o sorteio online mais confiável e fácil no Vamo Sortear!" />
+                <meta name="robots" content="index, follow" />
+                <link rel="canonical" href="https://vamosortear.com.br/Sortear-Palavras" />
+                <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+                <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+                <meta name="keywords" content="sorteio de palavras, sorteio online, sortear nomes, sorteio personalizado, sorteio confiável, Vamo Sortear, ferramenta de sorteio" />
+                <meta name="author" content="Vamo Sortear"></meta>
+                <meta property="og:title" content="Sortear Palavras Online - Sorteios Personalizados | Vamo Sortear" />
+                <meta property="og:description" content="Descubra a melhor ferramenta para sortear palavras ou nomes de forma aleatória e justa. Experimente agora no Vamo Sortear!" />
+                <meta property="og:url" content="https://vamosortear.com.br/Sortear-Palavras" />
+                <meta property="og:type" content="website" />
+                <meta property="og:image" content="https://vamosortear.com.br/assets/images/sorteio-palavras.png" />
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:title" content="Sortear Palavras Online - Sorteios Personalizados | Vamo Sortear" />
+                <meta name="twitter:description" content="Sorteie palavras ou nomes de forma simples, rápida e personalizada. Experimente o sorteio online mais confiável e fácil no Vamo Sortear!" />
+                <meta name="twitter:image" content="https://vamosortear.com.br/assets/images/sorteio-palavras.png" />
             </Helmet>
       <div className="mb-4">
         <Link
