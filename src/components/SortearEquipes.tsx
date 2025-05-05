@@ -10,6 +10,13 @@ import Perguntas from './perguntas';
 
 const raffleTypes = [
   {
+        title: 'Sortear um número',
+        description: 'Sorteie números aleatórios de forma rápida e confiável',
+        icon: <Dice1Icon className="h-6 w-6 text-blue-600" />,
+        path: '/Sortear-Numero',
+        gradient: 'from-blue-500 to-cyan-400',
+  },
+  {
     title: 'Sortear Palavras',
     description: 'Sorteie palavras ou nomes de uma lista personalizada',
     icon: <TextIcon className="h-6 w-6 text-green-600" />,
@@ -74,7 +81,36 @@ export function SortearEquipes() {
 
       
 
+      <div className="mt-8 space-y-8 rounded-xl border border-gray-200 bg-white p-8 shadow-sm">
+        <h2 className="mb-4 text-2xl font-bold text-gray-900">Outros tipos de sorteios</h2>
+        <p className="mb-6 text-gray-600">Explore outros tipos de sorteios disponíveis na nossa plataforma.</p>
 
+        <div
+          className={`grid gap-6 sm:grid-cols-2 lg:grid-cols-2 ${
+        raffleTypes.length % 2 !== 0 ? 'lg:grid-cols-2 lg:justify-items-center' : ''
+          }`}
+        >
+          {raffleTypes.map((raffle, index) => (
+        <Link
+          key={index}
+          to={raffle.path}
+          className={`${
+            raffleTypes.length % 2 !== 0 && index === raffleTypes.length - 1
+          ? 'lg:col-span-2 lg:justify-self-center w-full'
+          : ''
+          }`}
+        >
+          <RaffleCard
+            title={raffle.title}
+            description={raffle.description}
+            icon={raffle.icon}
+            gradient={raffle.gradient}
+            onClick={() => {}}
+          />
+        </Link>
+          ))}
+        </div>
+      </div>
 
     </div>
   );

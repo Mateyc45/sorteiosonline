@@ -207,23 +207,35 @@ export function NumberDraw() {
 
       
       <div className="mt-8 space-y-8 rounded-xl border border-gray-200 bg-white p-8 shadow-sm">
-      <h2 className="mb-4 text-2xl font-bold text-gray-900">Outros tipos de sorteios</h2>
-        <p className="mb-6 text-gray-600">Explore outros tipos de sorteios disponíveis na nossa plataforma.</p>
-
-      <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-2">
-              {raffleTypes.map((raffle) => (
-                <Link key={raffle.title} to={raffle.path}>
-                  <RaffleCard
-                    title={raffle.title}
-                    description={raffle.description}
-                    icon={raffle.icon}
-                    gradient={raffle.gradient}
-                    onClick={() => {}}
-                  />
-                </Link>
-              ))}
-        </div>
-      </div>        
+              <h2 className="mb-4 text-2xl font-bold text-gray-900">Outros tipos de sorteios</h2>
+              <p className="mb-6 text-gray-600">Explore outros tipos de sorteios disponíveis na nossa plataforma.</p>
+      
+              <div
+                className={`grid gap-6 sm:grid-cols-2 lg:grid-cols-2 ${
+                  raffleTypes.length % 2 !== 0 ? 'lg:grid-cols-2 lg:justify-items-center' : ''
+                }`}
+              >
+                {raffleTypes.map((raffle, index) => (
+                  <Link
+                    key={index}
+                    to={raffle.path}
+                    className={`${
+                raffleTypes.length % 2 !== 0 && index === raffleTypes.length - 1
+                  ? 'lg:col-span-2 lg:justify-self-center w-full'
+                  : ''
+                    }`}
+                  >
+                    <RaffleCard
+                title={raffle.title}
+                description={raffle.description}
+                icon={raffle.icon}
+                gradient={raffle.gradient}
+                onClick={() => {}}
+                    />
+                  </Link>
+                ))}
+              </div>
+            </div>  
       <div className="mt-8 space-y-8 rounded-xl border border-gray-200 bg-white p-8 shadow-sm">
         <div>
           <h3 className="text-2xl font-bold text-gray-900">Como funciona o sorteio de números?</h3>
