@@ -112,6 +112,10 @@ export function SortearEquipes() {
         </div>
       </div>
 
+      <div className="bg-white rounded-2xl p-4 shadow-sm border border-gray-200 mt-4">
+        <Perguntas />
+      </div> 
+
     </div>
   );
 }
