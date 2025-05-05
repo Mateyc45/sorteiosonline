@@ -1,18 +1,18 @@
 [
     {
-      "id": "",
+      "id": "0",
       "pergunta": "Como um algoritmo faz para gerar respostas aleatórias?",
       "resposta": "Um algoritmo pode usar funções matemáticas ou bibliotecas específicas para gerar números aleatórios, que, por sua vez, são usados para selecionar respostas de maneira imprevisível. Essas funções ou bibliotecas geralmente implementam técnicas matemáticas, como geradores de números pseudo-aleatórios, que produzem uma sequência de números que aparentam ser aleatórios." 
     },
     
     {
-      "id": "",
+      "id": "0",
       "pergunta": "Os resultados são gerados na hora?",
       "resposta": "Sim, os resultados são gerados em tempo real, utilizando algoritmos de aleatoriedade. Isso significa que, a cada interação, os resultados podem variar de maneira imprevisível, proporcionando uma experiência única a cada vez. Os algoritmos responsáveis por esse processo são projetados para garantir que os resultados não sigam um padrão fixo, o que ajuda a criar uma sensação de imprevisibilidade e autenticidade. Esses algoritmos de aleatoriedade são implementados de maneira eficiente e rápida, permitindo que os resultados sejam gerados quase instantaneamente, sem afetar a performance do sistema. Dessa forma, o processo de geração é contínuo e dinâmico, mantendo a integridade e a variedade dos resultados."
 
     },
     {
-      "id": "",
+      "id": "0",
       "pergunta": "Todos os seviçõs são gratuitos?",
       "resposta": "Sim, todos os serviços oferecidos são totalmente gratuitos. Isso significa que você pode acessar, utilizar e aproveitar todas as funcionalidades sem a necessidade de pagar nada. Não há taxas ocultas ou custos adicionais envolvidos. Nosso objetivo é garantir que todos possam ter acesso a essas ferramentas sem qualquer barreira financeira, oferecendo uma experiência sem custos para o usuário. Sinta-se à vontade para explorar e usar os serviços sem preocupações com valores ou pagamentos."
     },
@@ -25,6 +25,57 @@
       "id":"Sortear-Numero",
       "pergunta":"O sorteio é justo e personalizado?",
       "resposta":"Sim, o sorteio é justo e personalizado. O algoritmo garante que todos os números dentro do intervalo tenham a mesma chance de serem selecionados. Além disso, o usuário pode personalizar o intervalo de números, tornando o sorteio adaptável às suas necessidades. Isso significa que você pode escolher qualquer intervalo de números, e o algoritmo irá respeitar essa escolha, garantindo um sorteio justo e alinhado com suas preferências."
+    },
+    {
+      "id":"Sortear-Palavras",
+      "pergunta":"Como funciona o sorteio de palavras?",
+      "resposta":"O sorteio de palavras é realizado através de um algoritmo que seleciona aleatoriamente uma palavra de uma lista pré-definida. O usuário pode fornecer sua própria lista de palavras ou usar uma lista padrão. O algoritmo garante que cada palavra tenha a mesma chance de ser escolhida, tornando o sorteio justo e imprevisível."
+    },
+    {
+      "id":"Sortear-Palavras",
+      "pergunta":"Como sortear grupos de palavras?",
+      "resposta":"Para sortear grupos, você pode usar a função de sorteio de grupos do nosso site vamosortear.com.br e especificar o número de palavras que deseja sortear. O algoritmo irá selecionar aleatoriamente o número desejado de palavras da lista fornecida, garantindo que cada palavra tenha a mesma chance de ser escolhida. Isso permite criar combinações únicas e variadas de palavras em cada sorteio."
+    },
+    {
+      "id":"roleta",
+      "pergunta":"Como funciona a roleta?",
+      "resposta":"A roleta funciona como um mecanismo de seleção aleatória, onde cada segmento da roleta representa uma opção ou resultado possível. Quando a roleta é girada, um algoritmo de aleatoriedade determina onde ela irá parar, garantindo que cada segmento tenha a mesma probabilidade de ser selecionado. Isso torna o processo justo e imprevisível, proporcionando uma experiência divertida e dinâmica para o usuário."
+    },
+    {
+      "id":"roleta",
+      "pergunta":"A roleta pode ser personalizada?",
+      "resposta":"Sim, a roleta pode ser personalizada. Você pode definir os segmentos da roleta com as opções que desejar, ajustando os textos, cores e até mesmo o número de segmentos. Isso permite criar uma experiência única e adaptada às suas necessidades, tornando a roleta ainda mais divertida e interativa."
+    },
+    {
+      "id":"Sortear-Palavras",
+      "pergunta":"Como criar uma lista personalizada para o sorteio de palavras?",
+      "resposta":"Você pode criar uma lista personalizada fornecendo as palavras que deseja sortear. Basta inserir as palavras em um campo específico ou carregar um arquivo contendo a lista. O algoritmo usará essa lista para realizar o sorteio, garantindo que todas as palavras tenham a mesma chance de serem escolhidas."
+    },
+    {
+      "id":"Sortear-Palavras",
+      "pergunta":"Posso salvar minhas listas de palavras?",
+      "resposta":"Sim, você pode salvar suas listas de palavras para utilizá-las novamente no futuro. Isso permite que você tenha acesso rápido às suas listas personalizadas, facilitando o processo de sorteio e economizando tempo."
+    },
+    {
+      "id":"Sortear-Sequencia",
+      "pergunta":"Como funciona o sorteio de sequência?",
+      "resposta":"O sorteio de sequência organiza uma lista de itens fornecida pelo usuário em uma ordem aleatória. O algoritmo embaralha os itens de forma que cada sequência gerada seja única e imprevisível, garantindo um resultado justo e dinâmico."
+    },
+    {
+      "id":"Sortear-Sequencia",
+      "pergunta":"É possível salvar as sequências geradas?",
+      "resposta":"Sim, você pode salvar as sequências geradas para utilizá-las posteriormente. Isso permite que você mantenha um registro das sequências criadas e as reutilize conforme necessário."
+    },
+    {
+      "id":"Amigo-Secreto",
+      "pergunta":"Como funciona o sorteio de amigo secreto?",
+      "resposta":"O sorteio de amigo secreto distribui os participantes de forma aleatória, garantindo que cada pessoa receba um amigo secreto. O algoritmo evita que alguém tire a si mesmo."
+    },
+    {
+      "id":"Amigo-Secreto",
+      "pergunta":"Posso adicionar restrições ao sorteio de amigo secreto?",
+      "resposta":"Atualmente, ainda não temos suporte para restrições no sorteio de amigo secreto. O algoritmo apenas garante que ninguém tire a si mesmo, mas não permite adicionar outras restrições."
     }
+    
   ]
   

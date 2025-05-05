@@ -25,7 +25,7 @@ const Perguntas = () => {
   return (
     <div className="container">
         <h2 className='text-center mb-2 font-bold'>Perguntas frequentes</h2>
-      {perguntas.filter((item) => item.id === filtro || item.id == "").map((item, index) => (
+      {perguntas.filter((item) => item.id === "0" || (item.id !== "" && item.id === filtro)).map((item, index) => (
         <div key={index} className="bg-gray-100 rounded-2xl flex flex-col mb-2">
           <div className="w-full flex flex-col mt-4 text-gray-800">
             <div className="ml-4 mb-4 flex items-center justify-between">
