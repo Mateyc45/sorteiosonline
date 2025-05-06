@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import perguntasData from '../lib/perguntas.json';
+import perguntasData from '../lib/Perguntas.json';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 
 
@@ -21,7 +21,6 @@ const Perguntas = () => {
       return novoEstado;
     });
   };
-
   return (
     <div className="container">
         <h2 className='text-center mb-2 font-bold'>Perguntas frequentes</h2>

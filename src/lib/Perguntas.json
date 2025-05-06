@@ -75,7 +75,7 @@
       "id":"Amigo-Secreto",
       "pergunta":"Posso adicionar restrições ao sorteio de amigo secreto?",
       "resposta":"Atualmente, ainda não temos suporte para restrições no sorteio de amigo secreto. O algoritmo apenas garante que ninguém tire a si mesmo, mas não permite adicionar outras restrições."
-    }
-    
+    },
+    {}
   ]
   
