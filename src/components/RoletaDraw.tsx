@@ -24,7 +24,7 @@ export function RoletaSorteio() {
 
   const canvasRef = useRef(null);
 
-  const colors = ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF', '#FF9F40', '#C9CBCF', '#7BC043', '#F37736', '#FFC425'];
+  const colors = ['#FF5733', '#33FF57', '#3357FF', '#FF33A1', '#A133FF', '#33FFF5', '#F5FF33', '#FF8C33', '#33FF8C', '#8C33FF', '#FF3333', '#33FF33'];
 
   const raffleTypes = [
     {

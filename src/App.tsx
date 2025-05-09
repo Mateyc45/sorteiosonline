@@ -158,7 +158,7 @@ function App() {
             <div className="mx-auto max-w-7xl px-4 py-4 sm:px-6 lg:px-8">
               <div className="flex items-center justify-between">
                 <Link to="/" className="text-2xl font-bold tracking-tight text-gray-900">
-                  <img src={logo} alt="Logo Vamo Sortear - Plataforma de Sorteios Grátis(Sortear números, roleta, amigo secreto e muito mais sorteios da sorte)" title="Logo Vamo Sortear - Plataforma de Sorteios Grátis(Sortear números, roleta, amigo secreto e muito mais sorteios da sorte)" loading="lazy" className="h-24 w-full" /> 
+                  <img src={logo} alt="Vamo Sortear - Plataforma de Sorteios Grátis(Sortear números, roleta, amigo secreto e muito mais sorteios da sorte)" title="Vamo Sortear – Sorteios Online Grátis de Números, nomes e Mais!" loading="lazy" className="h-24 w-full" /> 
                 </Link>
                 <nav className="flex gap-6">
                   <Link to="/blog" className="text-gray-600 hover:text-gray-900">Blog</Link>
