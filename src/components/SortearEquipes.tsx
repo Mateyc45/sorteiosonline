@@ -49,6 +49,7 @@ const raffleTypes = [
 export function SortearEquipes() {
   useEffect(() => {
     window.scrollTo(0, 0);
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6732428339083295" crossorigin="anonymous"></script>
   }, []);
 
   const [Participantes, setParticipantes] = useState<string[]>([]);

@@ -11,6 +11,7 @@ import Perguntas from './perguntas';
 export function SequenceDraw() {
   useEffect(() => {
         window.scrollTo(0, 0);
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6732428339083295" crossorigin="anonymous"></script>
       }, []);
   const [start, setStart] = useState(1);
   const [end, setEnd] = useState(10);

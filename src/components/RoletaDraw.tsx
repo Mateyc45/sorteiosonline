@@ -11,6 +11,7 @@ import Perguntas from './perguntas';
 export function RoletaSorteio() {
   useEffect(() => {
         window.scrollTo(0, 0);
+        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6732428339083295" crossorigin="anonymous"></script>
       }, []);
 //const RoletaSorteio = () => {
   const [error, setError] = useState<string | null>(null);
