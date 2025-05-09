@@ -13,6 +13,7 @@ export function RoletaSorteio() {
         window.scrollTo(0, 0);
       }, []);
 //const RoletaSorteio = () => {
+  const [error, setError] = useState<string | null>(null);
   const [rotating, setRotating] = useState(false);
   const [result, setResult] = useState(null);
   const [options, setOptions] = useState(['Bicicleta', 'Skate', 'Patins', 'Bola', 'Tenis', 'Violão']);
@@ -186,11 +187,20 @@ export function RoletaSorteio() {
   };
 
   const addOption = () => {
-    if (newOption.trim() && options.length < 12) {
-      setOptions([...options, newOption.trim()]);
-      setNewOption('');
+    const word = newOption.trim();
+    if (!word) {
+      setError('Você deve digitar uma palavra.');
+      return;
     }
-  };
+    if (options.includes(word)) {
+      setError('Esta palavra já foi adicionada.');
+      return;
+    }
+
+    setOptions([...options, newOption.trim()]);
+    setNewOption('');
+    setError(null);
+    };
 
   const removeOption = (index) => {
     if (options.length > 1) {
@@ -289,6 +299,7 @@ export function RoletaSorteio() {
                  onKeyDown={(e) => {
                   if (e.key === 'Enter') {
                     handleAddWord();
+                    setError(null);
                   }
                 }}
                 placeholder="Nova opção"
@@ -303,6 +314,7 @@ export function RoletaSorteio() {
                 + Adicionar
               </button>
             </div>
+            {error && <p className="mb-1 text-sm text-red-600">{error}</p>}
             
             <div className="max-h-64 overflow-y-auto mb-4">
               <ul className="divide-y divide-gray-200">
