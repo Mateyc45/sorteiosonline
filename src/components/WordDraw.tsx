@@ -11,6 +11,7 @@ import Perguntas from './perguntas';
 export function WordDraw() {
   window.scrollTo(0, 0);
   
+  const [error, setError] = useState<string | null>(null);
   const [words, setWords] = useState<string[]>([]);
   const [newWord, setNewWord] = useState('');
   const [result, setResult] = useState<string | null>(null);
@@ -18,11 +19,20 @@ export function WordDraw() {
   const [sorteioTime, setsorteioTime] = useState<string | null>(null);
 
   const handleAddWord = () => {
-    if (newWord.trim()) {
-      setWords([...words, newWord.trim()]);
-      setNewWord('');
-    }
-  };
+  const word = newWord.trim();
+  if (!word) {
+    setError('Você deve digitar uma palavra.');
+    return;
+  }
+  if (words.includes(word)) {
+    setError('Esta palavra já foi adicionada.');
+    return;
+  }
+
+  setWords([...words, word]);
+  setNewWord('');
+  setError(null);
+};
 
   const handleRemoveWord = (index: number) => {
     setWords(words.filter((_, i) => i !== index));
@@ -144,7 +154,7 @@ export function WordDraw() {
         </div>
 
         <div className="mb-8 rounded-lg bg-white p-6 shadow-sm">
-          <div className="mb-4">
+          <div className="">
             <label className="block text-sm font-medium text-gray-700 mb-2">
               Adicionar Palavra ou Nome
             </label>
@@ -152,12 +162,11 @@ export function WordDraw() {
               <input
                 type="text"
                 value={newWord}
-                onChange={(e) => setNewWord(e.target.value)}
-                onKeyDown={(e) => {
-                  if (e.key === 'Enter') {
-                    handleAddWord();
-                  }
+                onChange={(e) => {
+                  setNewWord(e.target.value);
+                  setError(null); // limpa o erro ao digitar
                 }}
+                onKeyDown={(e) => e.key === 'Enter' && handleAddWord()}
                 placeholder="Digite uma palavra ou nome"
                 className="block w-full rounded-md border border-gray-300 px-4 py-3 text-lg shadow-sm focus:border-green-500 focus:outline-none focus:ring-2 focus:ring-green-500/20"
               />
@@ -171,9 +180,12 @@ export function WordDraw() {
             </div>
           </div>
 
+          
+        {error && <p className="mb-1 text-sm text-red-600">{error}</p>}
+
           {words.length > 0 && (
             <div>
-              <p className="text-sm font-medium text-gray-700 mb-3">Palavras adicionadas:</p>
+              <p className="text-sm font-medium text-gray-700 mt-3 mb-3">Palavras adicionadas:</p>
               <div className="flex flex-wrap gap-2">
                 {words.map((word, index) => (
                   <div
