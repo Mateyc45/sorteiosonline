@@ -37,13 +37,13 @@ const raffleTypes = [
     path: '/roleta',
     gradient: 'from-yellow-400 to-yellow-100',
   },
-  {
+  /*{
     title: 'Sortear Equipes',
     description: 'Faça o sorteio de equipes para diversas atividades',
     icon: <Users className="h-6 w-6" style={{ color: '#0F766E' }}/>,
     path: '/Sortear-Equipes',
     gradient: 'from-teal-400 to-teal-100',
-  }
+  }*/
 ];
 
 export function NumberDraw() {

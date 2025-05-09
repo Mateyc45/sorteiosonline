@@ -1858,7 +1858,7 @@ export function BlogPost() {
       <Helmet>
         <title>{post.title} - Vamo Sortear Blog</title>
         <meta name="description" content={post.excerpt} />
-        <meta name="keywords" content={post.tags.join(', ')} />
+        <meta name="keywords" content={post.tags.join(', ')} /> 
         <meta property="og:title" content={`${post.title} - Vamo Sortear Blog`} />
         <meta property="og:description" content={post.excerpt} />
         <meta property="og:image" content={post.imageUrl} />

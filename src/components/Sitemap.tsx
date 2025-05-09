@@ -141,14 +141,6 @@ export function Sitemap() {
                   Organize seu amigo secreto com sorteio automático e envio por email
                 </p>
               </li>
-              <li>
-                <Link to="/Sortear-Equipes" className="text-blue-600 hover:underline">
-                  Sortear Equipes
-                </Link>
-                <p className="text-sm text-gray-600 mt-1">
-                Faça o sorteio de equipes para diversas atividades
-                </p>
-              </li>
             </ul>
           </section>
 
