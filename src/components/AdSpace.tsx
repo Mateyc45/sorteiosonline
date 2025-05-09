@@ -23,7 +23,7 @@ export function AdSpace() {
           ref={adRef}
           className="adsbygoogle"
           style={{ display: 'block' }}
-          data-ad-client="ca-pub-6732428339083295"
+          data-ad-client="pub-6732428339083295"
           data-ad-slot="YOUR_AD_SLOT"
           data-ad-format="auto"
           data-full-width-responsive="true"

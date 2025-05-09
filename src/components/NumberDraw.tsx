@@ -49,6 +49,7 @@ const raffleTypes = [
 export function NumberDraw() {
   useEffect(() => {
     window.scrollTo(0, 0);
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6732428339083295" crossOrigin="anonymous"></script>
   }, []);
 
   const [min, setMin] = useState(1);

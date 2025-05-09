@@ -52,6 +52,8 @@ function App() {
     // Update metadata
     document.title = seoMetadata.title;
     
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6732428339083295" crossOrigin="anonymous"></script>
+
     const metaTags = [
       { name: 'description', content: seoMetadata.description },
       { name: 'keywords', content: seoMetadata.keywords },
