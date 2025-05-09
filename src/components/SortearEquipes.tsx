@@ -77,6 +77,44 @@ export function SortearEquipes() {
         <meta name="twitter:title" content="Sortear Equipes Online - Rápido e Fácil | Vamo Sortear" />
         <meta name="twitter:description" content="Sortear equipes online de forma simples, rápida e personalizada. Organize seus sorteios com facilidade no Vamo Sortear. Experimente agora!" />
         <meta name="twitter:image" content="https://vamosortear.com.br/assets/sortear-equipes-thumbnail.jpg" />
+
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "name": "Sortear Equipes Online - Rápido e Fácil | Vamo Sortear",
+            "description": "Sortear equipes online de forma simples, rápida e personalizada. Organize seus sorteios com facilidade no Vamo Sortear. Experimente agora!",
+            "url": "https://vamosortear.com.br/Sortear-Equipes",
+            "publisher": {
+              "@type": "Organization",
+              "name": "VamoSortear",
+              "logo": {
+          "@type": "ImageObject",
+          "url": "https://vamosortear.com.br/logo.png",
+          "width": 1200,
+          "height": 630
+              }
+            },
+            "mainEntity": {
+              "@type": "WebApplication",
+              "name": "VamoSortear",
+              "operatingSystem": ["Windows", "macOS", "Linux", "Android", "iOS"],
+              "applicationCategory": "UtilityApplication",
+              "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "BRL"
+              }
+            },
+            "potentialAction": {
+              "@type": "SearchAction",
+              "target": "https://vamosortear.com.br/?q={search_term_string}",
+              "query-input": "required name=search_term_string"
+            },
+            "isAccessibleForFree": true,
+            "inLanguage": ["pt-BR", "en"]
+          })}
+        </script>
       </Helmet>
 
       

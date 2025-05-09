@@ -105,6 +105,67 @@ export function NumberDraw() {
         <meta name="twitter:title" content="Sorteio de Números Online Grátis - Vamo Sortear" />
         <meta name="twitter:description" content="Sorteie números aleatórios online de forma simples e gratuita. Ideal para rifas, jogos e decisões rápidas." />
         <meta name="twitter:image" content="https://vamosortear.com.br/assets/sorteio-numeros.png" />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "name": "Sorteio de Números Online Grátis - Vamo Sortear",
+            "description":
+              "Realize sorteios de números online de forma rápida, fácil e gratuita. Escolha um intervalo e descubra o número sorteado no Vamo Sortear.",
+            "url": "https://vamosortear.com.br/Sortear-Numero",
+            "publisher": {
+              "@type": "Organization",
+              "name": "Vamo Sortear",
+              "logo": {
+                "@type": "ImageObject",
+                "url": "https://vamosortear.com.br/logo.png",
+                "width": 1200,
+                "height": 630,
+              },
+            },
+            "image": "https://vamosortear.com.br/assets/sorteio-numeros.png",
+            "mainEntity": {
+              "@type": "WebApplication",
+              "name": "Vamo Sortear",
+              "operatingSystem": "All",
+              "applicationCategory": "UtilityApplication",
+              "offers": {
+                "@type": "Offer",
+                "price": "0",
+                "priceCurrency": "BRL",
+              },
+            },
+            "potentialAction": [
+              {
+                "@type": "SearchAction",
+                "target": "https://vamosortear.com.br/?q={search_term_string}",
+                "query-input": "required name=search_term_string",
+              },
+              {
+                "@type": "Action",
+                "name": "Sortear Números",
+                "target": "https://vamosortear.com.br/Sortear-Numero",
+              },
+            ],
+            "breadcrumb": {
+              "@type": "BreadcrumbList",
+              "itemListElement": [
+                {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Início",
+            "item": "https://vamosortear.com.br/",
+                },
+                {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Sortear Números",
+            "item": "https://vamosortear.com.br/Sortear-Numero",
+                },
+              ],
+            },
+          })}
+              </script>
       </Helmet>
       <div className="mb-4">
         <Link

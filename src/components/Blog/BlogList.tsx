@@ -413,6 +413,75 @@ export function BlogList() {
         <meta name="twitter:title" content="Blog Sorteios Online | Dicas, Tutoriais e Novidades sobre Sorteios" />
         <meta name="twitter:description" content="Dicas e tutoriais sobre sorteios online, amigo secreto, LGPD e muito mais. Descubra funcionalidades incríveis para criar sorteios grátis e engajantes!" />
         <meta name="twitter:image" content="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80" />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "name": "Blog Sorteios Online | Dicas, Tutoriais e Novidades sobre Sorteios",
+            "description":
+              "Descubra dicas, tutoriais e novidades sobre sorteios online, amigo secreto, LGPD e muito mais. Aprenda as melhores práticas para criar sorteios seguros, engajantes e eficazes.",
+            "url": "https://www.seusite.com/blog",
+            "publisher": {
+              "@type": "Organization",
+              "name": "Marcos & Matheus",
+              "logo": {
+                "@type": "ImageObject",
+                "url": "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80",
+                "width": 800,
+                "height": 600,
+              },
+            },
+            "image": "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80",
+            "mainEntity": {
+              "@type": "Blog",
+              "name": "Blog Sorteios Online",
+              "blogPost": blogPosts.map((post) => ({
+                "@type": "BlogPosting",
+                "headline": post.title,
+                "description": post.excerpt,
+                "url": `https://www.seusite.com/blog/${post.slug}`,
+                "datePublished": post.publishedAt.toISOString(),
+                "image": post.imageUrl,
+                "author": {
+            "@type": "Person",
+            "name": "Marcos & Matheus",
+                },
+                "publisher": {
+            "@type": "Organization",
+            "name": "Marcos & Matheus",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80",
+            },
+                },
+              })),
+            },
+            "potentialAction": [
+              {
+                "@type": "SearchAction",
+                "target": "https://www.seusite.com/blog?q={search_term_string}",
+                "query-input": "required name=search_term_string",
+              },
+            ],
+            "breadcrumb": {
+              "@type": "BreadcrumbList",
+              "itemListElement": [
+                {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Início",
+            "item": "https://www.seusite.com/",
+                },
+                {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Blog",
+            "item": "https://www.seusite.com/blog",
+                },
+              ],
+            },
+          })}
+              </script>
       </Helmet>
 
       <div className="mb-8">

@@ -229,6 +229,68 @@ export function SecretSantaDraw() {
         <meta name="twitter:title" content="Amigo Secreto Online Grátis - Organize e Sorteie com Facilidade" />
         <meta name="twitter:description" content="Facilite seu amigo secreto com nossa ferramenta online gratuita. Sorteio automático e envio de emails personalizados. Ideal para amigos, família e empresas!" />
         <meta name="twitter:image" content="https://vamosortear.com.br/assets/amigo-secreto-banner.jpg" />
+
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "name": "Amigo Secreto Online Grátis - Organize e Sorteie com Facilidade",
+            "description":
+              "Organize seu amigo secreto online de forma fácil, rápida e gratuita. Sorteio automático com envio de emails personalizados para cada participante. Experimente agora!",
+            "url": "https://vamosortear.com.br/Amigo-Secreto",
+            "publisher": {
+              "@type": "Organization",
+              "name": "Vamo Sortear",
+              "logo": {
+          "@type": "ImageObject",
+          "url": "https://vamosortear.com.br/logo.png",
+          "width": 1200,
+          "height": 630,
+              },
+            },
+            "image": "https://vamosortear.com.br/assets/amigo-secreto-banner.jpg",
+            "mainEntity": {
+              "@type": "WebApplication",
+              "name": "Vamo Sortear",
+              "operatingSystem": "All",
+              "applicationCategory": "UtilityApplication",
+              "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "BRL",
+              },
+            },
+            "potentialAction": [
+              {
+          "@type": "SearchAction",
+          "target": "https://vamosortear.com.br/?q={search_term_string}",
+          "query-input": "required name=search_term_string",
+              },
+              {
+          "@type": "Action",
+          "name": "Organizar Amigo Secreto",
+          "target": "https://vamosortear.com.br/Amigo-Secreto",
+              },
+            ],
+            "breadcrumb": {
+              "@type": "BreadcrumbList",
+              "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Início",
+            "item": "https://vamosortear.com.br/",
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Amigo Secreto",
+            "item": "https://vamosortear.com.br/Amigo-Secreto",
+          },
+              ],
+            },
+          })}
+        </script>
       </Helmet>
       <div className="mb-4">
         <Link

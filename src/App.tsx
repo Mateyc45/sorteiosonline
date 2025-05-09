@@ -217,21 +217,57 @@ function App() {
 function HomePage({ raffleTypes }) {
   return (
     <div className="space-y-12">
-      <Helmet> 
-          <title>VamoSortear - O Jeito Mais Fácil e Simples de sortear algo! Totalmente Gratis</title>
-          <meta name="description" content="Sorteie números de forma simples e rápida no VamoSortear. Totalmente Gratis" />
-          <meta name="robots" content="index, follow" />
-          <link rel="canonical" href="https://vamosortear.com.br/" />
-          <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
-          <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
-          <meta name="keywords" content="sorteio, sorteios, vamo sortear, sorteio online, sortear numero, sortear numeros, sorteando numero, amigo secreto, sortear palavra, roleta, roleta online" />
-          <meta name="author" content="Marcos & Matheus"></meta>
+      <Helmet>
+        <title>VamoSortear - O Jeito Mais Fácil e Simples de sortear algo! Totalmente Gratis</title>
+        <meta name="description" content="Sorteie números de forma simples e rápida no VamoSortear. Totalmente Gratis" />
+        <meta name="robots" content="index, follow" />
+        <link rel="canonical" href="https://vamosortear.com.br/" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+        <meta name="keywords" content="sorteio, sorteios, vamo sortear, sorteio online, sortear numero, sortear numeros, sorteando numero, amigo secreto, sortear palavra, roleta, roleta online" />
+        <meta name="author" content="Marcos & Matheus"></meta>
 
-          <meta property="og:image" content="https://vamosortear.com.br/logo.png" />
-          <meta property="og:image:alt" content="Logo Vamo Sortear - Plataforma de Sorteios Grátis" />
-          <meta property="og:image:type" content="image/png" />
-          <meta property="og:image:width" content="1200" />
-          <meta property="og:image:height" content="630" />
+        <meta property="og:image" content="https://vamosortear.com.br/logo.png" />
+        <meta property="og:image:alt" content="Logo Vamo Sortear - Plataforma de Sorteios Grátis" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+
+        <script type="application/ld+json">
+          {JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "VamoSortear - O Jeito Mais Fácil e Simples de sortear algo! Totalmente Gratis",
+        "description": "Sorteie números, palavras, sequências e organize amigo secreto de forma simples, rápida e gratuita no VamoSortear.",
+        "url": "https://vamosortear.com.br/",
+        "publisher": {
+          "@type": "Organization",
+          "name": "VamoSortear",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://vamosortear.com.br/logo.png",
+            "width": 1200,
+            "height": 630
+          }
+        },
+        "mainEntity": {
+          "@type": "WebApplication",
+          "name": "VamoSortear",
+          "operatingSystem": "All",
+          "applicationCategory": "UtilityApplication",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "BRL"
+          }
+        },
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://vamosortear.com.br/?q={search_term_string}",
+          "query-input": "required name=search_term_string"
+        }
+          })}
+        </script>
       </Helmet>
       {/* Hero Section */}
 
