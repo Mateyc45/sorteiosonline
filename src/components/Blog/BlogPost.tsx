@@ -5,6 +5,7 @@ import { HomeIcon, BookOpenIcon, TagIcon, CalendarIcon, ShareIcon, FacebookIcon,
 import { format } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
 import { AdSpace } from '../AdSpace';
+import BlogSugerido from './BlogSugerido';
 
 const blogPosts = {
   'inteligencia-artificial-em-sorteios':{
@@ -1849,6 +1850,7 @@ export function BlogPost() {
   }
 
   const post = blogPosts[slug];
+  const currentBlog = post;
   const shareUrl = window.location.href;
 
   return (
@@ -1963,7 +1965,9 @@ export function BlogPost() {
 
 
         <footer className="mt-8 border-t border-gray-200 pt-8">
-          <div className="flex items-center gap-2">
+          <h1 className="text-3xl font-bold text-gray-900 mb-4 mt-4 text-center">• Leia também •</h1>
+          <BlogSugerido currentBlog={currentBlog} allBlogs={Object.values(blogPosts)} />
+          <div className="flex items-center gap-2 mt-4">
             <TagIcon className="h-4 w-4 text-gray-400" />
             <div className="flex flex-col sm:flex-row gap-2">
               {post.tags.map((tag: string) => (
@@ -1978,8 +1982,7 @@ export function BlogPost() {
           </div>
         </footer>
       </article>
-
-
+      
     </div>
   );
 }
