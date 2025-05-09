@@ -234,45 +234,60 @@ function HomePage({ raffleTypes }) {
           <meta property="og:image:height" content="630" />
       </Helmet>
       {/* Hero Section */}
-      <div className="text-center">
-        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-pink-500 to-violet-500 text-white text-sm font-medium mb-6">
-          <SparklesIcon className="h-4 w-4"  />
-          <span>Mais de 10.000 sorteios realizados!</span>
+
+      <div className="mt-0 pt-0">
+        <div className="text-center">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-pink-500 to-violet-500 text-white text-sm font-medium mb-6">
+            <SparklesIcon className="h-4 w-4"  />
+            <span>Mais de 10.000 sorteios realizados!</span>
+          </div>
+          <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl mb-4">
+            Vamos Sortear Online  e Grátis
+          </h1>
+
+          <p className="text-xl text-gray-600 max-w-4xl mx-auto mb-2">
+            Precisa realizar sorteios de forma rápida, segura e transparente? 
+            O VamoSortear é a solução ideal para você! Nossa plataforma simplifica todo o processo em apenas alguns cliques.
+          </p>
+        
         </div>
-        <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl mb-4">
-          Vamos Sortear Online  e Grátis
-        </h1>
-        <p className="text-xl text-gray-600 max-w-4xl mx-auto mb-2">
-          Precisa realizar sorteios de forma rápida, segura e transparente? 
-          O VamoSortear é a solução ideal para você! Nossa plataforma simplifica todo o processo em apenas alguns cliques.
-        </p>
-        <p className="text-xl text-gray-600 max-w-4xl mx-auto mb-2">
-          Sorteie nomes, números ou itens com resultados 100% confiáveis. 
-          Perfeito para empresas, influenciadores e qualquer pessoa que busque praticidade.
-        </p>
-        <p className="text-xl text-gray-600 max-w-4xl mx-auto mb-2">
-          Escolha uma das opções e comece agora mesmo, sem cadastro! 
-        </p>
-        <p className="text-xl text-gray-600 max-w-5xl mx-auto">
-          COMECE SEU SORTEIO AGORA! Junte-se aos milhares de brasileiros que já confiam em nossa plataforma.
-        </p>
-      </div>
 
-      {/* Features Grid */}
-      <div className="flex flex-wrap justify-center gap-6">
-        {raffleTypes.map((raffle) => (
-          <Link key={raffle.title} to={raffle.path} className="w-[550px] min-h-[100px]">
-            <RaffleCard
-              title={raffle.title}
-              description={raffle.description}
-              icon={raffle.icon}
-              gradient={raffle.gradient}
-              onClick={() => {}}
-            />
-          </Link>
-        ))}
-      </div>
+        
+        <div className="flex flex-col-reverse lg:flex-col gap-2 items-center">
+          <div className='text-center'>
+            <p className="text-xl text-gray-600 max-w-4xl mx-auto mb-2">
+              Sorteie nomes, números ou itens com resultados 100% confiáveis. 
+              Perfeito para empresas, influenciadores e qualquer pessoa que busque praticidade.
+            </p>
+            <p className="text-xl text-gray-600 max-w-4xl mx-auto mb-2">
+              Escolha uma das opções e comece agora mesmo, sem cadastro! 
+            </p>
+            <p className="text-xl text-gray-600 max-w-5xl mx-auto">
+              COMECE SEU SORTEIO AGORA! Junte-se aos milhares de brasileiros que já confiam em nossa plataforma.
+            </p>
+          </div>
+        
 
+            {/* Features Grid */}
+          <div className="flex flex-wrap justify-center gap-6 mt-8 mb-8">
+            {raffleTypes.map((raffle) => (
+              <Link
+                key={raffle.title}
+                to={raffle.path}
+                className="w-full sm:w-[550px] min-h-[100px]"
+              >
+                <RaffleCard
+                title={raffle.title}
+                description={raffle.description}
+                icon={raffle.icon}
+                gradient={raffle.gradient}
+                onClick={() => {}}
+                />
+              </Link>
+            ))}
+          </div>
+        </div>
+      </div>
       {/* Benefits Section */}
       <div className="bg-white rounded-2xl p-8 shadow-sm border border-gray-200">
         <h2 className="text-2xl font-semibold text-gray-900 mb-8 text-center">
