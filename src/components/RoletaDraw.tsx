@@ -13,6 +13,7 @@ export function RoletaSorteio() {
         window.scrollTo(0, 0);
       }, []);
 //const RoletaSorteio = () => {
+  const [error, setError] = useState<string | null>(null);
   const [rotating, setRotating] = useState(false);
   const [result, setResult] = useState(null);
   const [options, setOptions] = useState(['Bicicleta', 'Skate', 'Patins', 'Bola', 'Tenis', 'Violão']);
@@ -24,7 +25,7 @@ export function RoletaSorteio() {
 
   const canvasRef = useRef(null);
 
-  const colors = ['#FF6384', '#36A2EB', '#FFCE56', '#4BC0C0', '#9966FF', '#FF9F40', '#C9CBCF', '#7BC043', '#F37736', '#FFC425'];
+  const colors = ['#FF4500', '#32CD32', '#1E90FF', '#FF1493', '#8A2BE2', '#20B2AA', '#FFD700', '#FF6347', '#3CB371', '#6A5ACD', '#DC143C', '#00FA9A'];
 
   const raffleTypes = [
     {
@@ -94,8 +95,17 @@ export function RoletaSorteio() {
       ctx.fillStyle = colors[index % colors.length];
       ctx.fill();
       
-      const currentTime = new Date().toLocaleString(); // Formata a data e hora como string legível
-      setsorteioTime(currentTime);
+      const agora = new Date();
+      const twoDigits = (num: number) => num.toString().padStart(2, '0');
+      const TimeFormatado = 
+        `${twoDigits(agora.getDate())}/` +
+        `${twoDigits(agora.getMonth() + 1)}/` +
+        `${agora.getFullYear()} - ` +
+        `${twoDigits(agora.getHours())}:` +
+        `${twoDigits(agora.getMinutes())}:` +
+        `${twoDigits(agora.getSeconds())}`;
+
+      setsorteioTime(TimeFormatado);
 
       // Draw text
       ctx.save();
@@ -177,11 +187,20 @@ export function RoletaSorteio() {
   };
 
   const addOption = () => {
-    if (newOption.trim() && options.length < 12) {
-      setOptions([...options, newOption.trim()]);
-      setNewOption('');
+    const word = newOption.trim();
+    if (!word) {
+      setError('Você deve digitar uma palavra.');
+      return;
     }
-  };
+    if (options.includes(word)) {
+      setError('Esta palavra já foi adicionada.');
+      return;
+    }
+
+    setOptions([...options, newOption.trim()]);
+    setNewOption('');
+    setError(null);
+    };
 
   const removeOption = (index) => {
     if (options.length > 1) {
@@ -215,6 +234,68 @@ export function RoletaSorteio() {
           <meta name="twitter:title" content="Roleta Online Personalizada - Vamo Sortear" />
           <meta name="twitter:description" content="Crie e personalize sua roleta online para sorteios divertidos e justos. Descubra o resultado com um clique!" />
           <meta name="twitter:image" content="https://vamosortear.com.br/assets/roleta-preview.png" />
+
+            <script type="application/ld+json">
+              {JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "WebPage",
+                "name": "Roleta Online Personalizada - Sorteios Divertidos e Justos | Vamo Sortear",
+                "description":
+                "Crie sua roleta online personalizada para sorteios justos e divertidos. Descubra o resultado com um clique! Experimente agora no Vamo Sortear.",
+                "url": "https://vamosortear.com.br/roleta",
+                "publisher": {
+                "@type": "Organization",
+                "name": "Vamo Sortear",
+                "logo": {
+                  "@type": "ImageObject",
+                  "url": "https://vamosortear.com.br/logo.png",
+                  "width": 1200,
+                  "height": 630,
+                },
+                },
+                "image": "https://vamosortear.com.br/assets/roleta-preview.png",
+                "mainEntity": {
+                "@type": "WebApplication",
+                "name": "Vamo Sortear",
+                "operatingSystem": "All",
+                "applicationCategory": "UtilityApplication",
+                "offers": {
+                  "@type": "Offer",
+                  "price": "0",
+                  "priceCurrency": "BRL",
+                },
+                },
+                "potentialAction": [
+                {
+                  "@type": "SearchAction",
+                  "target": "https://vamosortear.com.br/?q={search_term_string}",
+                  "query-input": "required name=search_term_string",
+                },
+                {
+                  "@type": "Action",
+                  "name": "Criar Roleta",
+                  "target": "https://vamosortear.com.br/roleta",
+                },
+                ],
+                "breadcrumb": {
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                  {
+                  "@type": "ListItem",
+                  "position": 1,
+                  "name": "Início",
+                  "item": "https://vamosortear.com.br/",
+                  },
+                  {
+                  "@type": "ListItem",
+                  "position": 2,
+                  "name": "Roleta Online",
+                  "item": "https://vamosortear.com.br/roleta",
+                  },
+                ],
+                },
+              })}
+              </script>
         </Helmet>
       <div className="mb-4">
         <Link
@@ -280,6 +361,7 @@ export function RoletaSorteio() {
                  onKeyDown={(e) => {
                   if (e.key === 'Enter') {
                     handleAddWord();
+                    setError(null);
                   }
                 }}
                 placeholder="Nova opção"
@@ -294,6 +376,7 @@ export function RoletaSorteio() {
                 + Adicionar
               </button>
             </div>
+            {error && <p className="mb-1 text-sm text-red-600">{error}</p>}
             
             <div className="max-h-64 overflow-y-auto mb-4">
               <ul className="divide-y divide-gray-200">

@@ -17,6 +17,67 @@ export function Sitemap() {
         <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
         <meta name="keywords" content="sorteio, sorteios, vamo sortear, sorteio online, mapa do site" />
         <meta name="author" content="Marcos & Matheus"></meta>
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "name": "Mapa do Site - Vamo Sortear",
+            "description":
+              "Explore todas as páginas de nosso site e descubra todos os sorteios que podem te interessar, desde números até roleta e amigo secreto! Vem sortear no vamosortear.com.br",
+            "url": "https://vamosortear.com.br/sitemap",
+            "publisher": {
+              "@type": "Organization",
+              "name": "Vamo Sortear",
+              "logo": {
+                "@type": "ImageObject",
+                "url": "https://vamosortear.com.br/logo.png",
+                "width": 1200,
+                "height": 630,
+              },
+            },
+            "image": "https://vamosortear.com.br/assets/images/sitemap.png",
+            "mainEntity": {
+              "@type": "WebApplication",
+              "name": "Vamo Sortear",
+              "operatingSystem": "All",
+              "applicationCategory": "UtilityApplication",
+              "offers": {
+                "@type": "Offer",
+                "price": "0",
+                "priceCurrency": "BRL",
+              },
+            },
+            "potentialAction": [
+              {
+                "@type": "SearchAction",
+                "target": "https://vamosortear.com.br/?q={search_term_string}",
+                "query-input": "required name=search_term_string",
+              },
+              {
+                "@type": "Action",
+                "name": "Mapa do Site",
+                "target": "https://vamosortear.com.br/sitemap",
+              },
+            ],
+            "breadcrumb": {
+              "@type": "BreadcrumbList",
+              "itemListElement": [
+                {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Início",
+            "item": "https://vamosortear.com.br/",
+                },
+                {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Mapa do Site",
+            "item": "https://vamosortear.com.br/sitemap",
+                },
+              ],
+            },
+          })}
+              </script>
             </Helmet>
       <div className="mb-4">
         <Link

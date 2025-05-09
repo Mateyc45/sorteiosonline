@@ -7,15 +7,64 @@ export function TermsOfUse() {
   window.scrollTo(0, 0);
   return (
     <div className="mx-auto max-w-3xl px-4 py-8">
-            <Helmet> 
-                    <title>Termo de Uso - Vamo Sortear</title>
-                    <meta name="description" content="Descubra quais são nossos termos de uso para realizar seus sorteios online sabendo tudo!!!" />
-                    <meta name="robots" content="index, follow" />
-                    <link rel="canonical" href="https://vamosortear.com.br/termos" />
-                    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
-        <meta name="keywords" content="sorteio, sorteios, vamo sortear, sorteio online, termos, termos de uso" />
-        <meta name="author" content="Marcos & Matheus"></meta>
+            <Helmet>
+              <title>Termo de Uso - Vamo Sortear</title>
+              <meta
+                name="description"
+                content="Descubra quais são nossos termos de uso para realizar seus sorteios online sabendo tudo!!!"
+              />
+              <meta name="robots" content="index, follow" />
+              <link rel="canonical" href="https://vamosortear.com.br/termos" />
+              <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+              <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+              <meta
+                name="keywords"
+                content="sorteio, sorteios, vamo sortear, sorteio online, termos, termos de uso"
+              />
+              <meta name="author" content="Marcos & Matheus" />
+              <script type="application/ld+json">
+                {JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebPage",
+              "name": "Termos de Uso - Vamo Sortear",
+              "description":
+                "Confira os Termos de Uso do Vamo Sortear e saiba como utilizar nossa plataforma de sorteios online de forma segura e responsável.",
+              "url": "https://vamosortear.com.br/termos",
+              "publisher": {
+                "@type": "Organization",
+                "name": "Vamo Sortear",
+                "logo": {
+                  "@type": "ImageObject",
+                  "url": "https://vamosortear.com.br/logo.png",
+                  "width": 1200,
+                  "height": 630,
+                },
+              },
+              "image": "https://vamosortear.com.br/assets/images/termos-de-uso.png",
+              "mainEntity": {
+                "@type": "WebPage",
+                "name": "Termos de Uso",
+                "about": "Termos e condições de uso do Vamo Sortear",
+              },
+              "breadcrumb": {
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                  {
+                "@type": "ListItem",
+                "position": 1,
+                "name": "Início",
+                "item": "https://vamosortear.com.br/",
+                  },
+                  {
+                "@type": "ListItem",
+                "position": 2,
+                "name": "Termos de Uso",
+                "item": "https://vamosortear.com.br/termos",
+                  },
+                ],
+              },
+                })}
+              </script>
             </Helmet>
       <div className="mb-4">
         <Link

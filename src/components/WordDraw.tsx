@@ -11,6 +11,7 @@ import Perguntas from './perguntas';
 export function WordDraw() {
   window.scrollTo(0, 0);
   
+  const [error, setError] = useState<string | null>(null);
   const [words, setWords] = useState<string[]>([]);
   const [newWord, setNewWord] = useState('');
   const [result, setResult] = useState<string | null>(null);
@@ -18,11 +19,20 @@ export function WordDraw() {
   const [sorteioTime, setsorteioTime] = useState<string | null>(null);
 
   const handleAddWord = () => {
-    if (newWord.trim()) {
-      setWords([...words, newWord.trim()]);
-      setNewWord('');
-    }
-  };
+  const word = newWord.trim();
+  if (!word) {
+    setError('Você deve digitar uma palavra.');
+    return;
+  }
+  if (words.includes(word)) {
+    setError('Esta palavra já foi adicionada.');
+    return;
+  }
+
+  setWords([...words, word]);
+  setNewWord('');
+  setError(null);
+};
 
   const handleRemoveWord = (index: number) => {
     setWords(words.filter((_, i) => i !== index));
@@ -33,8 +43,17 @@ export function WordDraw() {
       setIsDrawing(true);
       setResult(null);
 
-      const currentTime = new Date().toLocaleString();
-      setsorteioTime(currentTime);
+    const agora = new Date();
+    const twoDigits = (num: number) => num.toString().padStart(2, '0');
+    const TimeFormatado = 
+      `${twoDigits(agora.getDate())}/` +
+      `${twoDigits(agora.getMonth() + 1)}/` +
+      `${agora.getFullYear()} - ` +
+      `${twoDigits(agora.getHours())}:` +
+      `${twoDigits(agora.getMinutes())}:` +
+      `${twoDigits(agora.getSeconds())}`;
+
+    setsorteioTime(TimeFormatado);
 
       await new Promise(resolve => setTimeout(resolve, 1500));
       
@@ -86,24 +105,107 @@ export function WordDraw() {
 
   return (
     <div className="mx-auto max-w-2xl">
-            <Helmet> 
-                <title>Sortear Palavras Online - Sorteios Personalizados | Vamo Sortear</title>
-                <meta name="description" content="Sorteie palavras ou nomes de forma simples, rápida e personalizada. Experimente o sorteio online mais confiável e fácil no Vamo Sortear!" />
-                <meta name="robots" content="index, follow" />
-                <link rel="canonical" href="https://vamosortear.com.br/Sortear-Palavras" />
-                <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
-                <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
-                <meta name="keywords" content="sorteio de palavras, sorteio online, sortear nomes, sorteio personalizado, sorteio confiável, Vamo Sortear, ferramenta de sorteio" />
-                <meta name="author" content="Vamo Sortear"></meta>
-                <meta property="og:title" content="Sortear Palavras Online - Sorteios Personalizados | Vamo Sortear" />
-                <meta property="og:description" content="Descubra a melhor ferramenta para sortear palavras ou nomes de forma aleatória e justa. Experimente agora no Vamo Sortear!" />
-                <meta property="og:url" content="https://vamosortear.com.br/Sortear-Palavras" />
-                <meta property="og:type" content="website" />
-                <meta property="og:image" content="https://vamosortear.com.br/assets/images/sorteio-palavras.png" />
-                <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:title" content="Sortear Palavras Online - Sorteios Personalizados | Vamo Sortear" />
-                <meta name="twitter:description" content="Sorteie palavras ou nomes de forma simples, rápida e personalizada. Experimente o sorteio online mais confiável e fácil no Vamo Sortear!" />
-                <meta name="twitter:image" content="https://vamosortear.com.br/assets/images/sorteio-palavras.png" />
+            <Helmet>
+              <title>Sortear Palavras Online - Sorteios Personalizados | Vamo Sortear</title>
+              <meta
+                name="description"
+                content="Sorteie palavras ou nomes de forma simples, rápida e personalizada. Experimente o sorteio online mais confiável e fácil no Vamo Sortear!"
+              />
+              <meta name="robots" content="index, follow" />
+              <link rel="canonical" href="https://vamosortear.com.br/Sortear-Palavras" />
+              <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+              <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+              <meta
+                name="keywords"
+                content="sorteio de palavras, sorteio online, sortear nomes, sorteio personalizado, sorteio confiável, Vamo Sortear, ferramenta de sorteio"
+              />
+              <meta name="author" content="Vamo Sortear"></meta>
+              <meta
+                property="og:title"
+                content="Sortear Palavras Online - Sorteios Personalizados | Vamo Sortear"
+              />
+              <meta
+                property="og:description"
+                content="Descubra a melhor ferramenta para sortear palavras ou nomes de forma aleatória e justa. Experimente agora no Vamo Sortear!"
+              />
+              <meta property="og:url" content="https://vamosortear.com.br/Sortear-Palavras" />
+              <meta property="og:type" content="website" />
+              <meta property="og:image" content="https://vamosortear.com.br/assets/images/sorteio-palavras.png" />
+              <meta name="twitter:card" content="summary_large_image" />
+              <meta
+                name="twitter:title"
+                content="Sortear Palavras Online - Sorteios Personalizados | Vamo Sortear"
+              />
+              <meta
+                name="twitter:description"
+                content="Sorteie palavras ou nomes de forma simples, rápida e personalizada. Experimente o sorteio online mais confiável e fácil no Vamo Sortear!"
+              />
+              <meta
+                name="twitter:image"
+                content="https://vamosortear.com.br/assets/images/sorteio-palavras.png"
+              />
+
+              <script type="application/ld+json">
+                {JSON.stringify({
+                  "@context": "https://schema.org",
+                  "@type": "WebPage",
+                  "name": "Sortear Palavras Online - Sorteios Personalizados | Vamo Sortear",
+                  "description":
+                    "Sorteie palavras ou nomes de forma simples, rápida e personalizada. Experimente o sorteio online mais confiável e fácil no Vamo Sortear!",
+                  "url": "https://vamosortear.com.br/Sortear-Palavras",
+                  "publisher": {
+                    "@type": "Organization",
+                    "name": "Vamo Sortear",
+                    "logo": {
+                      "@type": "ImageObject",
+                      "url": "https://vamosortear.com.br/logo.png",
+                      "width": 1200,
+                      "height": 630,
+                    },
+                  },
+                  "image": "https://vamosortear.com.br/assets/images/sorteio-palavras.png",
+                  "mainEntity": {
+                    "@type": "WebApplication",
+                    "name": "Vamo Sortear",
+                    "operatingSystem": "All",
+                    "applicationCategory": "UtilityApplication",
+                    "offers": {
+                      "@type": "Offer",
+                      "price": "0",
+                      "priceCurrency": "BRL",
+                    },
+                  },
+                  "potentialAction": [
+                    {
+                      "@type": "SearchAction",
+                      "target": "https://vamosortear.com.br/?q={search_term_string}",
+                      "query-input": "required name=search_term_string",
+                    },
+                    {
+                      "@type": "Action",
+                      "name": "Sortear Palavras",
+                      "target": "https://vamosortear.com.br/Sortear-Palavras",
+                    },
+                  ],
+                  "breadcrumb": {
+                    "@type": "BreadcrumbList",
+                    "itemListElement": [
+                      {
+                        "@type": "ListItem",
+                        "position": 1,
+                        "name": "Início",
+                        "item": "https://vamosortear.com.br/",
+                      },
+                      {
+                        "@type": "ListItem",
+                        "position": 2,
+                        "name": "Sortear Palavras",
+                        "item": "https://vamosortear.com.br/Sortear-Palavras",
+                      },
+                    ],
+                  },
+                })}
+              </script>
             </Helmet>
       <div className="mb-4">
         <Link
@@ -135,7 +237,7 @@ export function WordDraw() {
         </div>
 
         <div className="mb-8 rounded-lg bg-white p-6 shadow-sm">
-          <div className="mb-4">
+          <div className="">
             <label className="block text-sm font-medium text-gray-700 mb-2">
               Adicionar Palavra ou Nome
             </label>
@@ -143,12 +245,11 @@ export function WordDraw() {
               <input
                 type="text"
                 value={newWord}
-                onChange={(e) => setNewWord(e.target.value)}
-                onKeyDown={(e) => {
-                  if (e.key === 'Enter') {
-                    handleAddWord();
-                  }
+                onChange={(e) => {
+                  setNewWord(e.target.value);
+                  setError(null); // limpa o erro ao digitar
                 }}
+                onKeyDown={(e) => e.key === 'Enter' && handleAddWord()}
                 placeholder="Digite uma palavra ou nome"
                 className="block w-full rounded-md border border-gray-300 px-4 py-3 text-lg shadow-sm focus:border-green-500 focus:outline-none focus:ring-2 focus:ring-green-500/20"
               />
@@ -162,9 +263,12 @@ export function WordDraw() {
             </div>
           </div>
 
+          
+        {error && <p className="mb-1 text-sm text-red-600">{error}</p>}
+
           {words.length > 0 && (
             <div>
-              <p className="text-sm font-medium text-gray-700 mb-3">Palavras adicionadas:</p>
+              <p className="text-sm font-medium text-gray-700 mt-3 mb-3">Palavras adicionadas:</p>
               <div className="flex flex-wrap gap-2">
                 {words.map((word, index) => (
                   <div

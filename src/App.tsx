@@ -158,7 +158,7 @@ function App() {
             <div className="mx-auto max-w-7xl px-4 py-4 sm:px-6 lg:px-8">
               <div className="flex items-center justify-between">
                 <Link to="/" className="text-2xl font-bold tracking-tight text-gray-900">
-                  <img src={logo} alt="Logo Vamo Sortear - Plataforma de Sorteios Grátis(Sortear números, roleta, amigo secreto e muito mais sorteios da sorte)" title="Logo Vamo Sortear - Plataforma de Sorteios Grátis(Sortear números, roleta, amigo secreto e muito mais sorteios da sorte)" loading="lazy" className="h-24 w-full" /> 
+                  <img src={logo} alt="Vamo Sortear - Plataforma de Sorteios Grátis(Sortear números, roleta, amigo secreto e muito mais sorteios da sorte)" title="Vamo Sortear – Sorteios Online Grátis de Números, nomes e Mais!" loading="lazy" className="h-24 w-full" /> 
                 </Link>
                 <nav className="flex gap-6">
                   <Link to="/blog" className="text-gray-600 hover:text-gray-900">Blog</Link>
@@ -217,62 +217,113 @@ function App() {
 function HomePage({ raffleTypes }) {
   return (
     <div className="space-y-12">
-      <Helmet> 
-          <title>VamoSortear - O Jeito Mais Fácil e Simples de sortear algo! Totalmente Gratis</title>
-          <meta name="description" content="Sorteie números de forma simples e rápida no VamoSortear. Totalmente Gratis" />
-          <meta name="robots" content="index, follow" />
-          <link rel="canonical" href="https://vamosortear.com.br/" />
-          <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
-          <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
-          <meta name="keywords" content="sorteio, sorteios, vamo sortear, sorteio online, sortear numero, sortear numeros, sorteando numero, amigo secreto, sortear palavra, roleta, roleta online" />
-          <meta name="author" content="Marcos & Matheus"></meta>
+      <Helmet>
+        <title>VamoSortear - O Jeito Mais Fácil e Simples de sortear algo! Totalmente Gratis</title>
+        <meta name="description" content="Sorteie números de forma simples e rápida no VamoSortear. Totalmente Gratis" />
+        <meta name="robots" content="index, follow" />
+        <link rel="canonical" href="https://vamosortear.com.br/" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+        <meta name="keywords" content="sorteio, sorteios, vamo sortear, sorteio online, sortear numero, sortear numeros, sorteando numero, amigo secreto, sortear palavra, roleta, roleta online" />
+        <meta name="author" content="Marcos & Matheus"></meta>
 
-          <meta property="og:image" content="https://vamosortear.com.br/logo.png" />
-          <meta property="og:image:alt" content="Logo Vamo Sortear - Plataforma de Sorteios Grátis" />
-          <meta property="og:image:type" content="image/png" />
-          <meta property="og:image:width" content="1200" />
-          <meta property="og:image:height" content="630" />
+        <meta property="og:image" content="https://vamosortear.com.br/logo.png" />
+        <meta property="og:image:alt" content="Logo Vamo Sortear - Plataforma de Sorteios Grátis" />
+        <meta property="og:image:type" content="image/png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+
+        <script type="application/ld+json">
+          {JSON.stringify({
+        "@context": "https://schema.org",
+        "@type": "WebPage",
+        "name": "VamoSortear - O Jeito Mais Fácil e Simples de sortear algo! Totalmente Gratis",
+        "description": "Sorteie números, palavras, sequências e organize amigo secreto de forma simples, rápida e gratuita no VamoSortear.",
+        "url": "https://vamosortear.com.br/",
+        "publisher": {
+          "@type": "Organization",
+          "name": "VamoSortear",
+          "logo": {
+            "@type": "ImageObject",
+            "url": "https://vamosortear.com.br/logo.png",
+            "width": 1200,
+            "height": 630
+          }
+        },
+        "mainEntity": {
+          "@type": "WebApplication",
+          "name": "VamoSortear",
+          "operatingSystem": "All",
+          "applicationCategory": "UtilityApplication",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "BRL"
+          }
+        },
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": "https://vamosortear.com.br/?q={search_term_string}",
+          "query-input": "required name=search_term_string"
+        }
+          })}
+        </script>
       </Helmet>
       {/* Hero Section */}
-      <div className="text-center">
-        <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-pink-500 to-violet-500 text-white text-sm font-medium mb-6">
-          <SparklesIcon className="h-4 w-4"  />
-          <span>Mais de 10.000 sorteios realizados!</span>
+
+      <div className="mt-0 pt-0">
+        <div className="text-center">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-pink-500 to-violet-500 text-white text-sm font-medium mb-6">
+            <SparklesIcon className="h-4 w-4"  />
+            <span>Mais de 10.000 sorteios realizados!</span>
+          </div>
+          <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl mb-4">
+            Vamos Sortear Online  e Grátis
+          </h1>
+
+          <p className="text-xl text-gray-600 max-w-4xl mx-auto mb-2">
+            Precisa realizar sorteios de forma rápida, segura e transparente? 
+            O VamoSortear é a solução ideal para você! Nossa plataforma simplifica todo o processo em apenas alguns cliques.
+          </p>
+        
         </div>
-        <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl mb-4">
-          Vamos Sortear Online  e Grátis
-        </h1>
-        <p className="text-xl text-gray-600 max-w-4xl mx-auto mb-2">
-          Precisa realizar sorteios de forma rápida, segura e transparente? 
-          O VamoSortear é a solução ideal para você! Nossa plataforma simplifica todo o processo em apenas alguns cliques.
-        </p>
-        <p className="text-xl text-gray-600 max-w-4xl mx-auto mb-2">
-          Sorteie nomes, números ou itens com resultados 100% confiáveis. 
-          Perfeito para empresas, influenciadores e qualquer pessoa que busque praticidade.
-        </p>
-        <p className="text-xl text-gray-600 max-w-4xl mx-auto mb-2">
-          Escolha uma das opções e comece agora mesmo, sem cadastro! 
-        </p>
-        <p className="text-xl text-gray-600 max-w-5xl mx-auto">
-          COMECE SEU SORTEIO AGORA! Junte-se aos milhares de brasileiros que já confiam em nossa plataforma.
-        </p>
-      </div>
 
-      {/* Features Grid */}
-      <div className="flex flex-wrap justify-center gap-6">
-        {raffleTypes.map((raffle) => (
-          <Link key={raffle.title} to={raffle.path} className="w-[550px] min-h-[100px]">
-            <RaffleCard
-              title={raffle.title}
-              description={raffle.description}
-              icon={raffle.icon}
-              gradient={raffle.gradient}
-              onClick={() => {}}
-            />
-          </Link>
-        ))}
-      </div>
+        
+        <div className="flex flex-col-reverse lg:flex-col gap-2 items-center">
+          <div className='text-center'>
+            <p className="text-xl text-gray-600 max-w-4xl mx-auto mb-2">
+              Sorteie nomes, números ou itens com resultados 100% confiáveis. 
+              Perfeito para empresas, influenciadores e qualquer pessoa que busque praticidade.
+            </p>
+            <p className="text-xl text-gray-600 max-w-4xl mx-auto mb-2">
+              Escolha uma das opções e comece agora mesmo, sem cadastro! 
+            </p>
+            <p className="text-xl text-gray-600 max-w-5xl mx-auto">
+              COMECE SEU SORTEIO AGORA! Junte-se aos milhares de brasileiros que já confiam em nossa plataforma.
+            </p>
+          </div>
+        
 
+            {/* Features Grid */}
+          <div className="flex flex-wrap justify-center gap-6 mt-8 mb-8">
+            {raffleTypes.map((raffle) => (
+              <Link
+                key={raffle.title}
+                to={raffle.path}
+                className="w-full sm:w-[550px] min-h-[100px]"
+              >
+                <RaffleCard
+                title={raffle.title}
+                description={raffle.description}
+                icon={raffle.icon}
+                gradient={raffle.gradient}
+                onClick={() => {}}
+                />
+              </Link>
+            ))}
+          </div>
+        </div>
+      </div>
       {/* Benefits Section */}
       <div className="bg-white rounded-2xl p-8 shadow-sm border border-gray-200">
         <h2 className="text-2xl font-semibold text-gray-900 mb-8 text-center">
