@@ -63,8 +63,17 @@ export function NumberDraw() {
     setIsDrawing(true);
     setResult(null);
 
-    const currentTime = new Date().toLocaleString(); // Formata a data e hora como string legível
-    setsorteioTime(currentTime);
+    const agora = new Date();
+    const twoDigits = (num: number) => num.toString().padStart(2, '0');
+    const TimeFormatado = 
+      `${twoDigits(agora.getDate())}/` +
+      `${twoDigits(agora.getMonth() + 1)}/` +
+      `${agora.getFullYear()} - ` +
+      `${twoDigits(agora.getHours())}:` +
+      `${twoDigits(agora.getMinutes())}:` +
+      `${twoDigits(agora.getSeconds())}`;
+
+    setsorteioTime(TimeFormatado);
     setMinValor(min);
     setMaxValor(max);
     

@@ -24,7 +24,7 @@ export function RoletaSorteio() {
 
   const canvasRef = useRef(null);
 
-  const colors = ['#FF5733', '#33FF57', '#3357FF', '#FF33A1', '#A133FF', '#33FFF5', '#F5FF33', '#FF8C33', '#33FF8C', '#8C33FF', '#FF3333', '#33FF33'];
+  const colors = ['#FF4500', '#32CD32', '#1E90FF', '#FF1493', '#8A2BE2', '#20B2AA', '#FFD700', '#FF6347', '#3CB371', '#6A5ACD', '#DC143C', '#00FA9A'];
 
   const raffleTypes = [
     {
@@ -94,8 +94,17 @@ export function RoletaSorteio() {
       ctx.fillStyle = colors[index % colors.length];
       ctx.fill();
       
-      const currentTime = new Date().toLocaleString(); // Formata a data e hora como string legível
-      setsorteioTime(currentTime);
+      const agora = new Date();
+      const twoDigits = (num: number) => num.toString().padStart(2, '0');
+      const TimeFormatado = 
+        `${twoDigits(agora.getDate())}/` +
+        `${twoDigits(agora.getMonth() + 1)}/` +
+        `${agora.getFullYear()} - ` +
+        `${twoDigits(agora.getHours())}:` +
+        `${twoDigits(agora.getMinutes())}:` +
+        `${twoDigits(agora.getSeconds())}`;
+
+      setsorteioTime(TimeFormatado);
 
       // Draw text
       ctx.save();

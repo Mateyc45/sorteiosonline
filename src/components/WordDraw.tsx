@@ -33,8 +33,17 @@ export function WordDraw() {
       setIsDrawing(true);
       setResult(null);
 
-      const currentTime = new Date().toLocaleString();
-      setsorteioTime(currentTime);
+    const agora = new Date();
+    const twoDigits = (num: number) => num.toString().padStart(2, '0');
+    const TimeFormatado = 
+      `${twoDigits(agora.getDate())}/` +
+      `${twoDigits(agora.getMonth() + 1)}/` +
+      `${agora.getFullYear()} - ` +
+      `${twoDigits(agora.getHours())}:` +
+      `${twoDigits(agora.getMinutes())}:` +
+      `${twoDigits(agora.getSeconds())}`;
+
+    setsorteioTime(TimeFormatado);
 
       await new Promise(resolve => setTimeout(resolve, 1500));
       
