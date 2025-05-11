@@ -38,11 +38,6 @@ const websiteSchema = {
 };
 
 // SEO metadata
-const seoMetadata = {
-  title: 'Vamo Sortear – Sorteios Online Grátis de Números, nomes e Mais!',
-  description: 'Faça sorteios online grátis com rapidez e segurança! Sorteie números, nomes, palavras, roletas e organize amigo secreto com envio automático por e-mail. Plataforma 100% online, sem cadastro e sem limites. Confira também nosso blog com curiosidades e dicas sobre sorteios digitais.',
-  keywords: 'sorteio online, sorteio grátis, sorteio de nomes, amigo secreto online, sorteio de números, sorteio de palavras, sorteio de roleta, gerador de números aleatórios, sorteio automático, plataforma de sorteios',
-};
 
 function App() {
   
@@ -50,34 +45,10 @@ function App() {
   // Add SEO metadata and schema markup
   React.useEffect(() => {
     // Update metadata
-    document.title = seoMetadata.title;
     
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6732428339083295" crossOrigin="anonymous"></script>
 
-    const metaTags = [
-      { name: 'description', content: seoMetadata.description },
-      { name: 'keywords', content: seoMetadata.keywords },
-      { property: 'og:title', content: seoMetadata.title },
-      { property: 'og:description', content: seoMetadata.description },
-      { property: 'og:type', content: 'website' },
-      { property: 'og:url', content: 'https://vamosortear.com.br/' },
-      { name: 'twitter:card', content: 'summary_large_image' },
-      { name: 'twitter:title', content: seoMetadata.title },
-      { name: 'twitter:description', content: seoMetadata.description }
-    ];
-
-    metaTags.forEach(({ name, content, property }) => {
-      const meta = document.querySelector(`meta[${name ? `name="${name}"` : `property="${property}"`}]`);
-      if (meta) {
-        meta.setAttribute('content', content);
-      } else {
-        const newMeta = document.createElement('meta');
-        if (name) newMeta.name = name;
-        if (property) newMeta.setAttribute('property', property);
-        newMeta.content = content;
-        document.head.appendChild(newMeta);
-      }
-    });
+    
 
     // Add schema markup
     const script = document.createElement('script');
