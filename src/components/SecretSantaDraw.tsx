@@ -58,13 +58,13 @@ const raffleTypes = [
     path: '/roleta',
     gradient: 'from-orange-500 to-yellow-400',
   },
-  /*{
+  {
       title: 'Sortear Equipes',
       description: 'Faça o sorteio de equipes para diversas atividades',
       icon: <Users className="h-6 w-6" style={{ color: '#0F766E' }}/>,
       path: '/Sortear-Equipes',
       gradient: 'from-teal-400 to-teal-100',
-  },*/
+  },
 ];
 
 

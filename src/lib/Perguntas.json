@@ -76,6 +76,21 @@
       "pergunta":"Posso adicionar restrições ao sorteio de amigo secreto?",
       "resposta":"Atualmente, ainda não temos suporte para restrições no sorteio de amigo secreto. O algoritmo apenas garante que ninguém tire a si mesmo, mas não permite adicionar outras restrições."
     },
+    {
+      "id": "Sortear-Equipes",
+      "pergunta": "Quantas equipes posso sortear ao mesmo tempo?",
+      "resposta": "Você pode sortear quantas equipes quiser, desde que o número de participantes seja suficiente para dividir entre elas. O sistema distribui automaticamente os nomes de forma equilibrada."
+    },
+    {
+      "id": "Sortear-Equipes",
+      "pergunta": "O sorteio garante que todas as equipes tenham o mesmo número de participantes?",
+      "resposta": "Sim, o sorteio tenta distribuir os participantes de forma justa. Caso o número total não seja divisível igualmente, algumas equipes podem ter um membro a mais."
+    },
+    {
+      "id": "Sortear-Equipes",
+      "pergunta": "É possível repetir o sorteio com os mesmos nomes?",
+      "resposta": "Sim! Basta clicar no botão de sortear novamente para redistribuir os mesmos nomes em novas equipes aleatórias."
+    },
     {}
   ]
   
