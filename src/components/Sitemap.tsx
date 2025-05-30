@@ -1,7 +1,8 @@
 import React from 'react';
+import Head from 'next/head'
 import { Link } from 'react-router-dom';
 import { HomeIcon, MapIcon } from 'lucide-react';
-import { Helmet } from 'react-helmet-async';
+
 
 export function Sitemap() {
   window.scrollTo(0, 0);
@@ -9,7 +10,7 @@ export function Sitemap() {
   
   return (
     <div className="mx-auto max-w-3xl px-4 py-8">
-            <Helmet> 
+            <Head> 
                     <title>Mapa do Site - Vamo Sortear</title>
                     <meta name="description" content="Explore todas as páginas de nosso site e descubra todos os sorteios que podem te interessar, desde números até roleta e amigo secreto! Vem sortear no vamosortear.com.br" />
                     <meta name="robots" content="index, follow" />
@@ -79,7 +80,7 @@ export function Sitemap() {
             },
           })}
               </script>
-            </Helmet>
+            </Head>
       <div className="mb-4">
         <Link
           to="/"

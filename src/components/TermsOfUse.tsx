@@ -1,14 +1,15 @@
 import React from 'react';
+import Head from 'next/head'
 import { Link } from 'react-router-dom';
 import { HomeIcon } from 'lucide-react';
-import { Helmet } from 'react-helmet-async';
+
 
 export function TermsOfUse() {
   window.scrollTo(0, 0);
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6732428339083295" crossorigin="anonymous"></script>
   return (
     <div className="mx-auto max-w-3xl px-4 py-8">
-            <Helmet>
+            <Head>
               <title>Termo de Uso - Vamo Sortear</title>
               <meta
                 name="description"
@@ -66,7 +67,7 @@ export function TermsOfUse() {
               },
                 })}
               </script>
-            </Helmet>
+            </Head>
       <div className="mb-4">
         <Link
           to="/"

@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
+import Head from 'next/head'
 import { Users, LifeBuoy, ListIcon, TextIcon, HomeIcon, GiftIcon, SparklesIcon, ShuffleIcon, TargetIcon, BrainIcon, UsersIcon, TrophyIcon, Dice1Icon } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { shuffleArray } from '../lib/utils';
 import { ShareButton } from './ShareButton';
 import { AdSpace } from './AdSpace';
 import { RaffleCard } from '../components/RaffleCard';
-import { Helmet } from 'react-helmet-async';
 import Perguntas from './perguntas';
 
 export function SequenceDraw() {
@@ -88,7 +88,7 @@ export function SequenceDraw() {
 
   return (
     <div className="mx-auto max-w-2xl">
-            <Helmet> 
+            <Head> 
               <title>Sortear Sequência de Números Online - Vamo Sortear</title>
               <meta name="description" content="Sorteie sequências de números aleatórios de forma personalizada, rápida e fácil. Experimente agora no Vamo Sortear!" />
               <meta name="robots" content="index, follow" />
@@ -168,7 +168,7 @@ export function SequenceDraw() {
                   },
                 })}
                 </script>
-            </Helmet>
+            </Head>
       <div className="mb-4">
         <Link
           to="/"

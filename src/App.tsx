@@ -1,4 +1,5 @@
 import React from 'react';
+import Head from 'next/head'
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import { Dice1Icon, TextIcon, ListIcon, GiftIcon, SparklesIcon, StarIcon, ShieldCheckIcon, ClockIcon, LifeBuoy, Users } from 'lucide-react';
@@ -13,13 +14,13 @@ import { TermsOfUse } from './components/TermsOfUse';
 import { Sitemap } from './components/Sitemap';
 import { BlogList } from './components/Blog/BlogList';
 import { BlogPost } from './components/Blog/BlogPost';
-import BannerAd from './components/BannerAd';
 import logo from './lib/image/logo3.png';
 import { Helmet } from 'react-helmet-async';
 import Analytics from './Analytics';
 import Breadcrumbs from './components/Breadcrumbs';
 import Perguntas from './components/perguntas';
 import { SortearEquipes } from './components/SortearEquipes';
+
 
 // Schema markup for rich snippets
 const websiteSchema = {
@@ -191,7 +192,7 @@ function App() {
 function HomePage({ raffleTypes }) {
   return (
     <div className="space-y-12">
-      <Helmet>
+      <Head>
         <title>VamoSortear - O Jeito Mais Fácil e Simples de sortear algo! Totalmente Gratis</title>
         <meta name="description" content="Sorteie números de forma simples e rápida no VamoSortear. Totalmente Gratis" />
         <meta name="robots" content="index, follow" />
@@ -242,7 +243,7 @@ function HomePage({ raffleTypes }) {
         }
           })}
         </script>
-      </Helmet>
+      </Head>
       {/* Hero Section */}
 
       <div className="mt-0 pt-0">

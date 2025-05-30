@@ -1,11 +1,9 @@
 import React, { useState, useRef, useEffect } from 'react';
+import Head from 'next/head'
 import { Users, HomeIcon, Dice1Icon, TextIcon, ListIcon, GiftIcon, SparklesIcon} from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { generateRandomNumber } from '../lib/utils';
-import { ShareButton } from './ShareButton';
 import { AdSpace } from './AdSpace';
 import { RaffleCard } from '../components/RaffleCard';
-import { Helmet } from 'react-helmet-async';
 import Perguntas from './perguntas';
 
 export function RoletaSorteio() {
@@ -217,7 +215,7 @@ export function RoletaSorteio() {
 
   return (
  <div className="mx-auto max-w-2xl">
-        <Helmet> 
+        <Head> 
           <title>Roleta Online Personalizada - Vamo Sortear</title>
           <meta name="description" content="Crie e personalize sua roleta online para sorteios divertidos e justos. Descubra o resultado com um clique!" />
           <meta name="robots" content="index, follow" />
@@ -297,7 +295,7 @@ export function RoletaSorteio() {
                 },
               })}
               </script>
-        </Helmet>
+        </Head>
       <div className="mb-4">
         <Link
           to="/"

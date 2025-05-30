@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
+import Head from 'next/head'
 import { Users, Dice1Icon, TextIcon, PlusIcon, XIcon, HomeIcon, BookOpenIcon, BrainIcon, UsersIcon, GraduationCapIcon, ListIcon, GiftIcon, SparklesIcon, LifeBuoy  } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { shuffleArray } from '../lib/utils';
 import { ShareButton } from './ShareButton';
 import { AdSpace } from './AdSpace';
 import { RaffleCard } from '../components/RaffleCard';
-import { Helmet } from 'react-helmet-async';
 import Perguntas from './perguntas';
 
 export function WordDraw() {
@@ -106,7 +106,7 @@ export function WordDraw() {
 
   return (
     <div className="mx-auto max-w-2xl">
-            <Helmet>
+            <Head>
               <title>Sortear Palavras Online - Sorteios Personalizados | Vamo Sortear</title>
               <meta
                 name="description"
@@ -207,7 +207,7 @@ export function WordDraw() {
                   },
                 })}
               </script>
-            </Helmet>
+            </Head>
       <div className="mb-4">
         <Link
           to="/"

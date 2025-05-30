@@ -1,8 +1,8 @@
 import React, { useState, useEffect  } from 'react';
+import Head from 'next/head'
 import { HomeIcon, Dice1Icon, TextIcon, ListIcon, GiftIcon, SparklesIcon, LifeBuoy, PlusIcon, Loader2, Trash2, Users, GraduationCapIcon, UsersIcon, BrainIcon, BookOpenIcon } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { RaffleCard } from './RaffleCard';
-import { Helmet } from 'react-helmet-async';
 import Perguntas from './perguntas';
 
 const raffleTypes = [
@@ -107,7 +107,7 @@ export function SortearEquipes() {
 
   return (
     <div className="mx-auto max-w-2xl">
-      <Helmet> 
+      <Head> 
         <title>Sortear Equipes Online - Rápido e Fácil | Vamo Sortear</title>
         <meta name="description" content="Sortear equipes online de forma simples, rápida e personalizada. Organize seus sorteios com facilidade no Vamo Sortear. Experimente agora!" />
         <meta name="robots" content="index, follow" />
@@ -163,7 +163,7 @@ export function SortearEquipes() {
             "inLanguage": ["pt-BR"]
           })}
         </script>
-      </Helmet>
+      </Head>
 
       <div className="mb-4">
         <Link

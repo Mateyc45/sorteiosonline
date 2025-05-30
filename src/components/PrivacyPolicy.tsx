@@ -1,4 +1,5 @@
 import React, { useEffect} from 'react';
+import Head from 'next/head'
 import { Link } from 'react-router-dom';
 import { HomeIcon } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
@@ -10,7 +11,7 @@ export function PrivacyPolicy() {
     }, []);
   return (
     <div className="mx-auto max-w-3xl px-4 py-8">
-      <Helmet> 
+      <Head> 
               <title>Política de Privacidade - Vamo Sortear</title>
               <meta name="description" content="Explore nossa política de privacidade e como seus dados são utilizados por nós do VamoSortear.com.br" />
               <meta name="robots" content="index, follow" />
@@ -69,7 +70,7 @@ export function PrivacyPolicy() {
             },
           })}
               </script>
-      </Helmet>
+      </Head>
       <div className="mb-4">
         <Link
           to="/"

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
+import Head from 'next/head'
 import { HomeIcon, BookOpenIcon, TagIcon, CalendarIcon, ShareIcon, FacebookIcon, TwitterIcon, LinkedinIcon } from 'lucide-react';
 import { format } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
@@ -1959,7 +1959,7 @@ export function BlogPost() {
 
   return (
     <div className="mx-auto max-w-4xl px-4 py-8">
-      <Helmet>
+      <Head>
         <title>{post.title} - Vamo Sortear Blog</title>
         <meta name="description" content={post.excerpt} />
         <meta name="keywords" content={post.tags.join(', ')} /> 
@@ -2048,7 +2048,7 @@ export function BlogPost() {
             },
           })}
               </script>
-      </Helmet>
+      </Head>
 
       <div className="mb-4">
         <Link

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import Head from 'next/head'
 import { Link } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
 import { BookOpenIcon, TagIcon, CalendarIcon, ChevronRightIcon } from 'lucide-react';
 import { format } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
@@ -392,7 +392,7 @@ export function BlogList() {
           Voltar para Início
         </Link>
       </div>
-      <Helmet>
+      <Head>
         <title>Blog Sorteios Online | Dicas, Tutoriais e Novidades sobre Sorteios</title>
         <meta
           name="description"
@@ -483,7 +483,7 @@ export function BlogList() {
             },
           })}
               </script>
-      </Helmet>
+      </Head>
 
       <div className="mb-8">
         <h1 className="text-3xl font-bold text-gray-900 mb-4">

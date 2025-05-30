@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Head from 'next/head'
 import { Users, Dice1Icon, LifeBuoy, TextIcon, ListIcon, GiftIcon, HomeIcon, PlusIcon, XIcon, SparklesIcon, HeartIcon, UsersIcon, CalendarIcon, TrophyIcon, StarIcon } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { shuffleArray } from '../lib/utils';
@@ -6,7 +7,7 @@ import { useRaffleStore } from '../store/useRaffleStore';
 import { AdSpace } from './AdSpace';
 import { sendEmail } from '../lib/email';
 import { RaffleCard } from '../components/RaffleCard';
-import { Helmet } from 'react-helmet-async';
+
 import Perguntas from './perguntas';
 
 interface Participant {
@@ -211,7 +212,7 @@ export function SecretSantaDraw() {
 
   return (
     <div className="mx-auto max-w-3xl">
-      <Helmet> 
+      <Head> 
         <title>Amigo Secreto Online Grátis - Organize e Sorteie com Facilidade</title>
         <meta name="description" content="Organize seu amigo secreto online de forma fácil, rápida e gratuita. Sorteio automático com envio de emails personalizados para cada participante. Experimente agora!" />
         <meta name="robots" content="index, follow" />
@@ -292,7 +293,7 @@ export function SecretSantaDraw() {
             },
           })}
         </script>
-      </Helmet>
+      </Head>
       <div className="mb-4">
         <Link
           to="/"

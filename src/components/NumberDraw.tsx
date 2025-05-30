@@ -1,11 +1,11 @@
 import React, { useState, useEffect  } from 'react';
+import Head from 'next/head'
 import { Users, HomeIcon, Dice1Icon, TextIcon, ListIcon, GiftIcon, SparklesIcon, StarIcon, ShieldCheckIcon, ClockIcon, LifeBuoy } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { generateRandomNumber } from '../lib/utils';
 import { ShareButton } from './ShareButton';
 import { AdSpace } from './AdSpace';
 import { RaffleCard } from '../components/RaffleCard';
-import { Helmet } from 'react-helmet-async';
 import Perguntas from './perguntas';
 
 const raffleTypes = [
@@ -88,7 +88,7 @@ export function NumberDraw() {
 
   return (
     <div className="mx-auto max-w-2xl">
-      <Helmet> 
+      <Head> 
         <title>Sorteio de Números Online Grátis - Vamo Sortear</title>
         <meta name="description" content="Realize sorteios de números online de forma rápida, fácil e gratuita. Escolha um intervalo e descubra o número sorteado no Vamo Sortear." />
         <meta name="robots" content="index, follow" />
@@ -167,7 +167,7 @@ export function NumberDraw() {
             },
           })}
               </script>
-      </Helmet>
+      </Head>
       <div className="mb-4">
         <Link
           to="/"
