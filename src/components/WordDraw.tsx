@@ -1,39 +1,124 @@
-import React, { useState } from 'react';
-import Head from 'next/head'
-import { Users, Dice1Icon, TextIcon, PlusIcon, XIcon, HomeIcon, BookOpenIcon, BrainIcon, UsersIcon, GraduationCapIcon, ListIcon, GiftIcon, SparklesIcon, LifeBuoy  } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+// REMOVIDO: import Head from 'next/head' (Isso quebrava o site)
+import { Dice1Icon, TextIcon, PlusIcon, XIcon, HomeIcon, BookOpenIcon, BrainIcon, UsersIcon, GraduationCapIcon, ListIcon, GiftIcon, SparklesIcon, LifeBuoy, RotateCcw, Save, Copy, Check, Users } from 'lucide-react';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { shuffleArray } from '../lib/utils';
 import { ShareButton } from './ShareButton';
-import { AdSpace } from './AdSpace';
 import { RaffleCard } from '../components/RaffleCard';
 import Perguntas from './perguntas';
+import { supabase } from '../lib/supabase';
+
+interface SorteioSalvo {
+  resultado: string;
+  palavras: string[];
+}
+
+const raffleTypes = [
+  {
+    title: 'Sortear um número',
+    description: 'Sorteie números aleatórios de forma rápida e confiável',
+    icon: <Dice1Icon className="h-6 w-6 text-blue-600" />,
+    path: '/Sortear-Numero',
+    gradient: 'from-blue-500 to-cyan-400',
+  },
+  {
+    title: 'Sortear uma sequência',
+    description: 'Gere sequências numéricas aleatórias para diversos fins',
+    icon: <ListIcon className="h-6 w-6 text-purple-600" />,
+    path: '/Sortear-Sequencia',
+    gradient: 'from-purple-500 to-pink-400',
+  },
+  {
+    title: 'Amigo Secreto',
+    description: 'Organize seu amigo secreto com envio automático por email',
+    icon: <GiftIcon className="h-6 w-6 text-red-600" />,
+    path: '/Amigo-Secreto',
+    gradient: 'from-red-500 to-orange-400',
+  },
+  {
+    title: 'Roleta',
+    description: 'Faça um sorteio utilizando uma roleta',
+    icon: <LifeBuoy className="h-6 w-6 text-red-600" />,
+    path: '/roleta',
+    gradient: 'from-yellow-400 to-yellow-100',
+  },
+  {
+    title: 'Sortear Equipes',
+    description: 'Faça o sorteio de equipes para diversas atividades',
+    icon: <Users className="h-6 w-6" style={{ color: '#0F766E' }} />,
+    path: '/Sortear-Equipes',
+    gradient: 'from-teal-400 to-teal-100',
+  },
+];
 
 export function WordDraw() {
-  window.scrollTo(0, 0);
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6732428339083295" crossorigin="anonymous"></script>
-  
+  const { id } = useParams();
+  const navigate = useNavigate();
+
+  // --- ESTADOS (Todos devem ficar aqui no topo) ---
   const [error, setError] = useState<string | null>(null);
   const [words, setWords] = useState<string[]>([]);
   const [newWord, setNewWord] = useState('');
   const [result, setResult] = useState<string | null>(null);
   const [isDrawing, setIsDrawing] = useState(false);
+  const [isSaving, setIsSaving] = useState(false);
   const [sorteioTime, setsorteioTime] = useState<string | null>(null);
+  const [loadingBanco, setLoadingBanco] = useState(false);
+  const [copied, setCopied] = useState(false); // <--- MOVA PARA CÁ!
+
+  // Atualiza Título da Página (Substituto do Head)
+  useEffect(() => {
+    document.title = id 
+      ? "Resultado do Sorteio de Palavras - Vamo Sortear" 
+      : "Sortear Palavras Online - Vamo Sortear";
+  }, [id]);
+
+  const formatarData = (date: Date) => {
+    const twoDigits = (num: number) => num.toString().padStart(2, '0');
+    return `${twoDigits(date.getDate())}/${twoDigits(date.getMonth() + 1)}/${date.getFullYear()} - ${twoDigits(date.getHours())}:${twoDigits(date.getMinutes())}:${twoDigits(date.getSeconds())}`;
+  };
+
+  // Carregar do Banco
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    if (id) {
+      const buscarSorteioSalvo = async () => {
+        setLoadingBanco(true);
+        const { data, error } = await supabase
+          .from('sorteios_palavras')
+          .select('*')
+          .eq('id_curto', id)
+          .single();
+
+        if (data && !error) {
+          const dadosSalvos = data.palavras_sorteadas as SorteioSalvo;
+          setResult(dadosSalvos.resultado);
+          setWords(dadosSalvos.palavras);
+
+          const dataBanco = new Date(data.created_at);
+          setsorteioTime(formatarData(dataBanco));
+        }
+        setLoadingBanco(false);
+      };
+      buscarSorteioSalvo();
+    }
+  }, [id]);
 
   const handleAddWord = () => {
-  const word = newWord.trim();
-  if (!word) {
-    setError('Você deve digitar uma palavra.');
-    return;
-  }
-  if (words.includes(word)) {
-    setError('Esta palavra já foi adicionada.');
-    return;
-  }
+    const word = newWord.trim();
+    if (!word) {
+      setError('Você deve digitar uma palavra.');
+      return;
+    }
+    if (words.includes(word)) {
+      setError('Esta palavra já foi adicionada.');
+      return;
+    }
 
-  setWords([...words, word]);
-  setNewWord('');
-  setError(null);
-};
+    setWords([...words, word]);
+    setNewWord('');
+    setError(null);
+  };
 
   const handleRemoveWord = (index: number) => {
     setWords(words.filter((_, i) => i !== index));
@@ -44,170 +129,74 @@ export function WordDraw() {
       setIsDrawing(true);
       setResult(null);
 
-    const agora = new Date();
-    const twoDigits = (num: number) => num.toString().padStart(2, '0');
-    const TimeFormatado = 
-      `${twoDigits(agora.getDate())}/` +
-      `${twoDigits(agora.getMonth() + 1)}/` +
-      `${agora.getFullYear()} - ` +
-      `${twoDigits(agora.getHours())}:` +
-      `${twoDigits(agora.getMinutes())}:` +
-      `${twoDigits(agora.getSeconds())}`;
-
-    setsorteioTime(TimeFormatado);
+      const agora = new Date();
+      setsorteioTime(formatarData(agora));
 
       await new Promise(resolve => setTimeout(resolve, 1500));
-      
+
       const drawnWord = shuffleArray(words)[0];
       setResult(drawnWord);
       setIsDrawing(false);
     }
   };
 
+  const handleSave = async () => {
+    if (result === null) return;
+    setIsSaving(true);
 
-  const raffleTypes = [
-    {
-      title: 'Sortear um número',
-      description: 'Sorteie números aleatórios de forma rápida e confiável',
-      icon: <Dice1Icon className="h-6 w-6 text-blue-600" />,
-      path: '/Sortear-Numero',
-      gradient: 'from-blue-500 to-cyan-400',
-    },
-    {
-      title: 'Sortear uma sequência',
-      description: 'Gere sequências numéricas aleatórias para diversos fins',
-      icon: <ListIcon className="h-6 w-6 text-purple-600" />,
-      path: '/Sortear-Sequencia',
-      gradient: 'from-purple-500 to-pink-400',
-    },
-    {
-      title: 'Amigo Secreto',
-      description: 'Organize seu amigo secreto com envio automático por email',
-      icon: <GiftIcon className="h-6 w-6 text-red-600" />,
-      path: '/Amigo-Secreto',
-      gradient: 'from-red-500 to-orange-400',
-    },
-      {
-      title: 'Roleta',
-      description: 'Faça um sorteio utilizando uma roleta',
-      icon: <LifeBuoy className="h-6 w-6 text-red-600" />,
-      path: '/roleta',
-      gradient: 'from-yellow-400 to-yellow-100',
-    },
-    {
-        title: 'Sortear Equipes',
-        description: 'Faça o sorteio de equipes para diversas atividades',
-        icon: <Users className="h-6 w-6" style={{ color: '#0F766E' }}/>,
-        path: '/Sortear-Equipes',
-        gradient: 'from-teal-400 to-teal-100',
-    },
-  ];
+    try {
+      const ipRes = await fetch('https://api.ipify.org?format=json');
+      const { ip } = await ipRes.json();
+
+      const { data: recentes } = await supabase
+        .from('sorteios_palavras')
+        .select('created_at')
+        .eq('user_ip', ip)
+        .gt('created_at', new Date(Date.now() - 30000).toISOString());
+
+      if (recentes && recentes.length > 0) {
+        alert("Você salvou um sorteio recentemente. Aguarde 30 segundos.");
+        setIsSaving(false);
+        return;
+      }
+
+      const novoId = Math.random().toString(36).substring(2, 8);
+
+      const { error } = await supabase
+        .from('sorteios_palavras')
+        .insert([{
+          id_curto: novoId,
+          palavras_sorteadas: { resultado: result, palavras: words },
+          user_ip: ip
+        }]);
+
+      if (!error) {
+        navigate(`/Sortear-Palavras/${novoId}`);
+      } else {
+        alert("Erro ao salvar o sorteio.");
+        console.error(error);
+      }
+
+    } catch (err) {
+      console.error("Erro geral:", err);
+      alert("Ocorreu um erro ao conectar.");
+    } finally {
+      setIsSaving(false);
+    }
+  };
+
+  const handleCopyLink = () => {
+    const url = window.location.href;
+    navigator.clipboard.writeText(url);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
 
 
   return (
     <div className="mx-auto max-w-2xl">
-            <Head>
-              <title>Sortear Palavras Online - Sorteios Personalizados | Vamo Sortear</title>
-              <meta
-                name="description"
-                content="Sorteie palavras ou nomes de forma simples, rápida e personalizada. Experimente o sorteio online mais confiável e fácil no Vamo Sortear!"
-              />
-              <meta name="robots" content="index, follow" />
-              <link rel="canonical" href="https://vamosortear.com.br/Sortear-Palavras" />
-              <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
-              <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
-              <meta
-                name="keywords"
-                content="sorteio de palavras, sorteio online, sortear nomes, sorteio personalizado, sorteio confiável, Vamo Sortear, ferramenta de sorteio"
-              />
-              <meta name="author" content="Vamo Sortear"></meta>
-              <meta
-                property="og:title"
-                content="Sortear Palavras Online - Sorteios Personalizados | Vamo Sortear"
-              />
-              <meta
-                property="og:description"
-                content="Descubra a melhor ferramenta para sortear palavras ou nomes de forma aleatória e justa. Experimente agora no Vamo Sortear!"
-              />
-              <meta property="og:url" content="https://vamosortear.com.br/Sortear-Palavras" />
-              <meta property="og:type" content="website" />
-              <meta property="og:image" content="https://vamosortear.com.br/assets/images/sorteio-palavras.png" />
-              <meta name="twitter:card" content="summary_large_image" />
-              <meta
-                name="twitter:title"
-                content="Sortear Palavras Online - Sorteios Personalizados | Vamo Sortear"
-              />
-              <meta
-                name="twitter:description"
-                content="Sorteie palavras ou nomes de forma simples, rápida e personalizada. Experimente o sorteio online mais confiável e fácil no Vamo Sortear!"
-              />
-              <meta
-                name="twitter:image"
-                content="https://vamosortear.com.br/assets/images/sorteio-palavras.png"
-              />
-
-              <script type="application/ld+json">
-                {JSON.stringify({
-                  "@context": "https://schema.org",
-                  "@type": "WebPage",
-                  "name": "Sortear Palavras Online - Sorteios Personalizados | Vamo Sortear",
-                  "description":
-                    "Sorteie palavras ou nomes de forma simples, rápida e personalizada. Experimente o sorteio online mais confiável e fácil no Vamo Sortear!",
-                  "url": "https://vamosortear.com.br/Sortear-Palavras",
-                  "publisher": {
-                    "@type": "Organization",
-                    "name": "Vamo Sortear",
-                    "logo": {
-                      "@type": "ImageObject",
-                      "url": "https://vamosortear.com.br/logo.png",
-                      "width": 1200,
-                      "height": 630,
-                    },
-                  },
-                  "image": "https://vamosortear.com.br/assets/images/sorteio-palavras.png",
-                  "mainEntity": {
-                    "@type": "WebApplication",
-                    "name": "Vamo Sortear",
-                    "operatingSystem": "All",
-                    "applicationCategory": "UtilityApplication",
-                    "offers": {
-                      "@type": "Offer",
-                      "price": "0",
-                      "priceCurrency": "BRL",
-                    },
-                  },
-                  "potentialAction": [
-                    {
-                      "@type": "SearchAction",
-                      "target": "https://vamosortear.com.br/?q={search_term_string}",
-                      "query-input": "required name=search_term_string",
-                    },
-                    {
-                      "@type": "Action",
-                      "name": "Sortear Palavras",
-                      "target": "https://vamosortear.com.br/Sortear-Palavras",
-                    },
-                  ],
-                  "breadcrumb": {
-                    "@type": "BreadcrumbList",
-                    "itemListElement": [
-                      {
-                        "@type": "ListItem",
-                        "position": 1,
-                        "name": "Início",
-                        "item": "https://vamosortear.com.br/",
-                      },
-                      {
-                        "@type": "ListItem",
-                        "position": 2,
-                        "name": "Sortear Palavras",
-                        "item": "https://vamosortear.com.br/Sortear-Palavras",
-                      },
-                    ],
-                  },
-                })}
-              </script>
-            </Head>
+      {/* Head removido - Título controlado via useEffect */}
+      
       <div className="mb-4">
         <Link
           to="/"
@@ -225,20 +214,23 @@ export function WordDraw() {
               <TextIcon className="h-8 w-8 text-white" />
             </div>
             <div>
-              <h2 className="text-2xl font-bold text-gray-900">Sorteio de Palavras</h2>
+              <h2 className="text-2xl font-bold text-gray-900">
+                {id ? `Sorteio Salvo #${id}` : 'Sorteio de Palavras'}
+              </h2>
               <p className="mt-1 text-gray-600">Sorteie palavras ou nomes de forma aleatória e imparcial</p>
             </div>
           </div>
-          {result && (
-            <ShareButton 
-              title="Resultado do Sorteio de Palavras" 
-              text={`A palavra sorteada foi: ${result}`} 
+          {id && result && (
+            <ShareButton
+              title="Resultado do Sorteio de Palavras"
+              text={`A palavra sorteada foi: ${result}. Veja: ${window.location.href}`}
             />
           )}
         </div>
 
-        <div className="mb-8 rounded-lg bg-white p-6 shadow-sm">
-          <div className="">
+        {/* INPUT DE PALAVRAS (Apenas se não tiver ID) */}
+        {!id && (
+          <div className="mb-8 rounded-lg bg-white p-6 shadow-sm">
             <label className="block text-sm font-medium text-gray-700 mb-2">
               Adicionar Palavra ou Nome
             </label>
@@ -248,7 +240,7 @@ export function WordDraw() {
                 value={newWord}
                 onChange={(e) => {
                   setNewWord(e.target.value);
-                  setError(null); // limpa o erro ao digitar
+                  setError(null);
                 }}
                 onKeyDown={(e) => e.key === 'Enter' && handleAddWord()}
                 placeholder="Digite uma palavra ou nome"
@@ -262,103 +254,154 @@ export function WordDraw() {
                 Adicionar
               </button>
             </div>
+            {error && <p className="mb-1 text-sm text-red-600 mt-2">{error}</p>}
           </div>
+        )}
 
-          
-        {error && <p className="mb-1 text-sm text-red-600">{error}</p>}
-
-          {words.length > 0 && (
-            <div>
-              <p className="text-sm font-medium text-gray-700 mt-3 mb-3">Palavras adicionadas:</p>
-              <div className="flex flex-wrap gap-2">
-                {words.map((word, index) => (
-                  <div
-                    key={index}
-                    className="flex items-center gap-2 rounded-full bg-green-50 px-4 py-2 transition-colors hover:bg-green-100"
-                  >
-                    <span className="text-sm font-medium text-green-900">{word}</span>
+        {/* LISTA DE PALAVRAS */}
+        {words.length > 0 && (
+          <div className="mb-8">
+            {id ? 
+            <p className="text-sm font-bold text-gray-700 mt-3 mb-3">
+              Palavras participantes:
+            </p>: 
+            <p className="text-sm font-medium text-gray-700 mt-3 mb-3">
+              Palavras adicionadas:
+            </p>}
+            <div className="flex flex-wrap gap-2">
+              {words.map((word, index) => (
+                <div
+                  key={index}
+                  className="flex items-center gap-2 rounded-full bg-green-50 px-4 py-2 transition-colors hover:bg-green-100"
+                >
+                  <span className="text-sm font-medium text-green-900">{word}</span>
+                  {!id && (
                     <button
                       onClick={() => handleRemoveWord(index)}
                       className="rounded-full p-1 hover:bg-green-200"
                     >
                       <XIcon className="h-3 w-3 text-green-700" />
                     </button>
-                  </div>
-                ))}
-              </div>
-            </div>
-          )}
-        </div>
-
-        <button
-          onClick={handleDraw}
-          disabled={words.length === 0 || isDrawing}
-          className="relative w-full overflow-hidden rounded-xl bg-gradient-to-r from-green-600 to-emerald-600 px-6 py-4 text-center text-lg font-semibold text-white shadow-lg transition-all hover:scale-[1.02] hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-70"
-        >
-          <div className="absolute inset-0 flex items-center justify-center">
-            {isDrawing && (
-              <div className="h-8 w-8 animate-spin rounded-full border-4 border-white/30 border-t-white"></div>
-            )}
-          </div>
-          <span className={isDrawing ? 'opacity-0' : 'opacity-100'}>
-            {isDrawing ? 'Sorteando...' : 'Sortear Palavra'}
-          </span>
-        </button>
-
-        {result && (
-          <div className="mt-8 overflow-hidden rounded-lg bg-white p-6 shadow-lg">
-            <div className="flex items-center justify-between">
-              <div className="rounded-full bg-green-100 p-3">
-                <SparklesIcon className="h-6 w-6 text-green-600" />
-              </div>
-              <div className="text-center">
-                <p className="text-sm font-medium text-gray-500">Palavra Sorteada</p>
-                <p className="mt-1 text-5xl font-bold text-gray-900">{result}</p>
-              </div>
-              <div className="rounded-full bg-green-100 p-3">
-                <SparklesIcon className="h-6 w-6 text-green-600" />
-              </div>
+                  )}
+                </div>
+              ))}
             </div>
           </div>
         )}
-        {result &&(
-          <div className="mt-8 flex flex-col md:flex-row items-center justify-center gap-4">
-            <div className="w-full flex flex-col items-center justify-center rounded-lg bg-white p-6 shadow-lg gap-2">
-              <p className="text-mt font-medium text-gray-500">Data do sorteio</p>
-              <p className="mt-1 text-2xl font-bold text-gray-900 center">{sorteioTime}</p>
-            </div>
+
+        {/* --- BOTÕES DE AÇÃO --- */}
+        {!id ? (
+          /* MODO CRIAÇÃO */
+          <div className="flex flex-col gap-3">
+            <button
+              onClick={handleDraw}
+              disabled={words.length === 0 || isDrawing || isSaving}
+              className={`relative w-full overflow-hidden rounded-xl px-6 py-4 text-center text-lg font-semibold shadow-lg transition-all focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-70
+                ${result === null 
+                  ? 'bg-gradient-to-r from-green-600 to-emerald-600 text-white hover:scale-[1.02]' 
+                  : 'bg-gradient-to-r from-green-600 to-emerald-600 text-white hover:scale-[1.02]'
+                }`}
+            >
+              <div className="absolute inset-0 flex items-center justify-center">
+                {isDrawing && (
+                  <div className="h-8 w-8 animate-spin rounded-full border-4 border-current border-t-transparent"></div>
+                )}
+              </div>
+              <span className={isDrawing ? 'opacity-0' : 'opacity-100 flex items-center justify-center gap-2'}>
+                {result !== null && <RotateCcw className="w-5 h-5" />}
+                {result === null ? 'Sortear Palavra' : 'Sortear Novamente'}
+              </span>
+            </button>
+                
+            
           </div>
+        ) : (
+          /* MODO VISUALIZAÇÃO (ID EXISTE) */
+          <div></div>
+          
+        )}
+
+        {/* RESULTADO (Comum a ambos) */}
+        {result && (
+          <>
+            <div className="mt-8 overflow-hidden rounded-lg bg-white p-6 shadow-lg animate-in fade-in slide-in-from-bottom-4 duration-500">
+              <div className="flex items-center justify-between">
+                <div className="rounded-full bg-green-100 p-3">
+                  <SparklesIcon className="h-6 w-6 text-green-600" />
+                </div>
+                <div className="text-center">
+                  <p className="text-sm font-medium text-gray-500">Palavra Sorteada</p>
+                  <p className="mt-1 text-5xl font-bold text-gray-900 break-all">{result}</p>
+                </div>
+                <div className="rounded-full bg-green-100 p-3">
+                  <SparklesIcon className="h-6 w-6 text-green-600" />
+                </div>
+              </div>
+            </div>
+            <div className="mt-8 flex flex-col items-center justify-center gap-2 animate-in fade-in slide-in-from-bottom-5 duration-700">
+              <div className="w-full flex flex-col items-center justify-center rounded-lg bg-white p-6 shadow-lg gap-2">
+                <p className="text-mt font-medium text-gray-500">Data do sorteio</p>
+                <p className="mt-1 text-2xl font-bold text-gray-900 center">{sorteioTime}</p>
+              </div>
+            </div>
+          </>
+        )}
+        {id ? (
+          <div className="mt-8 flex flex-col gap-3">
+            <button
+              onClick={handleCopyLink}
+              className={`border-2 border-gray-200 w-full flex items-center justify-center gap-2 rounded-xl px-6 py-4 text-lg font-semibold text-green shadow-lg transition-all hover:scale-[1.02]
+                ${copied ? 'bg-green-600' : 'bg-white-600 hover:bg-white-700'}`}
+            >
+              {copied ? <Check className="w-5 h-5" /> : <Copy className="w-5 h-5" />}
+              {copied ? "Link Copiado!" : "Copiar Link do Resultado"}
+            </button>
+
+            <button
+              onClick={() => {
+                setResult(null);
+                setWords([]);
+                navigate('/Sortear-Palavras');
+              }}
+              className="bg-green-500 w-full flex items-center justify-center gap-2 rounded-xl border-2 border-gray-200 bg-green px-6 py-4 text-lg font-semibold shadow-lg transition-all hover:scale-[1.02]"
+            >
+              <RotateCcw className="w-5 h-5" />
+              Realizar Novo Sorteio
+            </button>
+          </div>) : (
+                    <div className="flex flex-col gap-3">
+                      
+                      {/* Botão de Sortear (Sempre visível para tentar de novo) */}
+                      
+          
+                      {/* Botão de SALVAR (Só aparece se tiver um resultado na tela) */}
+                      {result !== null && (
+                        <button
+                          onClick={handleSave}
+                          disabled={isSaving || isDrawing}
+                          className="mt-8 w-full flex items-center justify-center gap-2 rounded-xl bg-green-500 px-6 py-4 text-lg font-semibold text-white shadow-lg hover:bg-green-600 hover:scale-[1.02] transition-all"
+                        >
+                          {isSaving ? (
+                             <div className="h-6 w-6 animate-spin rounded-full border-4 border-white/30 border-t-white"></div>
+                          ) : (
+                             <>
+                               <Save className="w-5 h-5" />
+                               Salvar e Gerar Link
+                             </>
+                          )}
+                        </button>
+                      )}
+                    </div>
         )}
       </div>
-      
 
       <div className="mt-8 space-y-8 rounded-xl border border-gray-200 bg-white p-8 shadow-sm">
         <h2 className="mb-4 text-2xl font-bold text-gray-900">Outros tipos de sorteios</h2>
-        <p className="mb-6 text-gray-600">Explore outros tipos de sorteios disponíveis na nossa plataforma.</p>
-
-        <div
-          className={`grid gap-6 sm:grid-cols-2 lg:grid-cols-2 ${
-        raffleTypes.length % 2 !== 0 ? 'lg:grid-cols-2 lg:justify-items-center' : ''
-          }`}
-        >
+        <div className={`grid gap-6 sm:grid-cols-2 lg:grid-cols-2 ${raffleTypes.length % 2 !== 0 ? 'lg:grid-cols-2 lg:justify-items-center' : ''}`}>
           {raffleTypes.map((raffle, index) => (
-        <Link
-          key={index}
-          to={raffle.path}
-          className={`${
-            raffleTypes.length % 2 !== 0 && index === raffleTypes.length - 1
-          ? 'lg:col-span-2 lg:justify-self-center w-full'
-          : ''
-          }`}
-        >
-          <RaffleCard
-            title={raffle.title}
-            description={raffle.description}
-            icon={raffle.icon}
-            gradient={raffle.gradient}
-            onClick={() => {}}
-          />
-        </Link>
+            <Link key={index} to={raffle.path} className={`${raffleTypes.length % 2 !== 0 && index === raffleTypes.length - 1 ? 'lg:col-span-2 lg:justify-self-center w-full' : ''}`}>
+              <RaffleCard title={raffle.title} description={raffle.description} icon={raffle.icon} gradient={raffle.gradient} onClick={() => {}} />
+            </Link>
           ))}
         </div>
       </div>

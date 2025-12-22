@@ -1,69 +1,119 @@
-import React, { useState, useRef, useEffect } from 'react';
-import Head from 'next/head'
-import { Users, HomeIcon, Dice1Icon, TextIcon, ListIcon, GiftIcon, SparklesIcon} from 'lucide-react';
-import { Link } from 'react-router-dom';
-import { AdSpace } from './AdSpace';
+import { useState, useRef, useEffect } from 'react';
+// import Head from 'next/head'; // REMOVIDO
+import { Users, HomeIcon, Dice1Icon, TextIcon, ListIcon, GiftIcon, SparklesIcon, Save, Copy, Check, RotateCcw, LifeBuoy } from 'lucide-react';
+import { Link, useParams, useNavigate } from 'react-router-dom';
+import { ShareButton } from './ShareButton';
 import { RaffleCard } from '../components/RaffleCard';
 import Perguntas from './perguntas';
+import { supabase } from '../lib/supabase';
+
+interface RoletaSalva {
+  resultado: string;
+  opcoes: string[];
+}
+
+const raffleTypes = [
+  {
+    title: 'Sortear um número',
+    description: 'Sorteie números aleatórios de forma rápida e confiável',
+    icon: <Dice1Icon className="h-6 w-6 text-blue-600" />,
+    path: '/Sortear-Numero',
+    gradient: 'from-blue-500 to-cyan-400',
+  },
+  {
+    title: 'Sortear Palavras',
+    description: 'Sorteie palavras ou nomes de uma lista personalizada',
+    icon: <TextIcon className="h-6 w-6 text-green-600" />,
+    path: '/Sortear-Palavras',
+    gradient: 'from-green-500 to-emerald-400',
+  },
+  {
+    title: 'Sortear uma sequência',
+    description: 'Gere sequências numéricas aleatórias para diversos fins',
+    icon: <ListIcon className="h-6 w-6 text-purple-600" />,
+    path: '/Sortear-Sequencia',
+    gradient: 'from-purple-500 to-pink-400',
+  },
+  {
+    title: 'Amigo Secreto',
+    description: 'Organize seu amigo secreto com envio automático por email',
+    icon: <GiftIcon className="h-6 w-6 text-red-600" />,
+    path: '/Amigo-Secreto',
+    gradient: 'from-red-500 to-orange-400',
+  },
+  {
+    title: 'Sortear Equipes',
+    description: 'Faça o sorteio de equipes para diversas atividades',
+    icon: <Users className="h-6 w-6" style={{ color: '#0F766E' }} />,
+    path: '/Sortear-Equipes',
+    gradient: 'from-teal-400 to-teal-100',
+  },
+];
 
 export function RoletaSorteio() {
-  useEffect(() => {
-        window.scrollTo(0, 0);
-        <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6732428339083295" crossorigin="anonymous"></script>
-      }, []);
-//const RoletaSorteio = () => {
+  const { id } = useParams();
+  const navigate = useNavigate();
+
+  // --- ESTADOS ---
   const [error, setError] = useState<string | null>(null);
   const [rotating, setRotating] = useState(false);
-  const [result, setResult] = useState(null);
-  const [options, setOptions] = useState(['Bicicleta', 'Skate', 'Patins', 'Bola', 'Tenis', 'Violão']);
+  const [result, setResult] = useState<string | null>(null);
+  const [options, setOptions] = useState<string[]>(['Bicicleta', 'Skate', 'Patins', 'Bola', 'Tenis', 'Violão']);
   const [newOption, setNewOption] = useState('');
   const [rotationDegree, setRotationDegree] = useState(0);
-  const [resultHistory, setResultHistory] = useState([]);
+  const [resultHistory, setResultHistory] = useState<{option: string, time: string}[]>([]);
   const [showHistory, setShowHistory] = useState(false);
   const [sorteioTime, setsorteioTime] = useState<string | null>(null);
+  
+  // Estados Supabase/UX
+  const [isSaving, setIsSaving] = useState(false);
+  const [loadingBanco, setLoadingBanco] = useState(false);
+  const [copied, setCopied] = useState(false);
 
-  const canvasRef = useRef(null);
-
+  const canvasRef = useRef<HTMLCanvasElement>(null);
   const colors = ['#FF4500', '#32CD32', '#1E90FF', '#FF1493', '#8A2BE2', '#20B2AA', '#FFD700', '#FF6347', '#3CB371', '#6A5ACD', '#DC143C', '#00FA9A'];
 
-  const raffleTypes = [
-    {
-      title: 'Sortear um número',
-      description: 'Sorteie números aleatórios de forma rápida e confiável',
-      icon: <Dice1Icon className="h-6 w-6 text-blue-600" />,
-      path: '/Sortear-Numero',
-      gradient: 'from-blue-500 to-cyan-400',
-    },
-    {
-      title: 'Sortear Palavras',
-      description: 'Sorteie palavras ou nomes de uma lista personalizada',
-      icon: <TextIcon className="h-6 w-6 text-green-600" />,
-      path: '/Sortear-Palavras',
-      gradient: 'from-green-500 to-emerald-400',
-    },
-    {
-      title: 'Sortear uma sequência',
-      description: 'Gere sequências numéricas aleatórias para diversos fins',
-      icon: <ListIcon className="h-6 w-6 text-purple-600" />,
-      path: '/Sortear-Sequencia',
-      gradient: 'from-purple-500 to-pink-400',
-    },
-    {
-      title: 'Amigo Secreto',
-      description: 'Organize seu amigo secreto com envio automático por email',
-      icon: <GiftIcon className="h-6 w-6 text-red-600" />,
-      path: '/Amigo-Secreto',
-      gradient: 'from-red-500 to-orange-400',
-    },
-    {
-      title: 'Sortear Equipes',
-      description: 'Faça o sorteio de equipes para diversas atividades',
-      icon: <Users className="h-6 w-6" style={{ color: '#0F766E' }}/>,
-      path: '/Sortear-Equipes',
-      gradient: 'from-teal-400 to-teal-100',
-    },
-  ];
+  // Atualiza Título
+  useEffect(() => {
+    document.title = id 
+      ? "Resultado da Roleta - Vamo Sortear" 
+      : "Roleta Online Personalizada - Vamo Sortear";
+    window.scrollTo(0, 0);
+  }, [id]);
 
+  const formatarData = (date: Date) => {
+    const twoDigits = (num: number) => num.toString().padStart(2, '0');
+    return `${twoDigits(date.getDate())}/${twoDigits(date.getMonth() + 1)}/${date.getFullYear()} - ${twoDigits(date.getHours())}:${twoDigits(date.getMinutes())}`;
+  };
+
+  // Carregar do Banco
+  useEffect(() => {
+    if (id) {
+      const buscarRoletaSalva = async () => {
+        setLoadingBanco(true);
+        const { data, error } = await supabase
+          .from('sorteios_roleta')
+          .select('*')
+          .eq('id_curto', id)
+          .single();
+
+        if (data && !error) {
+          const dados = data.dados_roleta as RoletaSalva;
+          setResult(dados.resultado);
+          setOptions(dados.opcoes);
+          
+          const dataBanco = new Date(data.created_at);
+          setsorteioTime(formatarData(dataBanco));
+        }
+        setLoadingBanco(false);
+      };
+      buscarRoletaSalva();
+    } else {
+        setResult(null);
+    }
+  }, [id]);
+
+  // Desenhar Roleta
   useEffect(() => {
     drawWheel();
   }, [options, rotationDegree]);
@@ -71,16 +121,15 @@ export function RoletaSorteio() {
   const drawWheel = () => {
     const canvas = canvasRef.current;
     if (!canvas) return;
-
     const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
     const centerX = canvas.width / 2;
     const centerY = canvas.height / 2;
     const radius = Math.min(centerX, centerY) - 10;
 
-    // Clear canvas
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-    // Draw wheel
     const anglePerOption = 2 * Math.PI / options.length;
     
     options.forEach((option, index) => {
@@ -94,30 +143,16 @@ export function RoletaSorteio() {
       ctx.fillStyle = colors[index % colors.length];
       ctx.fill();
       
-      const agora = new Date();
-      const twoDigits = (num: number) => num.toString().padStart(2, '0');
-      const TimeFormatado = 
-        `${twoDigits(agora.getDate())}/` +
-        `${twoDigits(agora.getMonth() + 1)}/` +
-        `${agora.getFullYear()} - ` +
-        `${twoDigits(agora.getHours())}:` +
-        `${twoDigits(agora.getMinutes())}:` +
-        `${twoDigits(agora.getSeconds())}`;
-
-      setsorteioTime(TimeFormatado);
-
-      // Draw text
       ctx.save();
       ctx.translate(centerX, centerY);
       ctx.rotate(startAngle + anglePerOption / 2);
       ctx.textAlign = 'right';
       ctx.fillStyle = '#fff';
       ctx.font = 'bold 14px Arial';
-      ctx.fillText(option, radius - 10, 5);
+      ctx.fillText(option.substring(0, 15), radius - 10, 5);
       ctx.restore();
     });
 
-    // Draw center circle
     ctx.beginPath();
     ctx.arc(centerX, centerY, 15, 0, 2 * Math.PI);
     ctx.fillStyle = '#fff';
@@ -126,7 +161,6 @@ export function RoletaSorteio() {
     ctx.lineWidth = 2;
     ctx.stroke();
 
-    // Draw arrow
     ctx.beginPath();
     ctx.moveTo(centerX + radius + 10, centerY);
     ctx.lineTo(centerX + radius - 20, centerY - 15);
@@ -142,21 +176,18 @@ export function RoletaSorteio() {
     setRotating(true);
     setResult(null);
     
-    // Random rotation between 1440 and 2160 degrees (4-6 full rotations)
+    const agora = new Date();
+    setsorteioTime(formatarData(agora));
+
     const spinDegrees = 1440 + Math.random() * 720;
     const currentRotation = rotationDegree % 360;
-    const finalRotation = currentRotation + spinDegrees;
-    
-    // Animation duration
     const duration = 5000;
     const startTime = Date.now();
     
     const animate = () => {
       const elapsed = Date.now() - startTime;
       const progress = Math.min(elapsed / duration, 1);
-      
-      // Easing function for deceleration
-      const easeOut = (t) => 1 - Math.pow(1 - t, 3);
+      const easeOut = (t: number) => 1 - Math.pow(1 - t, 3);
       const currentProgress = easeOut(progress);
       
       const newRotation = currentRotation + (spinDegrees * currentProgress);
@@ -165,10 +196,7 @@ export function RoletaSorteio() {
       if (progress < 1) {
         requestAnimationFrame(animate);
       } else {
-        // Animation complete
         setRotating(false);
-        
-        // Calculate result
         const anglePerOption = 360 / options.length;
         const normalizedRotation = (newRotation % 360);
         const resultIndex = options.length - 1 - Math.floor(normalizedRotation / anglePerOption) % options.length;
@@ -181,27 +209,65 @@ export function RoletaSorteio() {
         ]);
       }
     };
-    
     animate();
+  };
+
+  const handleSave = async () => {
+    if (!result) return;
+    setIsSaving(true);
+
+    try {
+      const ipRes = await fetch('https://api.ipify.org?format=json');
+      const { ip } = await ipRes.json();
+
+      const { data: recentes } = await supabase
+        .from('sorteios_roleta')
+        .select('created_at')
+        .eq('user_ip', ip)
+        .gt('created_at', new Date(Date.now() - 30000).toISOString());
+
+      if (recentes && recentes.length > 0) {
+        alert("Aguarde 30 segundos entre os sorteios.");
+        setIsSaving(false);
+        return;
+      }
+
+      const novoId = Math.random().toString(36).substring(2, 8);
+
+      const { error } = await supabase
+        .from('sorteios_roleta')
+        .insert([{
+          id_curto: novoId,
+          dados_roleta: { resultado: result, opcoes: options },
+          user_ip: ip
+        }]);
+
+      if (!error) {
+        navigate(`/roleta/${novoId}`);
+      } else {
+        console.error(error);
+        alert("Erro ao salvar.");
+      }
+    } catch (err) {
+      console.error(err);
+      alert("Erro de conexão.");
+    } finally {
+      setIsSaving(false);
+    }
   };
 
   const addOption = () => {
     const word = newOption.trim();
-    if (!word) {
-      setError('Você deve digitar uma palavra.');
-      return;
-    }
-    if (options.includes(word)) {
-      setError('Esta palavra já foi adicionada.');
-      return;
-    }
+    if (!word) { setError('Digite uma opção.'); return; }
+    if (options.includes(word)) { setError('Opção já existe.'); return; }
+    if (options.length >= 20) { setError('Máximo de 20 opções.'); return; }
 
-    setOptions([...options, newOption.trim()]);
+    setOptions([...options, word]);
     setNewOption('');
     setError(null);
-    };
+  };
 
-  const removeOption = (index) => {
+  const removeOption = (index: number) => {
     if (options.length > 1) {
       const newOptions = [...options];
       newOptions.splice(index, 1);
@@ -209,93 +275,22 @@ export function RoletaSorteio() {
     }
   };
 
-  const resetOptions = () => {
-    setOptions(['Bicicleta', 'Skate', 'Patins', 'Bola', 'Tenis', 'Violão']);
+  const handleCopyLink = () => {
+    navigator.clipboard.writeText(window.location.href);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
   };
 
-  return (
- <div className="mx-auto max-w-2xl">
-        <Head> 
-          <title>Roleta Online Personalizada - Vamo Sortear</title>
-          <meta name="description" content="Crie e personalize sua roleta online para sorteios divertidos e justos. Descubra o resultado com um clique!" />
-          <meta name="robots" content="index, follow" />
-          <link rel="canonical" href="https://vamosortear.com.br/roleta" />
-          <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
-          <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
-          <meta name="keywords" content="sorteio online, roleta online, roleta personalizada, sorteios divertidos, sorteio justo, roleta virtual, criar roleta, sorteio de prêmios, sorteio de tarefas, sorteio de equipes" />
-          <meta name="author" content="Marcos & Matheus"></meta>
-          <meta property="og:title" content="Roleta Online Personalizada - Vamo Sortear" />
-          <meta property="og:description" content="Crie e personalize sua roleta online para sorteios divertidos e justos. Descubra o resultado com um clique!" />
-          <meta property="og:url" content="https://vamosortear.com.br/roleta" />
-          <meta property="og:type" content="website" />
-          <meta property="og:image" content="https://vamosortear.com.br/assets/roleta-preview.png" />
-          <meta name="twitter:card" content="summary_large_image" />
-          <meta name="twitter:title" content="Roleta Online Personalizada - Vamo Sortear" />
-          <meta name="twitter:description" content="Crie e personalize sua roleta online para sorteios divertidos e justos. Descubra o resultado com um clique!" />
-          <meta name="twitter:image" content="https://vamosortear.com.br/assets/roleta-preview.png" />
+  if (loadingBanco) {
+    return (
+      <div className="flex h-screen items-center justify-center">
+        <div className="h-12 w-12 animate-spin rounded-full border-4 border-blue-600 border-t-transparent"></div>
+      </div>
+    );
+  }
 
-            <script type="application/ld+json">
-              {JSON.stringify({
-                "@context": "https://schema.org",
-                "@type": "WebPage",
-                "name": "Roleta Online Personalizada - Sorteios Divertidos e Justos | Vamo Sortear",
-                "description":
-                "Crie sua roleta online personalizada para sorteios justos e divertidos. Descubra o resultado com um clique! Experimente agora no Vamo Sortear.",
-                "url": "https://vamosortear.com.br/roleta",
-                "publisher": {
-                "@type": "Organization",
-                "name": "Vamo Sortear",
-                "logo": {
-                  "@type": "ImageObject",
-                  "url": "https://vamosortear.com.br/logo.png",
-                  "width": 1200,
-                  "height": 630,
-                },
-                },
-                "image": "https://vamosortear.com.br/assets/roleta-preview.png",
-                "mainEntity": {
-                "@type": "WebApplication",
-                "name": "Vamo Sortear",
-                "operatingSystem": "All",
-                "applicationCategory": "UtilityApplication",
-                "offers": {
-                  "@type": "Offer",
-                  "price": "0",
-                  "priceCurrency": "BRL",
-                },
-                },
-                "potentialAction": [
-                {
-                  "@type": "SearchAction",
-                  "target": "https://vamosortear.com.br/?q={search_term_string}",
-                  "query-input": "required name=search_term_string",
-                },
-                {
-                  "@type": "Action",
-                  "name": "Criar Roleta",
-                  "target": "https://vamosortear.com.br/roleta",
-                },
-                ],
-                "breadcrumb": {
-                "@type": "BreadcrumbList",
-                "itemListElement": [
-                  {
-                  "@type": "ListItem",
-                  "position": 1,
-                  "name": "Início",
-                  "item": "https://vamosortear.com.br/",
-                  },
-                  {
-                  "@type": "ListItem",
-                  "position": 2,
-                  "name": "Roleta Online",
-                  "item": "https://vamosortear.com.br/roleta",
-                  },
-                ],
-                },
-              })}
-              </script>
-        </Head>
+  return (
+    <div className="mx-auto max-w-2xl">
       <div className="mb-4">
         <Link
           to="/"
@@ -306,159 +301,199 @@ export function RoletaSorteio() {
         </Link>
       </div>
   
-      
-    <div className="flex flex-col items-center max-w-4xl mx-auto p-4 bg-gray-50">
-      <h1 className="text-3xl font-bold text-center mb-6">Sorteador de Roleta</h1>
-      
-      <div className="w-full flex flex-col md:flex-row gap-6">
-        <div className="w-full md:w-2/3 flex flex-col items-center">
-          <div className="relative">
-            <canvas 
-              ref={canvasRef} 
-              width={300} 
-              height={300} 
-              className="border border-gray-300 rounded-full shadow-lg"
+      <div className="flex flex-col items-center max-w-4xl mx-auto p-4 bg-gray-50 rounded-xl shadow-sm border border-gray-200">
+        <div className="mb-6 flex items-center gap-4">
+            <div className="rounded-xl bg-gradient-to-br from-purple-600 to-indigo-600 p-3 shadow-md">
+                <LifeBuoy className="h-8 w-8 text-white" />
+            </div>
+            <h1 className="text-3xl font-bold text-center text-gray-900">
+                {id ? "Resultado da Roleta" : "Sorteador de Roleta"}
+            </h1>
+            {id && result && (
+        <div className="my-6">
+             <ShareButton 
+                title="Resultado da Roleta" 
+                text={`A roleta sorteou: ${result}. Confira: ${window.location.href}`} 
             />
-          </div>
-          
-          <button 
-            onClick={spin}
-            disabled={rotating || options.length < 2}
-            className={`mt-6 px-8 py-3 text-lg font-bold rounded-full shadow-lg transition-transform ${
-              rotating ? 'bg-gray-400 cursor-not-allowed' : 'bg-blue-600 hover:bg-blue-700 text-white hover:scale-105'
-            }`}
-          >
-            {rotating ? 'Girando...' : 'GIRAR ROLETA'}
-          </button>
-          
-          {result && (
-            <div className="mt-6 p-8 border-2 border-green-500 rounded-lg bg-green-100 shadow-md">
-              <h2 className="text-xl font-bold text-center">Resultado:</h2>
-              <p className="text-4xl font-bold text-center text-green-600">{result}</p>
-            </div>
-          )}
-          {result &&(
-          <div className="mt-8 flex flex-col md:flex-row items-center justify-center gap-4">
-            <div className="w-full flex flex-col items-center justify-center rounded-lg bg-white p-6 shadow-lg gap-2">
-              <p className="text-mt font-medium text-gray-500">Data do sorteio</p>
-              <p className="mt-1 text-2xl font-bold text-gray-900 center">{sorteioTime}</p>
-            </div>
-          </div>
-        )}
         </div>
-        
-        <div className="w-full md:w-1/3">
-          <div className="bg-white p-4 rounded-lg shadow-md">
-            <h2 className="text-xl font-bold mb-4">Opções da Roleta</h2>
-            
-            <div className="mb-4 flex flex-col gap-2">
-             
-              <input
-                type="text"
-                value={newOption}
-                onChange={(e) => setNewOption(e.target.value)}
-                 onKeyDown={(e) => {
-                  if (e.key === 'Enter') {
-                    handleAddWord();
-                    setError(null);
-                  }
-                }}
-                placeholder="Nova opção"
-                className="block w-full rounded-md border border-gray-300 px-4 py-3 text-lg shadow-sm focus:border-green-500 focus:outline-none focus:ring-2 focus:ring-green-500/20"
-                maxLength={20}
+      )}
+        </div>
+      
+        <div className="w-full flex flex-col md:flex-row gap-6">
+          {/* ESQUERDA: CANVAS */}
+          <div className="w-full md:w-2/3 flex flex-col items-center">
+            <div className="relative">
+              <canvas 
+                ref={canvasRef} 
+                width={300} 
+                height={300} 
+                className="border border-gray-300 rounded-full shadow-lg bg-white"
               />
-              <button
-                onClick={addOption}
-                disabled={!newOption.trim() || options.length >= 12}
-                className="bg-green-500 hover:bg-green-600 text-white p-2 rounded"
-              >
-                + Adicionar
-              </button>
             </div>
-            {error && <p className="mb-1 text-sm text-red-600">{error}</p>}
             
-            <div className="max-h-64 overflow-y-auto mb-4">
-              <ul className="divide-y divide-gray-200">
-                {options.map((option, index) => (
-                  <li key={index} className="flex justify-between items-center py-2">
-                    <span className="font-medium">{option}</span>
+            {!id && (
+                <button 
+                onClick={spin}
+                disabled={rotating || options.length < 2 || isSaving}
+                className={`mt-6 px-8 py-3 text-lg font-bold rounded-full shadow-lg transition-transform ${
+                    rotating ? 'bg-gray-400 cursor-not-allowed' : 'bg-blue-600 hover:bg-blue-700 text-white hover:scale-105'
+                }`}
+                >
+                {rotating ? 'Girando...' : 'GIRAR ROLETA'}
+                </button>
+            )}
+            
+            {result && (
+              <div className="mt-6 w-full animate-in zoom-in duration-300">
+                <div className="p-6 border-2 border-green-500 rounded-xl bg-green-50 shadow-md text-center">
+                    <p className="text-sm uppercase tracking-wide text-green-600 font-bold mb-1">Vencedor</p>
+                    <p className="text-4xl font-black text-gray-800 break-words">{result}</p>
+                </div>
+                
+                {!id && (
                     <button
-                      onClick={() => removeOption(index)}
-                      disabled={options.length <= 1}
-                      className="text-red-500 hover:text-red-700"
+                        onClick={handleSave}
+                        disabled={isSaving}
+                        className="mt-4 w-full py-3 bg-gray-800 text-white rounded-xl font-bold hover:bg-gray-900 transition flex items-center justify-center gap-2"
                     >
-                      ✕
+                        {isSaving ? "Salvando..." : <><Save className="w-5 h-5"/> Salvar Resultado</>}
                     </button>
-                  </li>
-                ))}
-              </ul>
-            </div>
-            
-            <button
-              onClick={resetOptions}
-              className="w-full bg-gray-200 hover:bg-gray-300 p-2 rounded"
-            >
-              Restaurar Padrão
-            </button>
+                )}
+              </div>
+            )}
+
+            {result && (
+                <div className="mt-4 text-center">
+                    <p className="text-sm text-gray-500">Sorteio realizado em</p>
+                    <p className="text-lg font-bold text-gray-700">{sorteioTime}</p>
+                </div>
+            )}
           </div>
           
-          <div className="mt-4">
-            <button
-              onClick={() => setShowHistory(!showHistory)}
-              className="flex items-center justify-between w-full bg-white p-3 rounded-lg shadow-md hover:bg-gray-50"
-            >
-              <span className="font-bold">Histórico de Sorteios</span>
-              <span>{showHistory ? '▲' : '▼'}</span>
-            </button>
-            
-            {showHistory && resultHistory.length > 0 && (
-              <div className="mt-2 bg-white p-4 rounded-lg shadow-md max-h-64 overflow-y-auto">
-                <ul className="divide-y divide-gray-200">
-                  {resultHistory.map((item, index) => (
-                    <li key={index} className="py-2 flex justify-between">
-                      <span className="font-medium">{item.option}</span>
-                      <span className="text-gray-500 text-sm">{item.time}</span>
+          {/* DIREITA: OPÇÕES */}
+          <div className="w-full md:w-1/3">
+            <div className="bg-white p-4 rounded-lg shadow-md border border-gray-100">
+              <h2 className="text-xl font-bold mb-4 text-gray-800">Opções</h2>
+              
+              {!id && (
+                  <div className="mb-4 flex flex-col gap-2">
+                    <div className="flex gap-2">
+                        <input
+                        type="text"
+                        value={newOption}
+                        onChange={(e) => {
+                            setNewOption(e.target.value);
+                            setError(null);
+                        }}
+                        onKeyDown={(e) => e.key === 'Enter' && addOption()}
+                        placeholder="Nova opção"
+                        className="w-full rounded-md border border-gray-300 px-3 py-2 text-sm focus:border-blue-500 focus:outline-none"
+                        maxLength={20}
+                        />
+                        <button
+                        onClick={addOption}
+                        disabled={!newOption.trim() || options.length >= 20}
+                        className="bg-green-600 hover:bg-green-700 text-white px-3 py-2 rounded-md font-bold"
+                        >
+                        +
+                        </button>
+                    </div>
+                    {error && <p className="text-xs text-red-600">{error}</p>}
+                  </div>
+              )}
+              
+              <div className="max-h-64 overflow-y-auto mb-4 pr-1">
+                <ul className="divide-y divide-gray-100">
+                  {options.map((option, index) => (
+                    <li key={index} className="flex justify-between items-center py-2">
+                      <span className="font-medium text-gray-700 truncate">{option}</span>
+                      {!id && (
+                          <button
+                            onClick={() => removeOption(index)}
+                            disabled={options.length <= 2}
+                            className="text-gray-400 hover:text-red-500 disabled:opacity-30"
+                          >
+                            <span className="sr-only">Remover</span>
+                            ✕
+                          </button>
+                      )}
                     </li>
                   ))}
                 </ul>
               </div>
+              
+              {!id && (
+                  <button
+                    onClick={() => setOptions(['Bicicleta', 'Skate', 'Patins', 'Bola', 'Tenis', 'Violão'])}
+                    className="w-full text-xs text-gray-500 hover:text-gray-700 underline"
+                  >
+                    Restaurar Padrão
+                  </button>
+              )}
+            </div>
+            
+            {/* BOTÕES DE AÇÃO (MODO ID) */}
+            {id && (
+                <div className="mt-6 flex flex-col gap-3">
+                    <button
+                        onClick={handleCopyLink}
+                        className={`w-full py-3 rounded-xl font-bold text-white transition flex items-center justify-center gap-2 ${copied ? 'bg-green-600' : 'bg-blue-600 hover:bg-blue-700'}`}
+                    >
+                        {copied ? <Check className="w-5 h-5" /> : <Copy className="w-5 h-5" />}
+                        {copied ? "Link Copiado!" : "Copiar Link"}
+                    </button>
+
+                    <button
+                        onClick={() => {
+                            setResult(null);
+                            navigate('/roleta');
+                        }}
+                        className="w-full py-3 border-2 border-gray-200 bg-white rounded-xl font-bold text-gray-600 hover:bg-gray-50 flex items-center justify-center gap-2"
+                    >
+                        <RotateCcw className="w-5 h-5" />
+                        Criar Nova Roleta
+                    </button>
+                </div>
+            )}
+
+            {!id && resultHistory.length > 0 && (
+                <div className="mt-4">
+                    <button
+                    onClick={() => setShowHistory(!showHistory)}
+                    className="flex items-center justify-between w-full bg-white p-3 rounded-lg shadow-sm border border-gray-200 text-sm"
+                    >
+                    <span className="font-bold text-gray-700">Histórico Recente</span>
+                    <span>{showHistory ? '▲' : '▼'}</span>
+                    </button>
+                    
+                    {showHistory && (
+                    <div className="mt-2 bg-white p-3 rounded-lg shadow-inner border border-gray-100 max-h-40 overflow-y-auto text-sm">
+                        {resultHistory.map((item, index) => (
+                        <div key={index} className="py-1 flex justify-between border-b border-gray-50 last:border-0">
+                            <span className="font-medium">{item.option}</span>
+                            <span className="text-gray-400 text-xs">{item.time}</span>
+                        </div>
+                        ))}
+                    </div>
+                    )}
+                </div>
             )}
           </div>
         </div>
       </div>
   
 
-
-   <div className="mt-8 space-y-8 rounded-xl border border-gray-200 bg-white p-8 shadow-sm">
-           <h2 className="mb-4 text-2xl font-bold text-gray-900">Outros tipos de sorteios</h2>
-           <p className="mb-6 text-gray-600">Explore outros tipos de sorteios disponíveis na nossa plataforma.</p>
-   
-           <div
-             className={`grid gap-6 sm:grid-cols-2 lg:grid-cols-2 ${
-               raffleTypes.length % 2 !== 0 ? 'lg:grid-cols-2 lg:justify-items-center' : ''
-             }`}
-           >
-             {raffleTypes.map((raffle, index) => (
-               <Link
-                 key={index}
-                 to={raffle.path}
-                 className={`${
-             raffleTypes.length % 2 !== 0 && index === raffleTypes.length - 1
-               ? 'lg:col-span-2 lg:justify-self-center w-full'
-               : ''
-                 }`}
-               >
-                 <RaffleCard
-             title={raffle.title}
-             description={raffle.description}
-             icon={raffle.icon}
-             gradient={raffle.gradient}
-             onClick={() => {}}
-                 />
-               </Link>
-             ))}
-           </div>
-         </div>
+      {/* --- SEO E TEXTOS FINAIS --- */}
+      <div className="mt-8 space-y-8 rounded-xl border border-gray-200 bg-white p-8 shadow-sm">
+        <h2 className="mb-4 text-2xl font-bold text-gray-900">Outros tipos de sorteios</h2>
+        <div className={`grid gap-6 sm:grid-cols-2 lg:grid-cols-2 ${raffleTypes.length % 2 !== 0 ? 'lg:grid-cols-2 lg:justify-items-center' : ''}`}>
+          {raffleTypes.map((raffle, index) => (
+            <Link key={index} to={raffle.path} className={`${raffleTypes.length % 2 !== 0 && index === raffleTypes.length - 1 ? 'lg:col-span-2 lg:justify-self-center w-full' : ''}`}>
+              <RaffleCard title={raffle.title} description={raffle.description} icon={raffle.icon} gradient={raffle.gradient} onClick={() => {}} />
+            </Link>
+          ))}
+        </div>
+      </div>
 
       <div className="mt-8 space-y-8 rounded-xl border border-gray-200 bg-white p-8 shadow-sm">
         <div>
@@ -489,7 +524,7 @@ export function RoletaSorteio() {
               <div>
                 <p className="font-medium text-gray-900">Itens Personalizado</p>
                 <p className="mt-1 text-sm text-gray-600">Define facilmente os itens personalizados.</p>
-                <p className="mt-1 text-sm text-gray-600">Adicione até 12 opções diferentes para personalizar seu sorteio.</p>
+                <p className="mt-1 text-sm text-gray-600">Adicione até 20 opções diferentes para personalizar seu sorteio.</p>
               </div>
             </li>
             <li className="flex items-start gap-3">
@@ -525,20 +560,14 @@ export function RoletaSorteio() {
             <div className="rounded-lg bg-gray-50 p-4">
               <h5 className="font-medium text-gray-900">Jogos e Entretenimento</h5>
               <p className="mt-2 text-sm text-gray-600">
-                Ideal para programas de televisão com dinâmicas de sorteio ou eventos de entretenimento com seleção aleatória de participantes
+                Ideal para programas de televisão com dinâmicas de sorteio ou eventos de entretenimento com seleção aleatória de participantes.
               </p>
             </div>
             <div className="rounded-lg bg-gray-50 p-4">
               <h5 className="font-medium text-gray-900">Marketing e Promoções</h5>
-              <p className="mt-2 text-sm text-gray-600">
-                Útil para Sorteio de brindes.
-              </p>
-              <p className="mt-2 text-sm text-gray-600">
-                Seleção de ganhadores em promoções.
-              </p>
-              <p className="mt-2 text-sm text-gray-600">
-                Definição de cortesias em eventos.
-              </p>
+              <p className="mt-2 text-sm text-gray-600">Útil para Sorteio de brindes.</p>
+              <p className="mt-2 text-sm text-gray-600">Seleção de ganhadores em promoções.</p>
+              <p className="mt-2 text-sm text-gray-600">Definição de cortesias em eventos.</p>
             </div>
             <div className="rounded-lg bg-gray-50 p-4">
               <h5 className="font-medium text-gray-900">Negócios e Gestão</h5>
@@ -549,16 +578,10 @@ export function RoletaSorteio() {
           </div>
         </div>
       </div>
-
-
       
+      <div className="bg-white rounded-2xl p-4 shadow-sm border border-gray-200 mt-4">
+        <Perguntas />
+      </div> 
     </div>
-    <div className="bg-white rounded-2xl p-4 shadow-sm border border-gray-200 mt-4">
-      <Perguntas />
-    </div> 
-   </div>
   );
-//};
-//export default RoletaSorteio;
-};
-
+}

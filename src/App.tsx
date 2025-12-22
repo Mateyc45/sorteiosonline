@@ -1,26 +1,36 @@
-import React from 'react';
-import Head from 'next/head'
+import React, { useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
-import { HelmetProvider } from 'react-helmet-async';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
 import { Dice1Icon, TextIcon, ListIcon, GiftIcon, SparklesIcon, StarIcon, ShieldCheckIcon, ClockIcon, LifeBuoy, Users } from 'lucide-react';
+
+// Componentes
 import { RaffleCard } from './components/RaffleCard';
 import { NumberDraw } from './components/NumberDraw';
 import { WordDraw } from './components/WordDraw';
 import { SequenceDraw } from './components/SequenceDraw';
 import { RoletaSorteio } from './components/RoletaDraw';
 import { SecretSantaDraw } from './components/SecretSantaDraw';
+import { SortearEquipes } from './components/SortearEquipes';
 import { PrivacyPolicy } from './components/PrivacyPolicy';
 import { TermsOfUse } from './components/TermsOfUse';
 import { Sitemap } from './components/Sitemap';
 import { BlogList } from './components/Blog/BlogList';
 import { BlogPost } from './components/Blog/BlogPost';
-import logo from './lib/image/logo3.png';
-import { Helmet } from 'react-helmet-async';
 import Analytics from './Analytics';
 import Breadcrumbs from './components/Breadcrumbs';
 import Perguntas from './components/perguntas';
-import { SortearEquipes } from './components/SortearEquipes';
 
+// Imagens
+import logo from './lib/image/logo3.png';
+
+// --- INTERFACE PARA CORRIGIR O ERRO DE TYPESCRIPT ---
+interface RaffleType {
+  title: string;
+  description: string;
+  icon: React.ReactNode;
+  path: string;
+  gradient: string;
+}
 
 // Schema markup for rich snippets
 const websiteSchema = {
@@ -38,32 +48,30 @@ const websiteSchema = {
   }
 };
 
-// SEO metadata
-
 function App() {
-  
+  // Configuração de Scripts Globais (AdSense e Schema)
+  useEffect(() => {
+    // 1. Injetar AdSense
+    const adScript = document.createElement('script');
+    adScript.src = "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6732428339083295";
+    adScript.async = true;
+    adScript.crossOrigin = "anonymous";
+    document.head.appendChild(adScript);
 
-  // Add SEO metadata and schema markup
-  React.useEffect(() => {
-    // Update metadata
-    
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6732428339083295" crossOrigin="anonymous"></script>
-
-    
-
-    // Add schema markup
-    const script = document.createElement('script');
-    script.type = 'application/ld+json';
-    script.text = JSON.stringify(websiteSchema);
-    document.head.appendChild(script);
+    // 2. Injetar Schema JSON-LD
+    const schemaScript = document.createElement('script');
+    schemaScript.type = 'application/ld+json';
+    schemaScript.text = JSON.stringify(websiteSchema);
+    document.head.appendChild(schemaScript);
 
     return () => {
-      document.head.removeChild(script);
+      // Limpeza opcional
+      if (document.head.contains(adScript)) document.head.removeChild(adScript);
+      if (document.head.contains(schemaScript)) document.head.removeChild(schemaScript);
     };
   }, []);
 
-
-  const raffleTypes = [
+  const raffleTypes: RaffleType[] = [
     {
       title: 'Sortear um número',
       description: 'Sorteie números aleatórios de forma rápida e confiável',
@@ -102,49 +110,45 @@ function App() {
     {
       title: 'Sortear Equipes',
       description: 'Faça o sorteio de equipes para diversas atividades',
-      icon: <Users className="h-6 w-6" style={{ color: '#0F766E' }}/>,
+      icon: <Users className="h-6 w-6" style={{ color: '#0F766E' }} />,
       path: '/Sortear-Equipes',
       gradient: 'from-teal-400 to-teal-100',
     },
   ];
-  
-  const isBlogPage = location.pathname.endsWith('/blog');
 
   return (
     <HelmetProvider>
       <Router>
         <Helmet>
-            {/* Script do Google Analytics */}
-            <script async src="https://www.googletagmanager.com/gtag/js?id=G-F0M7EK8WZ9"></script>
-            <script defer>
-              {`
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
-                gtag('js', new Date());
-                gtag('config', 'G-F0M7EK8WZ9'); 
-              `}
-            </script>
-          </Helmet>
+          {/* Script do Google Analytics */}
+          <script async src="https://www.googletagmanager.com/gtag/js?id=G-F0M7EK8WZ9"></script>
+          <script>
+            {`
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-F0M7EK8WZ9'); 
+            `}
+          </script>
+        </Helmet>
 
-          <Analytics/>
+        <Analytics />
 
         <div className="min-h-screen flex flex-col bg-gradient-to-br from-indigo-50 via-purple-50 to-pink-50">
           <header className="border-b bg-white/80 backdrop-blur-sm shadow-sm sticky top-0 z-50">
             <div className="mx-auto max-w-7xl px-4 py-4 sm:px-6 lg:px-8">
               <div className="flex items-center justify-between">
                 <Link to="/" className="text-2xl font-bold tracking-tight text-gray-900">
-                  <img src={logo} alt="Vamo Sortear - Plataforma de Sorteios Grátis(Sortear números, roleta, amigo secreto e muito mais sorteios da sorte)" title="Vamo Sortear – Sorteios Online Grátis de Números, nomes e Mais!" loading="lazy" className="h-24 w-full" /> 
+                  <img src={logo} alt="Vamo Sortear - Plataforma de Sorteios Grátis" title="Vamo Sortear – Sorteios Online Grátis de Números, nomes e Mais!" loading="lazy" className="h-24 w-full object-contain" />
                 </Link>
                 <nav className="flex gap-6">
-                  <Link to="/blog" className="text-gray-600 hover:text-gray-900">Blog</Link>
+                  <Link to="/blog" className="text-gray-600 hover:text-gray-900 font-medium">Blog</Link>
                 </nav>
               </div>
             </div>
           </header>
 
-
           <main className="flex-1">
-
             <div className="mx-auto max-w-7xl text-gray-500 px-4 py-6 sm:px-6 lg:px-8">
               <Breadcrumbs />
             </div>
@@ -152,27 +156,27 @@ function App() {
             <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
               <Routes>
                 <Route path="/" element={<HomePage raffleTypes={raffleTypes} />} />
-                <Route path="/Sortear-Numero" element={<NumberDraw />} />
-                <Route path="/Sortear-Palavras" element={<WordDraw />} />
-                <Route path="/Sortear-Sequencia" element={<SequenceDraw />} />
-                <Route path="/Amigo-Secreto" element={<SecretSantaDraw />} />
-                <Route path="/roleta" element={<RoletaSorteio />} />
-                <Route path="/Sortear-Equipes" element={<SortearEquipes />} />
+                
+                {/* Rotas de Sorteio com ID opcional */}
+                <Route path="/Sortear-Numero/:id?" element={<NumberDraw />} />
+                <Route path="/Sortear-Palavras/:id?" element={<WordDraw />} />
+                <Route path="/Sortear-Sequencia/:id?" element={<SequenceDraw />} />
+                <Route path="/Amigo-Secreto/:id?" element={<SecretSantaDraw />} />
+                <Route path="/roleta/:id?" element={<RoletaSorteio />} />
+                <Route path="/Sortear-Equipes/:id?" element={<SortearEquipes />} />
+                
                 <Route path="/privacidade" element={<PrivacyPolicy />} />
                 <Route path="/termos" element={<TermsOfUse />} />
                 <Route path="/sitemap" element={<Sitemap />} />
                 <Route path="/blog" element={<BlogList />} />
                 <Route path="/blog/:slug" element={<BlogPost />} />
               </Routes>
-            
             </div>
           </main>
 
-
-
           <footer className="bg-white border-t">
             <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
-              <div className="flex justify-center space-x-6 text-sm text-gray-500">
+              <div className="flex flex-wrap justify-center space-x-6 text-sm text-gray-500">
                 <Link to="/privacidade" className="hover:text-gray-900">Política de Privacidade</Link>
                 <Link to="/termos" className="hover:text-gray-900">Termos de Uso</Link>
                 <Link to="/sitemap" className="hover:text-gray-900">Mapa do Site</Link>
@@ -189,16 +193,17 @@ function App() {
   );
 }
 
-function HomePage({ raffleTypes }) {
+// CORREÇÃO AQUI: Tipagem explícita para evitar o erro 'implicitly has an any type'
+function HomePage({ raffleTypes }: { raffleTypes: RaffleType[] }) {
   return (
     <div className="space-y-12">
-      <Head>
+      <Helmet>
         <title>VamoSortear - O Jeito Mais Fácil e Simples de sortear algo! Totalmente Gratis</title>
         <meta name="description" content="Sorteie números de forma simples e rápida no VamoSortear. Totalmente Gratis" />
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href="https://vamosortear.com.br/" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge"></meta>
+        <meta httpEquiv="X-UA-Compatible" content="IE=edge"></meta>
         <meta name="keywords" content="sorteio, sorteios, vamo sortear, sorteio online, sortear numero, sortear numeros, sorteando numero, amigo secreto, sortear palavra, roleta, roleta online" />
         <meta name="author" content="Marcos & Matheus"></meta>
 
@@ -210,46 +215,46 @@ function HomePage({ raffleTypes }) {
 
         <script type="application/ld+json">
           {JSON.stringify({
-        "@context": "https://schema.org",
-        "@type": "WebPage",
-        "name": "VamoSortear - O Jeito Mais Fácil e Simples de sortear algo! Totalmente Gratis",
-        "description": "Sorteie números, palavras, sequências e organize amigo secreto de forma simples, rápida e gratuita no VamoSortear.",
-        "url": "https://vamosortear.com.br/",
-        "publisher": {
-          "@type": "Organization",
-          "name": "VamoSortear",
-          "logo": {
-            "@type": "ImageObject",
-            "url": "https://vamosortear.com.br/logo.png",
-            "width": 1200,
-            "height": 630
-          }
-        },
-        "mainEntity": {
-          "@type": "WebApplication",
-          "name": "VamoSortear",
-          "operatingSystem": "All",
-          "applicationCategory": "UtilityApplication",
-          "offers": {
-            "@type": "Offer",
-            "price": "0",
-            "priceCurrency": "BRL"
-          }
-        },
-        "potentialAction": {
-          "@type": "SearchAction",
-          "target": "https://vamosortear.com.br/?q={search_term_string}",
-          "query-input": "required name=search_term_string"
-        }
+            "@context": "https://schema.org",
+            "@type": "WebPage",
+            "name": "VamoSortear - O Jeito Mais Fácil e Simples de sortear algo! Totalmente Gratis",
+            "description": "Sorteie números, palavras, sequências e organize amigo secreto de forma simples, rápida e gratuita no VamoSortear.",
+            "url": "https://vamosortear.com.br/",
+            "publisher": {
+              "@type": "Organization",
+              "name": "VamoSortear",
+              "logo": {
+                "@type": "ImageObject",
+                "url": "https://vamosortear.com.br/logo.png",
+                "width": 1200,
+                "height": 630
+              }
+            },
+            "mainEntity": {
+              "@type": "WebApplication",
+              "name": "VamoSortear",
+              "operatingSystem": "All",
+              "applicationCategory": "UtilityApplication",
+              "offers": {
+                "@type": "Offer",
+                "price": "0",
+                "priceCurrency": "BRL"
+              }
+            },
+            "potentialAction": {
+              "@type": "SearchAction",
+              "target": "https://vamosortear.com.br/?q={search_term_string}",
+              "query-input": "required name=search_term_string"
+            }
           })}
         </script>
-      </Head>
-      {/* Hero Section */}
+      </Helmet>
 
+      {/* Hero Section */}
       <div className="mt-0 pt-0">
         <div className="text-center">
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-gradient-to-r from-pink-500 to-violet-500 text-white text-sm font-medium mb-6">
-            <SparklesIcon className="h-4 w-4"  />
+            <SparklesIcon className="h-4 w-4" />
             <span>Mais de 10.000 sorteios realizados!</span>
           </div>
           <h1 className="text-4xl font-bold tracking-tight text-gray-900 sm:text-5xl mb-4">
@@ -257,29 +262,26 @@ function HomePage({ raffleTypes }) {
           </h1>
 
           <p className="text-xl text-gray-600 max-w-4xl mx-auto mb-2">
-            Precisa realizar sorteios de forma rápida, segura e transparente? 
+            Precisa realizar sorteios de forma rápida, segura e transparente?
             O VamoSortear é a solução ideal para você! Nossa plataforma simplifica todo o processo em apenas alguns cliques.
           </p>
-        
         </div>
 
-        
         <div className="flex flex-col-reverse lg:flex-col gap-2 items-center">
           <div className='text-center'>
             <p className="text-xl text-gray-600 max-w-4xl mx-auto mb-2">
-              Sorteie nomes, números ou itens com resultados 100% confiáveis. 
+              Sorteie nomes, números ou itens com resultados 100% confiáveis.
               Perfeito para empresas, influenciadores e qualquer pessoa que busque praticidade.
             </p>
             <p className="text-xl text-gray-600 max-w-4xl mx-auto mb-2">
-              Escolha uma das opções e comece agora mesmo, sem cadastro! 
+              Escolha uma das opções e comece agora mesmo, sem cadastro!
             </p>
             <p className="text-xl text-gray-600 max-w-5xl mx-auto">
               COMECE SEU SORTEIO AGORA! Junte-se aos milhares de brasileiros que já confiam em nossa plataforma.
             </p>
           </div>
-        
 
-            {/* Features Grid */}
+          {/* Features Grid */}
           <div className="flex flex-wrap justify-center gap-6 mt-8 mb-8">
             {raffleTypes.map((raffle) => (
               <Link
@@ -288,17 +290,18 @@ function HomePage({ raffleTypes }) {
                 className="w-full sm:w-[550px] min-h-[100px]"
               >
                 <RaffleCard
-                title={raffle.title}
-                description={raffle.description}
-                icon={raffle.icon}
-                gradient={raffle.gradient}
-                onClick={() => {}}
+                  title={raffle.title}
+                  description={raffle.description}
+                  icon={raffle.icon}
+                  gradient={raffle.gradient}
+                  onClick={() => {}}
                 />
               </Link>
             ))}
           </div>
         </div>
       </div>
+
       {/* Benefits Section */}
       <div className="bg-white rounded-2xl p-8 shadow-sm border border-gray-200">
         <h2 className="text-2xl font-semibold text-gray-900 mb-8 text-center">
@@ -329,9 +332,7 @@ function HomePage({ raffleTypes }) {
         </div>
       </div>
 
-      {/* <BannerAd />
-
-      {/* Use Cases Section */}
+      {/* Use Cases Section - TEXTOS LONGOS PRESERVADOS PARA SEO */}
       <div className="bg-white rounded-2xl p-8 shadow-sm border border-gray-200">
         <h2 className="text-2xl font-semibold text-gray-900 mb-8 text-center">
           Ideal para Diversos Tipos de Sorteio
@@ -349,51 +350,51 @@ function HomePage({ raffleTypes }) {
           <div className="rounded-lg text-center bg-gray-50 p-6">
             <h3 className="font-semibold text-gray-900 mb-2">🎓 Educação</h3>
             <p className="text-gray-600">
-            Ideal para professores sortearem alunos ou formarem grupos de maneira prática e imparcial.
-            Perfeito para dinamizar atividades em sala de aula, incentivar a participação e tornar as aulas mais interativas.
-            Com essa ferramenta, é possível montar grupos aleatórios, escolher alunos para apresentações ou responder questões, tudo com agilidade e transparência.
-            Seja no ensino fundamental, médio ou superior, ela contribui para uma gestão mais organizada da turma.
+              Ideal para professores sortearem alunos ou formarem grupos de maneira prática e imparcial.
+              Perfeito para dinamizar atividades em sala de aula, incentivar a participação e tornar as aulas mais interativas.
+              Com essa ferramenta, é possível montar grupos aleatórios, escolher alunos para apresentações ou responder questões, tudo com agilidade e transparência.
+              Seja no ensino fundamental, médio ou superior, ela contribui para uma gestão mais organizada da turma.
             </p>
           </div>
           <div className="rounded-lg text-center bg-gray-50 p-6">
             <h3 className="font-semibold text-gray-900 mb-2">🎁 Amigo Secreto</h3>
             <p className="text-gray-600">
-            Organize amigos secretos com praticidade e envio automático por e-mail para todos os participantes.
-            Perfeito para confraternizações de fim de ano, festas escolares, empresas, grupos de amigos ou reuniões familiares.
-            A ferramenta garante sigilo, evita sorteios repetidos e facilita toda a dinâmica, mesmo com participantes em diferentes locais.
-            Com poucos cliques, cada pessoa recebe seu amigo secreto por e-mail, de forma segura, rápida e personalizada!
+              Organize amigos secretos com praticidade e envio automático por e-mail para todos os participantes.
+              Perfeito para confraternizações de fim de ano, festas escolares, empresas, grupos de amigos ou reuniões familiares.
+              A ferramenta garante sigilo, evita sorteios repetidos e facilita toda a dinâmica, mesmo com participantes em diferentes locais.
+              Com poucos cliques, cada pessoa recebe seu amigo secreto por e-mail, de forma segura, rápida e personalizada!
             </p>
           </div>
           <div className="rounded-lg text-center bg-gray-50 p-6">
             <h3 className="font-semibold text-gray-900 mb-2">🎮 Lives e Eventos</h3>
             <p className="text-gray-600">
-            Sorteie prêmios e brindes durante transmissões ao vivo de forma simples, rápida e interativa.
-            Perfeito para lives em redes sociais, eventos online, webinars, workshops ou campanhas de marketing digital.
-            Engaje seu público com sorteios em tempo real, aumentando a participação, a audiência e o alcance da sua transmissão.
-            Com uma ferramenta prática e segura, você garante transparência nos resultados e cria momentos inesquecíveis para seus seguidores, clientes ou participantes!
+              Sorteie prêmios e brindes durante transmissões ao vivo de forma simples, rápida e interativa.
+              Perfeito para lives em redes sociais, eventos online, webinars, workshops ou campanhas de marketing digital.
+              Engaje seu público com sorteios em tempo real, aumentando a participação, a audiência e o alcance da sua transmissão.
+              Com uma ferramenta prática e segura, você garante transparência nos resultados e cria momentos inesquecíveis para seus seguidores, clientes ou participantes!
             </p>
           </div>
           <div className="rounded-lg bg-gray-50 p-6">
             <h3 className="font-semibold text-center text-gray-900 mb-2">👥 Empresas</h3>
             <p className="text-gray-600">
-            Realize sorteios para funcionários, clientes ou promoções de forma prática, segura e personalizada.
-            Ideal para empresas que desejam reconhecer colaboradores, fidelizar clientes ou promover ações de marketing.
-            Com essa solução, você organiza sorteios internos, premiações de metas ou campanhas promocionais de forma profissional e transparente.
-            Aumente o engajamento, valorize seu público e fortaleça a imagem da sua marca com sorteios que fazem a diferença em qualquer ocasião!
+              Realize sorteios para funcionários, clientes ou promoções de forma prática, segura e personalizada.
+              Ideal para empresas que desejam reconhecer colaboradores, fidelizar clientes ou promover ações de marketing.
+              Com essa solução, você organiza sorteios internos, premiações de metas ou campanhas promocionais de forma profissional e transparente.
+              Aumente o engajamento, valorize seu público e fortaleça a imagem da sua marca com sorteios que fazem a diferença em qualquer ocasião!
             </p>
           </div>
           <div className="rounded-lg bg-gray-50 p-6">
             <h3 className="font-semibold text-center text-gray-900 mb-2">🎲 Jogos e Diversão</h3>
             <p className="text-gray-600">
-            Crie jogos e brincadeiras com sorteios aleatórios para animar qualquer ocasião de forma divertida e criativa.
-            Ideal para festas, encontros familiares, dinâmicas escolares, eventos corporativos ou momentos de lazer entre amigos.
-            A ferramenta permite gerar sorteios rápidos e imparciais, criando desafios, duplas, tarefas ou rodadas de perguntas com total praticidade.
-            Transforme suas atividades em experiências envolventes, espontâneas e inesquecíveis.
+              Crie jogos e brincadeiras com sorteios aleatórios para animar qualquer ocasião de forma divertida e criativa.
+              Ideal para festas, encontros familiares, dinâmicas escolares, eventos corporativos ou momentos de lazer entre amigos.
+              A ferramenta permite gerar sorteios rápidos e imparciais, criando desafios, duplas, tarefas ou rodadas de perguntas com total praticidade.
+              Transforme suas atividades em experiências envolventes, espontâneas e inesquecíveis.
             </p>
           </div>
         </div>
-        
       </div>
+
       <div className="bg-white rounded-2xl p-4 shadow-sm border border-gray-200 mt-4">
         <Perguntas />
       </div>
