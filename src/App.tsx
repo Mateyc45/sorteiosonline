@@ -1,27 +1,28 @@
-import React, { useEffect } from 'react';
+import React, { lazy, Suspense, useEffect } from 'react';
 import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
-import { Dice1Icon, TextIcon, ListIcon, GiftIcon, SparklesIcon, StarIcon, ShieldCheckIcon, ClockIcon, LifeBuoy, Users } from 'lucide-react';
+import { Dice1Icon, TextIcon, ListIcon, GiftIcon, SparklesIcon, StarIcon, ShieldCheckIcon, ClockIcon, LifeBuoy, Users, Loader2 } from 'lucide-react';
 
 // Componentes
 import { RaffleCard } from './components/RaffleCard';
-import { NumberDraw } from './components/NumberDraw';
-import { WordDraw } from './components/WordDraw';
-import { SequenceDraw } from './components/SequenceDraw';
-import { RoletaSorteio } from './components/RoletaDraw';
-import { SecretSantaDraw } from './components/SecretSantaDraw';
-import { SortearEquipes } from './components/SortearEquipes';
 import { PrivacyPolicy } from './components/PrivacyPolicy';
 import { TermsOfUse } from './components/TermsOfUse';
 import { Sitemap } from './components/Sitemap';
-import { BlogList } from './components/Blog/BlogList';
-import { BlogPost } from './components/Blog/BlogPost';
 import Analytics from './Analytics';
 import Breadcrumbs from './components/Breadcrumbs';
 import Perguntas from './components/perguntas';
 
+const NumberDraw = lazy(() => import('./components/NumberDraw').then(module => ({ default: module.NumberDraw })));
+const WordDraw = lazy(() => import('./components/WordDraw').then(module => ({ default: module.WordDraw })));
+const SequenceDraw = lazy(() => import('./components/SequenceDraw').then(module => ({ default: module.SequenceDraw })));
+const RoletaSorteio = lazy(() => import('./components/RoletaDraw').then(module => ({ default: module.RoletaSorteio })));
+const SecretSantaDraw = lazy(() => import('./components/SecretSantaDraw').then(module => ({ default: module.SecretSantaDraw })));
+const SortearEquipes = lazy(() => import('./components/SortearEquipes').then(module => ({ default: module.SortearEquipes })));
+const BlogList = lazy(() => import('./components/Blog/BlogList').then(module => ({ default: module.BlogList })));
+const BlogPost = lazy(() => import('./components/Blog/BlogPost').then(module => ({ default: module.BlogPost })));
+
 // Imagens
-import logo from './lib/image/logo3.png';
+import logo from './lib/image/logo3.webp';
 
 // --- INTERFACE PARA CORRIGIR O ERRO DE TYPESCRIPT ---
 interface RaffleType {
@@ -31,6 +32,15 @@ interface RaffleType {
   path: string;
   gradient: string;
 }
+
+const LoadingSpinner = () => (
+  <div className="flex h-[50vh] w-full items-center justify-center">
+    <div className="flex flex-col items-center gap-4">
+      <Loader2 className="h-10 w-10 animate-spin text-blue-600" />
+      <p className="text-gray-500 font-medium">Carregando ferramenta...</p>
+    </div>
+  </div>
+);
 
 // Schema markup for rich snippets
 const websiteSchema = {
@@ -139,7 +149,12 @@ function App() {
             <div className="mx-auto max-w-7xl px-4 py-4 sm:px-6 lg:px-8">
               <div className="flex items-center justify-between">
                 <Link to="/" className="text-2xl font-bold tracking-tight text-gray-900">
-                  <img src={logo} alt="Vamo Sortear - Plataforma de Sorteios Grátis" title="Vamo Sortear – Sorteios Online Grátis de Números, nomes e Mais!" loading="lazy" className="h-24 w-full object-contain" />
+                  <img src={logo} 
+                  alt="Vamo Sortear - Plataforma de Sorteios Grátis" 
+                  title="Vamo Sortear" 
+                  width="180" 
+                  height="96"
+                  className="h-24 w-full object-contain" />
                 </Link>
                 <nav className="flex gap-6">
                   <Link to="/blog" className="text-gray-600 hover:text-gray-900 font-medium">Blog</Link>
@@ -154,25 +169,28 @@ function App() {
             </div>
 
             <div className="mx-auto max-w-7xl px-4 py-8 sm:px-6 lg:px-8">
-              <Routes>
-                <Route path="/" element={<HomePage raffleTypes={raffleTypes} />} />
-                
-                {/* Rotas de Sorteio com ID opcional */}
-                <Route path="/Sortear-Numero/:id?" element={<NumberDraw />} />
-                <Route path="/Sortear-Palavras/:id?" element={<WordDraw />} />
-                <Route path="/Sortear-Sequencia/:id?" element={<SequenceDraw />} />
-                <Route path="/Amigo-Secreto/:id?" element={<SecretSantaDraw />} />
-                <Route path="/roleta/:id?" element={<RoletaSorteio />} />
-                <Route path="/Sortear-Equipes/:id?" element={<SortearEquipes />} />
-                
-                <Route path="/privacidade" element={<PrivacyPolicy />} />
-                <Route path="/termos" element={<TermsOfUse />} />
-                <Route path="/sitemap" element={<Sitemap />} />
-                <Route path="/blog" element={<BlogList />} />
-                <Route path="/blog/:slug" element={<BlogPost />} />
-              </Routes>
+              <Suspense fallback={<LoadingSpinner />}>
+                <Routes>
+                  <Route path="/" element={<HomePage raffleTypes={raffleTypes} />} />
+                  
+                  {/* Rotas de Sorteio com ID opcional */}
+                  <Route path="/Sortear-Numero/:id?" element={<NumberDraw />} />
+                  <Route path="/Sortear-Palavras/:id?" element={<WordDraw />} />
+                  <Route path="/Sortear-Sequencia/:id?" element={<SequenceDraw />} />
+                  <Route path="/Amigo-Secreto/:id?" element={<SecretSantaDraw />} />
+                  <Route path="/roleta/:id?" element={<RoletaSorteio />} />
+                  <Route path="/Sortear-Equipes/:id?" element={<SortearEquipes />} />
+                  
+                  <Route path="/privacidade" element={<PrivacyPolicy />} />
+                  <Route path="/termos" element={<TermsOfUse />} />
+                  <Route path="/sitemap" element={<Sitemap />} />
+                  <Route path="/blog" element={<BlogList />} />
+                  <Route path="/blog/:slug" element={<BlogPost />} />
+                </Routes>
+              </Suspense>
             </div>
           </main>
+          
 
           <footer className="bg-white border-t">
             <div className="mx-auto max-w-7xl px-4 py-6 sm:px-6 lg:px-8">
@@ -193,8 +211,40 @@ function App() {
   );
 }
 
-// CORREÇÃO AQUI: Tipagem explícita para evitar o erro 'implicitly has an any type'
 function HomePage({ raffleTypes }: { raffleTypes: RaffleType[] }) {
+  const schemaMarkup = {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "name": "VamoSortear - O Jeito Mais Fácil e Simples de sortear algo! Totalmente Gratis",
+    "description": "Sorteie números, palavras, sequências e organize amigo secreto de forma simples, rápida e gratuita no VamoSortear.",
+    "url": "https://vamosortear.com.br/",
+    "publisher": {
+      "@type": "Organization",
+      "name": "VamoSortear",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://vamosortear.com.br/logo.png",
+        "width": 1200,
+        "height": 630
+      }
+    },
+    "mainEntity": {
+      "@type": "WebApplication",
+      "name": "VamoSortear",
+      "operatingSystem": "All",
+      "applicationCategory": "UtilityApplication",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "BRL"
+      }
+    },
+    "potentialAction": {
+      "@type": "SearchAction",
+      "target": "https://vamosortear.com.br/?q={search_term_string}",
+      "query-input": "required name=search_term_string"
+    }
+  };
   return (
     <div className="space-y-12">
       <Helmet>
@@ -214,39 +264,7 @@ function HomePage({ raffleTypes }: { raffleTypes: RaffleType[] }) {
         <meta property="og:image:height" content="630" />
 
         <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "WebPage",
-            "name": "VamoSortear - O Jeito Mais Fácil e Simples de sortear algo! Totalmente Gratis",
-            "description": "Sorteie números, palavras, sequências e organize amigo secreto de forma simples, rápida e gratuita no VamoSortear.",
-            "url": "https://vamosortear.com.br/",
-            "publisher": {
-              "@type": "Organization",
-              "name": "VamoSortear",
-              "logo": {
-                "@type": "ImageObject",
-                "url": "https://vamosortear.com.br/logo.png",
-                "width": 1200,
-                "height": 630
-              }
-            },
-            "mainEntity": {
-              "@type": "WebApplication",
-              "name": "VamoSortear",
-              "operatingSystem": "All",
-              "applicationCategory": "UtilityApplication",
-              "offers": {
-                "@type": "Offer",
-                "price": "0",
-                "priceCurrency": "BRL"
-              }
-            },
-            "potentialAction": {
-              "@type": "SearchAction",
-              "target": "https://vamosortear.com.br/?q={search_term_string}",
-              "query-input": "required name=search_term_string"
-            }
-          })}
+          {JSON.stringify(schemaMarkup)}
         </script>
       </Helmet>
 
