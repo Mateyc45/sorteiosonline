@@ -30,8 +30,14 @@ const Perguntas = () => {
             <div className="ml-4 mb-4 flex items-center justify-between">
               <div className="font-bold">• {item.pergunta}</div>
               <div className="ml-auto mr-4 text-2xl font-bold">
-                <button onClick={() => toggleResposta(index)}>
-                    {abertos[index] ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
+                <button 
+                  onClick={() => toggleResposta(index)}
+                  // O aria-label explica para leitores de tela o que o botão faz
+                  aria-label={abertos[index] ? "Esconder resposta" : "Ver resposta"}
+                  // O title mostra um textinho quando passa o mouse em cima (opcional, mas bom)
+                  title={abertos[index] ? "Esconder resposta" : "Ver resposta"}
+                >
+                  {abertos[index] ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
                 </button>
               </div>
             </div>
