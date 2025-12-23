@@ -22,7 +22,7 @@ const BlogList = lazy(() => import('./components/Blog/BlogList').then(module => 
 const BlogPost = lazy(() => import('./components/Blog/BlogPost').then(module => ({ default: module.BlogPost })));
 
 // Imagens
-import logo from './lib/image/logo3.webp';
+import logo from './lib/image/logo4.webp';
 
 // --- INTERFACE PARA CORRIGIR O ERRO DE TYPESCRIPT ---
 interface RaffleType {
