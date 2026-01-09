@@ -1,4 +1,6 @@
-import React, {useEffect} from 'react';
+'use client';
+
+import React from 'react';
 import { Share2Icon } from 'lucide-react';
 import { cn } from '../lib/utils';
 
@@ -6,7 +8,7 @@ interface RaffleCardProps {
   title: string;
   description: string;
   icon: React.ReactNode;
-  onClick: () => void;
+  onClick?: () => void; // <--- ADICIONEI O ? AQUI (Isso resolve o erro)
   className?: string;
   gradient?: string;
 }
@@ -20,11 +22,10 @@ export function RaffleCard({
   gradient = 'from-gray-500 to-gray-400',
 }: RaffleCardProps) {
   
-  useEffect(() => {
-        window.scrollTo(0, 0);
-      }, []);
+  // REMOVI O USEEFFECT: Não é bom ter scroll automático dentro de um card
+  // O Next.js já faz o scroll to top automático ao navegar entre páginas.
+
   return (
-    
     <div
       className={cn(
         'group cursor-pointer rounded-xl bg-white p-6 shadow-sm transition-all hover:shadow-md border border-gray-200/50 relative overflow-hidden h-full',
@@ -32,7 +33,12 @@ export function RaffleCard({
       )}
       onClick={onClick}
     >
-      <div className="absolute inset-0 bg-gradient-to-r opacity-0 group-hover:opacity-10 transition-opacity duration-300" style={{ backgroundImage: `linear-gradient(to right, var(--tw-gradient-stops))` }} />
+      <div 
+        className="absolute inset-0 bg-gradient-to-r opacity-0 group-hover:opacity-10 transition-opacity duration-300" 
+        // Pequena correção: Tailwind lida com gradients via classes, style direto as vezes conflita, 
+        // mas mantive sua lógica original para garantir que o gradiente funcione.
+        style={{ backgroundImage: `linear-gradient(to right, var(--tw-gradient-stops))` }} 
+      />
       
       <div className="relative flex items-start justify-between">
         <div className="flex items-center space-x-4">

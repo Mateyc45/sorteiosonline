@@ -7,41 +7,36 @@ interface EmailParams {
   templateParams?: Record<string, string>;
 }
 
-// EmailJS configuration - replace these with your actual values
-const EMAILJS_SERVICE_ID = 'noreplay.mnms@gmail.com';
-const EMAILJS_TEMPLATE_ID = 'template_fq37mjs';
-const EMAILJS_PUBLIC_KEY = 'Exovy28_FcFr_y9DZ'; // Your public key
+// 1. Configuração via Variáveis de Ambiente (Segurança)
+// Se não tiver o .env configurado ainda, ele tenta usar as strings hardcoded como fallback
+const EMAILJS_SERVICE_ID = process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID || 'service_SEU_ID_AQUI'; 
+const EMAILJS_TEMPLATE_ID = process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID || 'template_fq37mjs';
+const EMAILJS_PUBLIC_KEY = process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY || 'Exovy28_FcFr_y9DZ';
 
 const delay = (ms: number) => new Promise(resolve => setTimeout(resolve, ms));
 
 async function attemptSendEmail(params: EmailParams, attempt: number = 1): Promise<void> {
   try {
-    // Log for debug
-    console.log(`Tentativa ${attempt} de envio para ${params.to}`);
-
-    // Initialize EmailJS if not already initialized
-    if (!window.emailjs) {
-      emailjs.init(EMAILJS_PUBLIC_KEY);
+    // Log para debug (apenas em desenvolvimento)
+    if (process.env.NODE_ENV === 'development') {
+      console.log(`Tentativa ${attempt} de envio para ${params.to}`);
     }
 
-    // Extract name from email for better personalization if not provided
+    // 2. Extração de nome (Formatação)
     const name = params.to.split('@')[0].replace(/[^a-zA-Z0-9]/g, ' ');
     const formattedName = name.charAt(0).toUpperCase() + name.slice(1);
 
-    // Prepare template parameters for EmailJS
-    const templateParams = params.templateParams || {
+    // 3. Preparação dos parâmetros do template
+    // Garanta que no seu painel do EmailJS o template espera essas variáveis (to_email, to_name, etc)
+    const templateParams = {
       to_email: params.to,
       to_name: formattedName,
       subject: params.subject,
       message_html: params.html || '',
+      ...params.templateParams, // Mescla com parâmetros extras se houver
     };
 
-    // Ensure to_email is always set
-    if (!templateParams.to_email) {
-      templateParams.to_email = params.to;
-    }
-
-    // Send email using EmailJS
+    // 4. Envio direto (Next.js não precisa checar window.emailjs com o pacote npm)
     const response = await emailjs.send(
       EMAILJS_SERVICE_ID,
       EMAILJS_TEMPLATE_ID,
@@ -50,43 +45,40 @@ async function attemptSendEmail(params: EmailParams, attempt: number = 1): Promi
     );
 
     if (response.status !== 200) {
-      throw new Error(`EmailJS returned status code ${response.status}`);
+      throw new Error(`EmailJS retornou status ${response.status}: ${response.text}`);
     }
 
-    // Log success
-    console.log(`Email enviado com sucesso para ${params.to} (Status: ${response.status}, Text: ${response.text})`);
+    console.log(`✅ Email enviado para ${params.to}`);
+
   } catch (error) {
-    console.error(`Tentativa ${attempt} - Detalhes do erro EmailJS:`, error);
+    console.error(`❌ Erro na tentativa ${attempt}:`, error);
     
-    if (attempt <= 3) {
-      const backoffTime = Math.min(1000 * Math.pow(2, attempt - 1), 8000);
+    // Lógica de Retentativa (Backoff Exponencial)
+    if (attempt < 3) {
+      const backoffTime = 1000 * attempt; // Espera 1s, depois 2s...
+      console.log(`⏳ Tentando novamente em ${backoffTime}ms...`);
       await delay(backoffTime);
       return attemptSendEmail(params, attempt + 1);
     }
     
+    // Se falhar todas as vezes, repassa o erro
     throw error;
   }
 }
 
 export async function sendEmail(params: EmailParams): Promise<void> {
   try {
-    // Validação de email mais rigorosa
-    const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    // Validação de email
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!emailRegex.test(params.to)) {
-      throw new Error(`Formato de email inválido: ${params.to}`);
+      throw new Error(`Email inválido: ${params.to}`);
     }
-
-    // Log inicial
-    console.log(`Iniciando envio de email para ${params.to}`);
 
     await attemptSendEmail(params);
   } catch (error) {
-    console.error('Detalhes do erro de envio:', error);
-    
-    if (error instanceof Error) {
-      throw new Error(`Falha ao enviar email: ${error.message}`);
-    }
-    
-    throw new Error('Ocorreu um erro inesperado ao enviar o email. Por favor, tente novamente.');
+    // Tratamento de erro final para a UI
+    const message = error instanceof Error ? error.message : 'Erro desconhecido no envio';
+    console.error('Falha crítica no envio:', message);
+    throw new Error(`Não foi possível enviar o email: ${message}`);
   }
 }

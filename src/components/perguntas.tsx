@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useEffect, useState } from 'react';
 import perguntasData from '../lib/Perguntas.json';
 import { ChevronDown, ChevronUp } from 'lucide-react';
@@ -22,7 +24,7 @@ const Perguntas = () => {
     });
   };
   return (
-    <div className="container">
+    <div className="w-full">
         <h2 className='text-center mb-2 font-bold'>Perguntas frequentes</h2>
       {perguntas.filter((item) => item.id === "0" || (item.id !== "" && item.id === filtro)).map((item, index) => (
         <div key={index} className="bg-gray-100 rounded-2xl flex flex-col mb-2">

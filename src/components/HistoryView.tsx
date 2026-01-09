@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useEffect } from 'react';
 import { format, parseISO } from 'date-fns';
 import { useRaffleStore } from '../store/useRaffleStore';
