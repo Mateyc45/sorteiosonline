@@ -1,57 +1,65 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
+import { usePathname } from 'next/navigation';
 import perguntasData from '../lib/Perguntas.json';
 import { ChevronDown, ChevronUp } from 'lucide-react';
 
-
 const Perguntas = () => {
-  const [perguntas, setPerguntas] = useState<{ pergunta: string; resposta: string; id: string  }[]>([]);
-  const [abertos, setAbertos] = useState<boolean[]>([]);
-  const [filtro, setFiltro] = useState("Home");
+  const pathname = usePathname();
+  
+  // Tratamento seguro da rota
+  const rotaAtual = pathname ? (pathname.split('/')[1] || 'Home') : 'Home';
 
-  useEffect(() => {
-    setPerguntas(perguntasData);
-    setAbertos(Array(perguntasData.length).fill(false)); // inicia tudo fechado
-    setFiltro(window.location.pathname.split('/')[1]); // pega o filtro da URL
-  }, []);
+  const perguntasFiltradas = perguntasData.filter((item) => {
+    // 1. BLINDAGEM: Se o item não tiver ID ou ID não for texto, ignora
+    if (!item.id || typeof item.id !== 'string') return false;
+
+    // 2. Lógica normal
+    return item.id === "0" || item.id.toLowerCase() === rotaAtual.toLowerCase();
+  });
+
+  const [abertos, setAbertos] = useState<Record<number, boolean>>({});
 
   const toggleResposta = (index: number) => {
-    setAbertos((prev) => {
-      const novoEstado = [...prev];
-      novoEstado[index] = !novoEstado[index];
-      return novoEstado;
-    });
+    setAbertos((prev) => ({
+      ...prev,
+      [index]: !prev[index],
+    }));
   };
-  return (
-    <div className="w-full">
-        <h2 className='text-center mb-2 font-bold'>Perguntas frequentes</h2>
-      {perguntas.filter((item) => item.id === "0" || (item.id !== "" && item.id === filtro)).map((item, index) => (
-        <div key={index} className="bg-gray-100 rounded-2xl flex flex-col mb-2">
-          <div className="w-full flex flex-col mt-4 text-gray-800">
-            <div className="ml-4 mb-4 flex items-center justify-between">
-              <div className="font-bold">• {item.pergunta}</div>
-              <div className="ml-auto mr-4 text-2xl font-bold">
-                <button 
-                  onClick={() => toggleResposta(index)}
-                  // O aria-label explica para leitores de tela o que o botão faz
-                  aria-label={abertos[index] ? "Esconder resposta" : "Ver resposta"}
-                  // O title mostra um textinho quando passa o mouse em cima (opcional, mas bom)
-                  title={abertos[index] ? "Esconder resposta" : "Ver resposta"}
-                >
-                  {abertos[index] ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
-                </button>
-              </div>
-            </div>
 
-            {abertos[index] && (
-              <div className="bg-gray-50 text-gray-600 w-full mt-2 p-4 rounded-b-2xl">
+  if (perguntasFiltradas.length === 0) return null;
+
+  return (
+    <div className="w-full mt-8">
+      <h2 className='text-center mb-4 font-bold text-xl text-gray-800'>Perguntas frequentes</h2>
+      
+      {perguntasFiltradas.map((item, index) => {
+        const estaAberto = !!abertos[index];
+
+        return (
+          <div key={index} className="bg-gray-50 rounded-xl flex flex-col mb-3 border border-gray-200 overflow-hidden">
+            <button 
+              onClick={() => toggleResposta(index)}
+              className="w-full flex items-center justify-between p-4 text-left hover:bg-gray-100 transition-colors"
+              aria-expanded={estaAberto}
+            >
+              <span className="font-bold text-gray-800 text-sm md:text-base pr-4">
+                • {item.pergunta}
+              </span>
+              <span className="text-gray-500 shrink-0">
+                {estaAberto ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
+              </span>
+            </button>
+
+            {estaAberto && (
+              <div className="bg-white text-gray-600 p-4 border-t border-gray-100 text-sm leading-relaxed animate-in fade-in slide-in-from-top-2 duration-200">
                 {item.resposta}
               </div>
             )}
           </div>
-        </div>
-      ))}
+        );
+      })}
     </div>
   );
 };
