@@ -439,20 +439,36 @@ export function NumberDrawClient() {
       
       {/* CONTEÚDO RICO (SEO ON-PAGE) */}
       <article className="mt-8 space-y-8 rounded-xl border border-gray-200 bg-white p-8 shadow-sm">
-         <header>
-            <h2 className="text-3xl font-extrabold text-gray-900 mb-6">
-                Sorteador de Números Online: Rápido, Grátis e Seguro
+         <section className="max-w-4xl mx-auto px-4 py-8">
+          <header>
+            <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-6">
+              Sorteador de Números Online: Rápido, Grátis e Seguro
             </h2>
-         </header>
-         
-         <div className="text-gray-600 leading-relaxed space-y-4">
-            <p>
-             O <strong>VamoSortear</strong> é a ferramenta líder para realizar <em>sorteios de números aleatórios</em> na internet. Se você está organizando uma <strong>rifa online</strong>, um concurso no Instagram ou precisa definir a ordem de uma lista, nosso algoritmo garante resultados 100% honestos e auditáveis.
-            </p>
-            <p>
-             Utilizamos tecnologia de geração de números pseudoaleatórios (PRNG) de alta segurança. Isso significa que, ao clicar em "Sortear", o sistema gera um resultado impossível de prever, garantindo a integridade do seu evento.
-            </p>
-         </div>
+          </header>
+
+          <div className="text-gray-600 leading-relaxed space-y-8">
+            
+            {/* Bloco Principal - Introdução Otimizada */}
+            <div>
+              <p className="mb-4">
+                O <strong>VamoSortear</strong> é a ferramenta líder e definitiva para realizar <em>sorteios de números aleatórios</em> na internet. Se você está organizando uma <strong>rifa online</strong>, um concurso no Instagram, um bingo virtual ou apenas precisa decidir quem começa o jogo, nossa plataforma oferece a solução ideal.
+              </p>
+              <p>
+                Diferente de outras ferramentas, nosso algoritmo garante resultados 100% honestos, sem viés e auditáveis. Priorizamos a experiência do usuário: sem cadastros longos, sem travamentos e totalmente otimizado para celular.
+              </p>
+            </div>
+
+            {/* Bloco de Segurança e Tecnologia - Autoridade */}
+            <div className="bg-gray-50 p-6 rounded-lg border border-gray-100">
+              <h3 className="text-xl font-bold text-gray-800 mb-3">
+                Por que confiar no nosso algoritmo?
+              </h3>
+              <p>
+                Utilizamos tecnologia avançada de geração de números pseudoaleatórios (PRNG) baseada em criptografia de alta segurança. Isso significa que, ao clicar em "Sortear", o sistema gera um resultado matematicamente impossível de prever ou manipular. Seja para um sorteio profissional ou uma brincadeira entre amigos, a <strong>integridade do seu evento</strong> está garantida.
+              </p>
+            </div>
+          </div>
+        </section>
 
          <div className="grid gap-8 md:grid-cols-2 mt-10 not-prose">
             <section className="bg-blue-50 p-6 rounded-xl border border-blue-100">
@@ -492,7 +508,7 @@ export function NumberDrawClient() {
       </article>
 
       <section className="mt-12">
-        <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center sr-only">Dúvidas Frequentes sobre Sorteio</h2>
+        <h2 className="text-2xl font-bold text-gray-900 text-center sr-only">Dúvidas Frequentes sobre Sorteio</h2>
         <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-200">
             <Perguntas />
         </div>

@@ -273,7 +273,7 @@ export function RoletaDrawClient() {
         }]);
 
       if (!error) {
-        router.push(`/roleta/${novoId}`);
+        router.push(`/Roleta/${novoId}`);
       } else {
         console.error(error);
         alert("Erro ao salvar.");
@@ -424,7 +424,7 @@ export function RoletaDrawClient() {
                                 <button
                                     onClick={() => {
                                         setResult(null);
-                                        router.push('/roleta');
+                                        router.push('/Roleta');
                                     }}
                                     className="w-full py-3 bg-yellow-500 text-white rounded-xl font-bold hover:bg-yellow-600 transition flex items-center justify-center gap-2 shadow-md"
                                 >
@@ -532,44 +532,121 @@ export function RoletaDrawClient() {
       </main>
  
       {/* TEXTOS SEO & LINKS */}
-      <div className="mt-12 space-y-8 rounded-xl border border-gray-200 bg-white p-8 shadow-sm">
-        <h2 className="mb-4 text-2xl font-bold text-gray-900 flex items-center gap-2">
-            <Sparkles className="w-6 h-6 text-yellow-500" /> 
-            Outros Sorteios
-        </h2>
-        <div className={`grid gap-6 sm:grid-cols-2 lg:grid-cols-2`}>
-          {raffleTypes.map((raffle, index) => (
-            <Link key={index} href={raffle.path} className="block group no-underline transition-transform hover:-translate-y-1">
-              <RaffleCard title={raffle.title} description={raffle.description} icon={raffle.icon} gradient={raffle.gradient} />
-            </Link>
-          ))}
+      {/* CROSS-LINKING */}
+      <nav aria-label="Outras ferramentas" className="mt-8 space-y-8 rounded-xl border border-gray-200 bg-white p-8 shadow-sm">
+        <div className="flex items-center gap-2 mb-6">
+            <Sparkles className="w-5 h-5 text-yellow-500" />
+            <h2 className="text-xl font-bold text-gray-900">Outros Sorteios</h2>
         </div>
-      </div>
+        
+        <div className="grid gap-4 sm:grid-cols-2">
+            {raffleTypes.map((raffle, index) => {
+                const isLastAndOdd = index === raffleTypes.length - 1 && raffleTypes.length % 2 !== 0;
+                return (
+                    <Link
+                        key={index}
+                        href={raffle.path}
+                        className={`block group no-underline transition-transform hover:-translate-y-1 ${isLastAndOdd ? 'sm:col-span-2' : ''}`}
+                    >
+                        <RaffleCard
+                            title={raffle.title}
+                            description={raffle.description}
+                            icon={raffle.icon}
+                            gradient={raffle.gradient}
+                        />
+                    </Link>
+                );
+            })}
+        </div>
+      </nav>
 
+      {/* CONTEÚDO SEO - Roleta */}
       <article className="mt-8 rounded-xl border border-gray-200 bg-white p-8 shadow-sm prose prose-yellow max-w-none">
-         <h3 className="text-2xl font-bold text-gray-900 mb-4">Roleta Aleatória Online Grátis</h3>
-         <p className="text-gray-600 mb-4">
-            A <strong>Roleta do VamoSortear</strong> é a ferramenta perfeita para decisões divertidas e imparciais. Seja para sortear um prêmio, escolher quem começa o jogo ou decidir o sabor da pizza, nossa roleta virtual garante que todas as opções tenham a mesma probabilidade matemática de serem escolhidas.
-         </p>
-         <div className="grid md:grid-cols-2 gap-6 mt-6 not-prose">
-            <div className="bg-yellow-50 p-4 rounded-lg">
-                <h4 className="font-bold text-gray-900 mb-2">🎯 Para que serve?</h4>
-                <ul className="text-sm text-gray-700 space-y-1 list-disc list-inside">
-                    <li>Sorteios de Instagram e Redes Sociais.</li>
-                    <li>Gamificação em sala de aula.</li>
-                    <li>Dinâmicas de quebra-gelo em reuniões.</li>
-                    <li>Decisões de grupo sem brigas.</li>
-                </ul>
-            </div>
-            <div className="bg-yellow-50 p-4 rounded-lg">
-                <h4 className="font-bold text-gray-900 mb-2">⚡ Vantagens</h4>
-                <ul className="text-sm text-gray-700 space-y-1 list-disc list-inside">
-                    <li>Sem limite de giros.</li>
-                    <li>Totalmente customizável (cores e textos).</li>
-                    <li>Link de resultado auditável.</li>
-                    <li>Funciona no celular e PC.</li>
-                </ul>
-            </div>
+         <header>
+            <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4 flex items-center gap-3">
+               <LifeBuoy className="h-8 w-8 text-yellow-500" />
+               Roleta Aleatória e Personalizada Online
+            </h2>
+            <p className="text-gray-600 leading-relaxed text-lg">
+               A <strong>Roleta do VamoSortear</strong> é a ferramenta definitiva para tomar decisões, realizar sorteios divertidos e gamificar atividades. Diferente de sorteadores comuns, aqui você cria uma <strong>Roleta Personalizada</strong> com suas próprias opções, cores vibrantes e uma animação realista de giro que aumenta a emoção do resultado.
+            </p>
+         </header>
+
+         {/* Passo a Passo */}
+         <div className="mt-8 bg-yellow-50 p-6 md:p-8 rounded-2xl border border-yellow-100 not-prose">
+            <h3 className="font-bold text-gray-900 text-xl mb-6 flex items-center gap-2">
+               <RotateCcw className="w-6 h-6 text-yellow-600" />
+               Como criar e girar sua roleta:
+            </h3>
+            <ol className="space-y-4 text-gray-700">
+               <li className="flex gap-4 items-start">
+                  <span className="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-yellow-400 text-yellow-900 font-bold text-sm shadow-sm">1</span>
+                  <div>
+                     <strong>Adicione as Opções:</strong> Digite nomes, prêmios, números ou desafios no campo de texto e clique em "+" (ou Enter). Você pode adicionar até 20 itens.
+                  </div>
+               </li>
+               <li className="flex gap-4 items-start">
+                  <span className="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-yellow-400 text-yellow-900 font-bold text-sm shadow-sm">2</span>
+                  <div>
+                     <strong>Gire a Roleta:</strong> Clique no botão "GIRAR AGORA". Nosso algoritmo de física simula um giro real e aleatório.
+                  </div>
+               </li>
+               <li className="flex gap-4 items-start">
+                  <span className="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-yellow-400 text-yellow-900 font-bold text-sm shadow-sm">3</span>
+                  <div>
+                     <strong>Compartilhe o Resultado:</strong> Após o sorteio, você pode salvar o resultado e gerar um link auditável para provar a transparência.
+                  </div>
+               </li>
+            </ol>
+         </div>
+
+         {/* Grid de Ideias e Vantagens */}
+         <div className="grid gap-8 md:grid-cols-2 mt-8 not-prose">
+            <section className="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm hover:border-yellow-300 transition-colors">
+               <h3 className="flex items-center gap-2 font-bold text-gray-900 text-lg mb-4">
+                  <Sparkles className="text-yellow-500 w-6 h-6" />
+                  Ideias para usar a Roleta
+               </h3>
+               <ul className="space-y-3 text-gray-700">
+                  <li className="flex items-start gap-2">
+                     <span className="w-1.5 h-1.5 rounded-full bg-yellow-500 mt-2 shrink-0"></span>
+                     <span><strong>Sorteio de Prêmios:</strong> Defina descontos ou brindes para seus seguidores no Instagram.</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                     <span className="w-1.5 h-1.5 rounded-full bg-yellow-500 mt-2 shrink-0"></span>
+                     <span><strong>Jogos e Desafios:</strong> Crie uma roleta de "Verdade ou Desafio" ou "Mímicas".</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                     <span className="w-1.5 h-1.5 rounded-full bg-yellow-500 mt-2 shrink-0"></span>
+                     <span><strong>Educação:</strong> Professores podem sortear qual aluno irá apresentar o trabalho.</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                     <span className="w-1.5 h-1.5 rounded-full bg-yellow-500 mt-2 shrink-0"></span>
+                     <span><strong>Decisões Diárias:</strong> O que jantar? Qual filme assistir? Deixe a sorte decidir!</span>
+                  </li>
+               </ul>
+            </section>
+
+            <section className="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm hover:border-yellow-300 transition-colors">
+               <h3 className="flex items-center gap-2 font-bold text-gray-900 text-lg mb-4">
+                  <Check className="text-green-500 w-6 h-6" />
+                  Por que escolher o VamoSortear?
+               </h3>
+               <ul className="space-y-3 text-gray-700">
+                  <li className="flex items-start gap-2">
+                     <Check className="w-5 h-5 text-green-500 shrink-0 mt-0.5" />
+                     <span><strong>100% Gratuito:</strong> Crie quantas roletas quiser sem pagar nada.</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                     <Check className="w-5 h-5 text-green-500 shrink-0 mt-0.5" />
+                     <span><strong>Auditável:</strong> Gere links permanentes dos resultados para evitar dúvidas sobre a honestidade.</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                     <Check className="w-5 h-5 text-green-500 shrink-0 mt-0.5" />
+                     <span><strong>Sem App Necessário:</strong> Funciona direto no navegador do seu celular ou PC.</span>
+                  </li>
+               </ul>
+            </section>
          </div>
       </article>
       

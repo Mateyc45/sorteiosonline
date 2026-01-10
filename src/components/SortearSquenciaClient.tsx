@@ -399,10 +399,10 @@ export function SequenceDrawClient() {
       </main>
 
       {/* CROSS-LINKING */}
-      <nav aria-label="Outras ferramentas" className="mt-12">
+      <nav aria-label="Outras ferramentas" className="mt-8 space-y-8 rounded-xl border border-gray-200 bg-white p-8 shadow-sm">
         <div className="flex items-center gap-2 mb-6">
             <Sparkles className="w-5 h-5 text-purple-600" />
-            <h2 className="text-xl font-bold text-gray-900">Veja também</h2>
+            <h2 className="text-xl font-bold text-gray-900">Outras ferramentas</h2>
         </div>
         
         <div className="grid gap-4 sm:grid-cols-2">
@@ -425,9 +425,101 @@ export function SequenceDrawClient() {
             })}
         </div>
       </nav>
+
+      {/* CONTEÚDO SEO - Sorteador de Sequência */}
+      <article className="mt-12 space-y-8 rounded-2xl border border-gray-200 bg-white p-6 md:p-8 shadow-sm">
+        <header>
+          <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4">
+            Sorteador de Sequência Numérica e Múltiplos Números
+          </h2>
+          <div className="h-1 w-20 bg-purple-600 rounded-full"></div>
+        </header>
+
+        <div className="text-gray-600 leading-relaxed space-y-6 text-lg">
+          <p>
+            O <strong>Sorteador de Sequência do VamoSortear</strong> é a ferramenta ideal para quem precisa gerar múltiplos números aleatórios de uma única vez, <strong>sem repetições</strong>. Diferente de sorteadores comuns que mostram apenas um resultado, nossa ferramenta permite criar listas completas, definir intervalos personalizados e garantir a imparcialidade do seu sorteio.
+          </p>
+          <p>
+            Seja para simular jogos de loteria (como Mega Sena ou Lotofácil), definir a ordem de apresentações, realizar sorteios de rifas com múltiplos ganhadores ou organizar bingos, nosso algoritmo garante que cada número tenha a mesma probabilidade de ser escolhido. Além disso, você pode <strong>salvar o resultado</strong> e gerar um link auditável para provar a transparência do processo.
+          </p>
+        </div>
+
+        {/* Passo a Passo */}
+        <div className="bg-purple-50 p-6 md:p-8 rounded-2xl border border-purple-100">
+          <h3 className="font-bold text-gray-900 text-xl mb-6 flex items-center gap-2">
+            <ListOrdered className="w-6 h-6 text-purple-600" />
+            Como realizar seu sorteio de números:
+          </h3>
+          <ol className="space-y-4 text-gray-700">
+            <li className="flex gap-4 items-start">
+              <span className="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-purple-200 text-purple-800 font-bold text-sm">1</span>
+              <div>
+                <strong>Defina o Intervalo:</strong> Escolha o número inicial (ex: 1) e o número final (ex: 60) da sua sequência.
+              </div>
+            </li>
+            <li className="flex gap-4 items-start">
+              <span className="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-purple-200 text-purple-800 font-bold text-sm">2</span>
+              <div>
+                <strong>Escolha a Quantidade:</strong> Digite quantos números você quer sortear dentro desse intervalo (ex: 6 números).
+              </div>
+            </li>
+            <li className="flex gap-4 items-start">
+              <span className="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-purple-200 text-purple-800 font-bold text-sm">3</span>
+              <div>
+                <strong>Sorteie e Salve:</strong> Clique no botão para gerar a sequência. O sistema garantirá que <strong>não haja números repetidos</strong> no mesmo sorteio.
+              </div>
+            </li>
+          </ol>
+        </div>
+
+        {/* Grid de Benefícios e Exemplos */}
+        <div className="grid gap-8 md:grid-cols-2 mt-8">
+          <section className="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm transition-shadow hover:shadow-md">
+            <h3 className="flex items-center gap-2 font-bold text-gray-900 text-lg mb-4">
+              <CheckCircle2 className="text-green-600 w-6 h-6" />
+              Por que usar este sorteador?
+            </h3>
+            <ul className="space-y-3 text-gray-700">
+              <li className="flex items-start gap-2">
+                <Check className="w-5 h-5 text-purple-500 shrink-0 mt-0.5" />
+                <span><strong>Sem Repetição:</strong> O algoritmo bloqueia números duplicados no mesmo resultado.</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <Check className="w-5 h-5 text-purple-500 shrink-0 mt-0.5" />
+                <span><strong>Auditável:</strong> Gere um link permanente do resultado com data e hora para provar a honestidade.</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <Check className="w-5 h-5 text-purple-500 shrink-0 mt-0.5" />
+                <span><strong>Flexível:</strong> Sorteie de pequenas sequências até milhares de números.</span>
+              </li>
+            </ul>
+          </section>
+
+          <section className="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm transition-shadow hover:shadow-md">
+            <h3 className="flex items-center gap-2 font-bold text-gray-900 text-lg mb-4">
+              <LifeBuoy className="text-blue-600 w-6 h-6" />
+              Exemplos de Utilização
+            </h3>
+            <ul className="space-y-3 text-gray-700">
+              <li className="flex items-start gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-blue-400 mt-2 shrink-0"></span>
+                <span><strong>Loterias:</strong> Simule jogos da Mega Sena (1 a 60, sortear 6) ou Lotofácil (1 a 25, sortear 15).</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-blue-400 mt-2 shrink-0"></span>
+                <span><strong>Rifas com Múltiplos Prêmios:</strong> Defina os 3 ou 5 ganhadores de uma vez só.</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-blue-400 mt-2 shrink-0"></span>
+                <span><strong>Ordem de Apresentação:</strong> Defina a sequência de quem vai falar primeiro em reuniões ou aulas.</span>
+              </li>
+            </ul>
+          </section>
+        </div>
+      </article>
       
       <section className="mt-12">
-        <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">Dúvidas Frequentes</h2>
+        <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center sr-only">Dúvidas Frequentes</h2>
         <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-200">
             <Perguntas />
         </div>

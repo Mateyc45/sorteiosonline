@@ -471,50 +471,69 @@ export function WordDrawClient() {
       
       {/* CONTEÚDO SEO */}
       <article className="mt-8 space-y-8 rounded-xl border border-gray-200 bg-white p-8 shadow-sm">
-         <header>
-            <h2 className="text-3xl font-extrabold text-gray-900 mb-6">
-                Sorteador de Nomes ou Palavras e Lista Online
-            </h2>
-         </header>
-         
-         <div className="text-gray-600 leading-relaxed space-y-4">
-            <p>
-             O <strong>Sorteador de Palavras do VamoSortear</strong> é a ferramenta perfeita para quem precisa escolher um item, nome ou palavra de uma lista personalizada. Seja para definir a ordem de apresentações, escolher o ganhador de um brinde no escritório ou realizar sorteios rápidos no Instagram.
-            </p>
-            <p>
-             Nossa tecnologia garante que cada nome na sua lista tenha exatamente a mesma probabilidade de ser escolhido. O processo é transparente, rápido e não exige cadastro.
-            </p>
-         </div>
+  <header>
+    <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-6">
+      Sorteador de Nomes e Listas Online
+    </h2>
+  </header>
 
-         <div className="grid gap-8 md:grid-cols-2 mt-10 not-prose">
-            <section className="bg-green-50 p-6 rounded-xl border border-green-100">
-                <h3 className="flex items-center gap-2 font-bold text-gray-900 text-lg mb-3">
-                    <CheckCircle2 className="text-green-600 w-5 h-5" />
-                    Vantagens
-                </h3>
-                <ul className="space-y-2 text-sm text-gray-700">
-                    <li>• <strong>Ilimitado:</strong> Adicione quantos nomes ou palavras quiser.</li>
-                    <li>• <strong>Auditável:</strong> Gere um link permanente do resultado.</li>
-                    <li>• <strong>100% Aleatório:</strong> Algoritmo livre de vícios.</li>
-                </ul>
-            </section>
-            
-             <section className="bg-gray-50 p-6 rounded-xl border border-gray-200">
-                <h3 className="flex items-center gap-2 font-bold text-gray-900 text-lg mb-3">
-                    <LifeBuoy className="text-green-600 w-5 h-5" />
-                    Ideal para
-                </h3>
-                <ul className="space-y-2 text-sm text-gray-700">
-                    <li>• Sorteio de comentários (copie e cole a lista).</li>
-                    <li>• Decisões em grupo.</li>
-                    <li>• Sorteio de temas para TCC ou trabalhos.</li>
-                </ul>
-            </section>
-         </div>
-      </article>
+  <div className="text-gray-600 leading-relaxed space-y-6">
+    <p>
+      O <strong>Sorteador de Nomes do VamoSortear</strong> é a ferramenta ideal para realizar sorteios justos e rápidos na internet. Se você precisa escolher um ganhador entre centenas de participantes, definir a ordem de apresentações, criar escalas de trabalho ou organizar sorteios do Instagram, nossa plataforma oferece a solução definitiva.
+    </p>
+    <p>
+      Nossa tecnologia suporta listas de qualquer tamanho. O algoritmo utiliza um sistema de randomização avançado, garantindo que todos os nomes tenham exatamente a mesma probabilidade de serem sorteados, assegurando um resultado <strong>100% imparcial e transparente</strong>.
+    </p>
+  </div>
+
+  {/* Seção de Passo a Passo */}
+  <div className="bg-gray-50 p-6 rounded-xl border border-gray-100">
+    <h3 className="font-bold text-gray-900 text-lg mb-4">
+      Como realizar seu sorteio em 2 passos simples:
+    </h3>
+    <ol className="space-y-3 text-gray-700">
+      <li className="flex gap-3">
+        <span className="flex-shrink-0 flex items-center justify-center w-6 h-6 rounded-full bg-green-100 text-green-700 font-bold text-sm">1</span>
+        <span><strong>Insira a lista:</strong> Digite ou cole os nomes dos participantes na caixa de texto um por um</span>
+      </li>
+      <li className="flex gap-3">
+        <span className="flex-shrink-0 flex items-center justify-center w-6 h-6 rounded-full bg-green-100 text-green-700 font-bold text-sm">2</span>
+        <span><strong>Sorteie:</strong> Clique no botão e veja o resultado instantaneamente na tela.</span>
+      </li>
+    </ol>
+  </div>
+
+  {/* Grid de Benefícios */}
+  <div className="grid gap-8 md:grid-cols-2 mt-8 not-prose">
+    <section className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
+      <h3 className="flex items-center gap-2 font-bold text-gray-900 text-lg mb-3">
+        <CheckCircle2 className="text-green-600 w-5 h-5" />
+        Por que usar nosso sorteador?
+      </h3>
+      <ul className="space-y-2 text-sm text-gray-700">
+        <li>• <strong>Transparente:</strong> Sistema auditável que garante aleatoriedade real.</li>
+        <li>• <strong>Privacidade Total:</strong> Não armazenamos sua lista de nomes em nossos servidores caso o sorteio não seja salvo.</li>
+        <li>• <strong>Alta Capacidade:</strong> Sorteie de pequenos grupos a listas com milhares de nomes.</li>
+      </ul>
+    </section>
+
+    <section className="bg-white p-6 rounded-xl border border-gray-200 shadow-sm">
+      <h3 className="flex items-center gap-2 font-bold text-gray-900 text-lg mb-3">
+        <LifeBuoy className="text-green-600 w-5 h-5" />
+        Ideias de Utilização
+      </h3>
+      <ul className="space-y-2 text-sm text-gray-700">
+        <li>• Sortear brindes para listas de clientes ou seguidores.</li>
+        <li>• Definir a ordem de apresentação de trabalhos escolares.</li>
+        <li>• Organizar escalas de plantão ou divisão de equipes.</li>
+        <li>• Escolher ganhadores de rifas virtuais ou ações entre amigos.</li>
+      </ul>
+    </section>
+  </div>
+</article>
 
       <section className="mt-12">
-        <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center">Dúvidas Frequentes</h2>
+        <h2 className="text-2xl font-bold text-gray-900 mb-6 text-center sr-only">Dúvidas Frequentes</h2>
         <div className="bg-white rounded-2xl p-6 shadow-sm border border-gray-200">
             <Perguntas />
         </div>

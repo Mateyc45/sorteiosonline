@@ -31,7 +31,7 @@ const Perguntas = () => {
   if (perguntasFiltradas.length === 0) return null;
 
   return (
-    <div className="w-full mt-8">
+    <div className="w-full">
       <h2 className='text-center mb-4 font-bold text-xl text-gray-800'>Perguntas frequentes</h2>
       
       {perguntasFiltradas.map((item, index) => {

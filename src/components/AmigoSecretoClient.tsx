@@ -503,25 +503,32 @@ export function SecretSantaClient() {
 
       {/* --- LINKS E CONTEÚDO SEO --- */}
       <div className="mt-12 space-y-12">
-        <div className="rounded-2xl border border-gray-200 bg-white p-8 shadow-sm">
-            <h2 className="mb-6 text-2xl font-bold text-gray-900">Explore Outras Ferramentas</h2>
-            <div className={`grid gap-6 sm:grid-cols-2 lg:grid-cols-2 ${raffleTypes.length % 2 !== 0 ? 'lg:grid-cols-2 lg:justify-items-center' : ''}`}>
-                {raffleTypes.map((raffle, index) => (
-                <Link
-                    key={index}
-                    href={raffle.path}
-                    className={`${raffleTypes.length % 2 !== 0 && index === raffleTypes.length - 1 ? 'lg:col-span-2 lg:justify-self-center w-full' : ''}`}
-                >
-                    <RaffleCard
-                    title={raffle.title}
-                    description={raffle.description}
-                    icon={raffle.icon}
-                    gradient={raffle.gradient}
-                    />
-                </Link>
-                ))}
-            </div>
+        <nav aria-label="Outras ferramentas" className="mt-8 space-y-8 rounded-xl border border-gray-200 bg-white p-8 shadow-sm">
+        <div className="flex items-center gap-2 mb-6">
+            <Sparkles className="w-5 h-5 text-red-800" />
+            <h2 className="text-xl font-bold text-gray-900">Outros Sorteios</h2>
         </div>
+        
+        <div className="grid gap-4 sm:grid-cols-2">
+            {raffleTypes.map((raffle, index) => {
+                const isLastAndOdd = index === raffleTypes.length - 1 && raffleTypes.length % 2 !== 0;
+                return (
+                    <Link
+                        key={index}
+                        href={raffle.path}
+                        className={`block group no-underline transition-transform hover:-translate-y-1 ${isLastAndOdd ? 'sm:col-span-2' : ''}`}
+                    >
+                        <RaffleCard
+                            title={raffle.title}
+                            description={raffle.description}
+                            icon={raffle.icon}
+                            gradient={raffle.gradient}
+                        />
+                    </Link>
+                );
+            })}
+        </div>
+      </nav>
 
         <section className="space-y-12 text-gray-700">
             <div className="grid md:grid-cols-2 gap-12 items-center">

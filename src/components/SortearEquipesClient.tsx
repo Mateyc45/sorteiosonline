@@ -53,7 +53,7 @@ const raffleTypes = [
     title: 'Roleta',
     description: 'Faça um sorteio utilizando uma roleta',
     icon: <LifeBuoy className="h-6 w-6 text-red-600" />,
-    path: '/roleta',
+    path: '/Roleta',
     gradient: 'from-yellow-400 to-yellow-100',
   },
 ];
@@ -440,49 +440,124 @@ export function TeamDrawClient() {
         )}
       </main>
 
-      {/* --- CONTEÚDO SEO & LINKS --- */}
-      <nav aria-label="Outras ferramentas" className="mt-12 space-y-8 rounded-xl border border-gray-200 bg-white p-8 shadow-sm">
-        <h2 className="mb-4 text-xl font-bold text-gray-900 flex items-center gap-2">
-            <Sparkles className="w-5 h-5 text-teal-600"/> Veja também
-        </h2>
+      {/* CROSS-LINKING */}
+      <nav aria-label="Outras ferramentas" className="mt-8 space-y-8 rounded-xl border border-gray-200 bg-white p-8 shadow-sm">
+        <div className="flex items-center gap-2 mb-6">
+            <Sparkles className="w-5 h-5 text-teal-600" />
+            <h2 className="text-xl font-bold text-gray-900">Outras ferramentas</h2>
+        </div>
+        
         <div className="grid gap-4 sm:grid-cols-2">
-            {raffleTypes.map((raffle, index) => (
-                <Link
-                    key={index}
-                    href={raffle.path}
-                    className="block group no-underline transition-transform hover:-translate-y-1"
-                >
-                    <RaffleCard
-                        title={raffle.title}
-                        description={raffle.description}
-                        icon={raffle.icon}
-                        gradient={raffle.gradient}
-                    />
-                </Link>
-            ))}
+            {raffleTypes.map((raffle, index) => {
+                const isLastAndOdd = index === raffleTypes.length - 1 && raffleTypes.length % 2 !== 0;
+                return (
+                    <Link
+                        key={index}
+                        href={raffle.path}
+                        className={`block group no-underline transition-transform hover:-translate-y-1 ${isLastAndOdd ? 'sm:col-span-2' : ''}`}
+                    >
+                        <RaffleCard
+                            title={raffle.title}
+                            description={raffle.description}
+                            icon={raffle.icon}
+                            gradient={raffle.gradient}
+                        />
+                    </Link>
+                );
+            })}
         </div>
       </nav>
 
-      <article className="mt-8 space-y-12 rounded-xl border border-gray-200 bg-white p-8 shadow-sm prose prose-teal max-w-none">
-            <section>
-                <h3 className="text-3xl font-extrabold text-gray-900 mb-6">
-                    Sorteador de Equipes e Times Online
-                </h3>
-                <p className="text-gray-600 leading-relaxed mb-4">
-                    O <strong>Sorteador de Equipes do VamoSortear</strong> é a solução ideal para professores, treinadores e líderes. Diga adeus às "panelinhas" e crie grupos de trabalho ou times esportivos de forma 100% justa e aleatória em segundos.
-                </p>
-            </section>
+      {/* CONTEÚDO SEO - Sorteador de Equipes */}
+      <article className="mt-12 space-y-8 rounded-2xl border border-gray-200 bg-white p-6 md:p-8 shadow-sm">
+        <header>
+          <h2 className="text-3xl md:text-4xl font-extrabold text-gray-900 mb-4">
+            Sorteador de Equipes e Times Online
+          </h2>
+          <div className="h-1 w-20 bg-teal-600 rounded-full"></div>
+        </header>
 
-            <section className="grid gap-6 md:grid-cols-2 not-prose">
-                <div className="bg-teal-50 p-5 rounded-xl border border-teal-100">
-                    <h4 className="font-bold text-gray-900 mb-2 flex items-center gap-2"><ShieldCheck className="w-5 h-5 text-teal-600"/> Imparcialidade Total</h4>
-                    <p className="text-sm text-gray-600">Nosso algoritmo garante que a distribuição seja livre de vieses, ideal para evitar conflitos na escolha de times.</p>
-                </div>
-                <div className="bg-teal-50 p-5 rounded-xl border border-teal-100">
-                    <h4 className="font-bold text-gray-900 mb-2 flex items-center gap-2"><Brain className="w-5 h-5 text-teal-600"/> Equilíbrio Inteligente</h4>
-                    <p className="text-sm text-gray-600">O sistema distribui automaticamente os participantes para que as equipes fiquem com tamanhos iguais (ou o mais próximo disso).</p>
-                </div>
-            </section>
+        <div className="text-gray-600 leading-relaxed space-y-6 text-lg">
+          <p>
+            O <strong>Gerador de Equipes do VamoSortear</strong> é a ferramenta definitiva para dividir grupos grandes em times menores de forma rápida, justa e 100% aleatória. Acabe com as discussões na hora de escolher quem joga com quem ou quem faz parte de qual grupo de trabalho.
+          </p>
+          <p>
+            Nossa tecnologia de <strong>balanceamento automático</strong> distribui os participantes para que todas as equipes tenham o mesmo número de integrantes (ou o mais próximo possível). É a solução perfeita para professores organizarem a sala de aula, treinadores montarem times de futebol ou gestores definirem squads para dinâmicas corporativas.
+          </p>
+        </div>
+
+        {/* Passo a Passo */}
+        <div className="bg-teal-50 p-6 md:p-8 rounded-2xl border border-teal-100">
+          <h3 className="font-bold text-gray-900 text-xl mb-6 flex items-center gap-2">
+            <Users className="w-6 h-6 text-teal-600" />
+            Como dividir times em 3 passos:
+          </h3>
+          <ol className="space-y-4 text-gray-700">
+            <li className="flex gap-4 items-start">
+              <span className="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-teal-200 text-teal-800 font-bold text-sm">1</span>
+              <div>
+                <strong>Adicione os Participantes:</strong> Digite os nomes das pessoas um por um e clique em "Adicionar" (ou tecle Enter).
+              </div>
+            </li>
+            <li className="flex gap-4 items-start">
+              <span className="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-teal-200 text-teal-800 font-bold text-sm">2</span>
+              <div>
+                <strong>Defina as Equipes:</strong> Use a barra deslizante para escolher quantos times ou grupos você deseja formar.
+              </div>
+            </li>
+            <li className="flex gap-4 items-start">
+              <span className="flex-shrink-0 flex items-center justify-center w-8 h-8 rounded-full bg-teal-200 text-teal-800 font-bold text-sm">3</span>
+              <div>
+                <strong>Sorteie e Compartilhe:</strong> Clique em sortear. O sistema divide todos instantaneamente e você pode gerar um link para enviar no grupo do WhatsApp.
+              </div>
+            </li>
+          </ol>
+        </div>
+
+        {/* Grid de Benefícios e Exemplos */}
+        <div className="grid gap-8 md:grid-cols-2 mt-8">
+          <section className="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm transition-shadow hover:shadow-md">
+            <h3 className="flex items-center gap-2 font-bold text-gray-900 text-lg mb-4">
+              <ShieldCheck className="text-teal-600 w-6 h-6" />
+              Por que usar nosso sorteador?
+            </h3>
+            <ul className="space-y-3 text-gray-700">
+              <li className="flex items-start gap-2">
+                <Check className="w-5 h-5 text-teal-500 shrink-0 mt-0.5" />
+                <span><strong>Sem "Panelinhas":</strong> A aleatoriedade garante que os grupos sejam misturados de verdade.</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <Check className="w-5 h-5 text-teal-500 shrink-0 mt-0.5" />
+                <span><strong>Salvar Resultado:</strong> Gere um link permanente para provar que a divisão foi honesta.</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <Check className="w-5 h-5 text-teal-500 shrink-0 mt-0.5" />
+                <span><strong>Visualização Clara:</strong> Veja exatamente quem está em qual time com cores distintas.</span>
+              </li>
+            </ul>
+          </section>
+
+          <section className="bg-white p-6 rounded-2xl border border-gray-200 shadow-sm transition-shadow hover:shadow-md">
+            <h3 className="flex items-center gap-2 font-bold text-gray-900 text-lg mb-4">
+              <Brain className="text-teal-600 w-6 h-6" />
+              Ideias de Utilização
+            </h3>
+            <ul className="space-y-3 text-gray-700">
+              <li className="flex items-start gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-teal-400 mt-2 shrink-0"></span>
+                <span><strong>Esportes:</strong> Dividir a pelada de futebol, times de vôlei ou basquete.</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-teal-400 mt-2 shrink-0"></span>
+                <span><strong>Educação:</strong> Criar grupos de trabalho escolar ou de faculdade aleatórios.</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="w-1.5 h-1.5 rounded-full bg-teal-400 mt-2 shrink-0"></span>
+                <span><strong>Jogos:</strong> Formar equipes para gincanas, jogos de tabuleiro ou e-sports.</span>
+              </li>
+            </ul>
+          </section>
+        </div>
       </article>
 
       <div className="bg-white rounded-2xl p-4 shadow-sm border border-gray-200 mt-8">
