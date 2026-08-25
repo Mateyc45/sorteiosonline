@@ -2,18 +2,22 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { BookOpen, Calendar, ChevronRight, Tag, Home, ChevronLeft } from 'lucide-react';
+import { BookOpen, Calendar, ChevronRight, Tag, Home, ChevronLeft, PlusCircle } from 'lucide-react';
 import { format } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
-import { blogPosts } from '@/lib/blogData';
+import { BlogPost } from '@/lib/blogData';
 
-export function BlogListClient() {
+interface BlogListClientProps {
+  posts: BlogPost[];
+}
+
+export function BlogListClient({ posts }: BlogListClientProps) {
   const [selecionarTag, setSelecionarTag] = useState('');
   const [sugestoes, setSugestoes] = useState<string[]>([]);
   const [paginaAtual, setPaginaAtual] = useState(1);
   const postsPorPagina = 5;
 
-  const todasAsTags = Array.from(new Set(blogPosts.flatMap((post) => post.tags)));
+  const todasAsTags = Array.from(new Set(posts.flatMap((post) => post.tags)));
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const valor = e.target.value;
@@ -32,17 +36,23 @@ export function BlogListClient() {
   };
 
   const postsFiltrados = selecionarTag
-    ? blogPosts.filter((post) => post.tags.some(t => t.toLowerCase().includes(selecionarTag.toLowerCase())))
-    : blogPosts;
+    ? posts.filter((post) => post.tags.some(t => t.toLowerCase().includes(selecionarTag.toLowerCase())))
+    : posts;
 
   const totalPaginas = Math.ceil(postsFiltrados.length / postsPorPagina);
   const postsAtuais = postsFiltrados.slice((paginaAtual - 1) * postsPorPagina, paginaAtual * postsPorPagina);
 
   return (
     <div className="mx-auto max-w-4xl px-4 py-8">
-      <div className="mb-4">
+      <div className="mb-4 flex items-center justify-between">
         <Link href="/" className="inline-flex items-center gap-2 rounded-lg bg-gray-100 px-4 py-2 text-sm font-medium text-gray-600 hover:bg-gray-200">
           <Home className="h-4 w-4" /> Voltar para Início
+        </Link>
+        <Link
+          href="/blog/novo"
+          className="inline-flex items-center gap-2 rounded-lg bg-blue-600 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-700 transition-colors shadow-sm"
+        >
+          <PlusCircle className="h-4 w-4" /> Criar Novo Post
         </Link>
       </div>
 

@@ -1,19 +1,6 @@
 import { supabase } from './supabase';
 
-export interface BlogPost {
-  id: string;
-  slug: string;
-  title: string;
-  excerpt: string;
-  content?: string; // Opcional porque na lista não precisamos carregar o HTML todo
-  category: string;
-  tags: string[];
-  publishedAt: Date;
-  imageUrl: string;
-  author: {
-    name: string;
-    role: string;
-  };
+;
 }
 
 // Tipo bruto retornado pelo Supabase (snake_case)
@@ -81,3 +68,4 @@ export async function getPostBySlug(slug: string): Promise<BlogPost | undefined>
 
   return mapRowToPost(data as BlogPostRow);
 }
+module.exports = blogPosts;

@@ -4,16 +4,13 @@ import Link from 'next/link';
 import { BookOpen, Calendar, Home, Tag, Facebook, Twitter, Linkedin, ChevronRight } from 'lucide-react';
 import { format } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
-import { BlogPost, blogPosts } from '@/lib/blogData'; // Importa do arquivo central
-import { useState, useEffect } from 'react';
+import { BlogPost } from '@/lib/blogData';
+import { useState, useEffect, useMemo } from 'react';
 
 // Componente de Sugestões (Interno)
-function BlogSugerido({ currentPost }: { currentPost: BlogPost }) {
-  const [sugestoes, setSugestoes] = useState<BlogPost[]>([]);
-
-  useEffect(() => {
-    // Lógica para encontrar posts parecidos baseados nas tags
-    const similares = blogPosts
+function BlogSugerido({ currentPost, allPosts }: { currentPost: BlogPost; allPosts: BlogPost[] }) {
+  const sugestoes = useMemo(() => {
+    return allPosts
       .filter(p => p.id !== currentPost.id)
       .map(p => ({
         post: p,
@@ -23,9 +20,7 @@ function BlogSugerido({ currentPost }: { currentPost: BlogPost }) {
       .sort((a, b) => b.pontos - a.pontos)
       .slice(0, 3)
       .map(item => item.post);
-    
-    setSugestoes(similares);
-  }, [currentPost]);
+  }, [currentPost, allPosts]);
 
   if (sugestoes.length === 0) return null;
 
@@ -47,7 +42,7 @@ function BlogSugerido({ currentPost }: { currentPost: BlogPost }) {
 }
 
 // Componente Principal
-export function BlogPostClient({ post }: { post: BlogPost }) {
+export function BlogPostClient({ post, allPosts }: { post: BlogPost; allPosts: BlogPost[] }) {
   const [shareUrl, setShareUrl] = useState('');
   
   useEffect(() => {
@@ -122,7 +117,7 @@ export function BlogPostClient({ post }: { post: BlogPost }) {
             <h3 className="text-xl font-bold text-gray-900 mb-4 flex items-center gap-2">
               <ChevronRight className="text-blue-500" /> Leia também
             </h3>
-            <BlogSugerido currentPost={post} />
+            <BlogSugerido currentPost={post} allPosts={allPosts} />
           </div>
         </footer>
       </article>

@@ -1,5 +1,5 @@
 import { Metadata, ResolvingMetadata } from 'next';
-import { getPostBySlug } from '@/lib/blogData';
+import { getPostBySlug, getAllPosts } from '@/lib/blogData';
 import { BlogPostClient } from '@/components/BlogPostClient';
 import { notFound } from 'next/navigation';
 
@@ -15,7 +15,7 @@ export async function generateMetadata(
 ): Promise<Metadata> {
   // Await no params antes de usar
   const resolvedParams = await params;
-  const post = getPostBySlug(resolvedParams.slug);
+  const post = await getPostBySlug(resolvedParams.slug);
 
   if (!post) {
     return { title: 'Post não encontrado | Vamo Sortear' };
@@ -40,11 +40,14 @@ export async function generateMetadata(
 export default async function BlogPostPage({ params }: Props) {
   // Await no params aqui também
   const resolvedParams = await params;
-  const post = getPostBySlug(resolvedParams.slug);
+  const post = await getPostBySlug(resolvedParams.slug);
 
   if (!post) {
     notFound();
   }
 
-  return <BlogPostClient post={post} />;
+  // Busca todos os posts para sugestões
+  const allPosts = await getAllPosts();
+
+  return <BlogPostClient post={post} allPosts={allPosts} />;
 }
