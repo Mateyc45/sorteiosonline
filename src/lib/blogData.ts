@@ -39,7 +39,7 @@ function mapRowToPost(row: BlogPostRow): BlogPost {
     slug: row.slug,
     title: row.title,
     excerpt: row.excerpt,
-    content: row.content ?? undefined,
+    content: row.content ? row.content.replace(/&nbsp;/g, ' ').replace(/\u00a0/g, ' ') : undefined,
     category: row.category,
     tags: row.tags ?? [],
     publishedAt: new Date(row.published_at),

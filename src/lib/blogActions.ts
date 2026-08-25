@@ -35,11 +35,14 @@ export async function createPost(formData: FormData) {
     ? tagsRaw.split(',').map((t) => t.trim()).filter(Boolean)
     : [];
 
+  // Remove non-breaking spaces que impedem a quebra de linha natural das palavras
+  const cleanContent = content ? content.replace(/&nbsp;/g, ' ').replace(/\u00a0/g, ' ') : '';
+
   const { error } = await supabase.from('blog_posts').insert({
     slug,
     title,
     excerpt,
-    content,
+    content: cleanContent,
     category,
     tags,
     published_at: new Date().toISOString(),
