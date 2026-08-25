@@ -59,7 +59,7 @@ export function BlogPostClient({ post, allPosts }: { post: BlogPost; allPosts: B
         </Link>
       </div>
 
-      <article className="rounded-xl border border-gray-200 bg-white p-8 shadow-sm">
+      <article className="rounded-xl border border-gray-200 bg-white p-8 shadow-sm overflow-hidden">
         <header className="mb-8">
           <div className="flex flex-wrap items-center gap-4 text-sm text-gray-600 mb-4">
             <span className="flex items-center gap-1 bg-blue-50 text-blue-700 px-2 py-1 rounded-md font-medium">
@@ -99,7 +99,7 @@ export function BlogPostClient({ post, allPosts }: { post: BlogPost; allPosts: B
 
         {/* CONTEÚDO DO POST (HTML) */}
         <div 
-          className="prose prose-lg prose-blue max-w-none text-gray-700 leading-relaxed" 
+          className="prose prose-lg prose-blue max-w-none text-gray-700 leading-relaxed post-content" 
           dangerouslySetInnerHTML={{ __html: post.content || '' }} 
         />
 

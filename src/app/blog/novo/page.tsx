@@ -1,4 +1,4 @@
-import { Metadata } from 'next';
+﻿import { Metadata } from 'next';
 import { CreatePostForm } from '@/components/CreatePostForm';
 
 export const metadata: Metadata = {

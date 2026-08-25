@@ -1,3 +1,51 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* ==========================================
+   Blog Post Content — overflow & word-break
+   ========================================== */
+.post-content {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-word;
+  max-width: 100%;
+  overflow-x: hidden;
+  hyphens: auto;
+}
+
+/* Garante que elementos inline e blocos internos respeitem o container */
+.post-content * {
+  max-width: 100%;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
+/* Imagens responsivas dentro do conteúdo */
+.post-content img {
+  height: auto;
+}
+
+/* Listas — quebra de linha e espaçamento */
+.post-content ol,
+.post-content ul {
+  padding-left: 1.5em;
+  word-break: break-word;
+}
+
+.post-content li {
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  margin-bottom: 0.5em;
+}
+
+/* Links longos não estourem o layout */
+.post-content a {
+  word-break: break-word;
+}
+
+/* Blocos de código com scroll horizontal em vez de overflow */
+.post-content pre {
+  overflow-x: auto;
+  max-width: 100%;
+}
