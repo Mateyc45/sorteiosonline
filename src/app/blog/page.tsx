@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import { BlogListClient } from '@/components/BlogListClient';
 import { getAllPosts } from '@/lib/blogData';
+import { isAdminAuthenticated } from '@/lib/adminAuth';
 
 export const metadata: Metadata = {
   title: 'Blog Sorteios Online | Dicas e Tutoriais | Vamo Sortear',
@@ -12,5 +13,7 @@ export const metadata: Metadata = {
 
 export default async function BlogPage() {
   const posts = await getAllPosts();
-  return <BlogListClient posts={posts} />;
+  const isAdmin = await isAdminAuthenticated();
+
+  return <BlogListClient posts={posts} isAdmin={isAdmin} />;
 }

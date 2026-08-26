@@ -2,16 +2,18 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
-import { BookOpen, Calendar, ChevronRight, Tag, Home, ChevronLeft, PlusCircle } from 'lucide-react';
+import { BookOpen, Calendar, ChevronRight, Tag, Home, ChevronLeft, PlusCircle, LogOut } from 'lucide-react';
 import { format } from 'date-fns';
 import { ptBR } from 'date-fns/locale';
 import { BlogPost } from '@/lib/blogData';
+import { logoutAdmin } from '@/lib/adminAuth';
 
 interface BlogListClientProps {
   posts: BlogPost[];
+  isAdmin?: boolean;
 }
 
-export function BlogListClient({ posts }: BlogListClientProps) {
+export function BlogListClient({ posts, isAdmin = false }: BlogListClientProps) {
   const [selecionarTag, setSelecionarTag] = useState('');
   const [sugestoes, setSugestoes] = useState<string[]>([]);
   const [paginaAtual, setPaginaAtual] = useState(1);
@@ -48,12 +50,24 @@ export function BlogListClient({ posts }: BlogListClientProps) {
         <Link href="/" className="inline-flex items-center gap-2 rounded-lg bg-gray-100 px-4 py-2 text-sm font-medium text-gray-600 hover:bg-gray-200">
           <Home className="h-4 w-4" /> Voltar para Início
         </Link>
-        <Link
-          href="/blog/novo"
-          className="inline-flex items-center gap-2 rounded-lg bg-blue-600 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-700 transition-colors shadow-sm"
-        >
-          <PlusCircle className="h-4 w-4" /> Criar Novo Post
-        </Link>
+        
+        {isAdmin && (
+          <div className="flex items-center gap-2">
+            <Link
+              href="/blog/novo"
+              className="inline-flex items-center gap-2 rounded-lg bg-blue-600 px-4 py-2 text-sm font-semibold text-white hover:bg-blue-700 transition-colors shadow-sm"
+            >
+              <PlusCircle className="h-4 w-4" /> Criar Novo Post
+            </Link>
+            <button
+              onClick={() => logoutAdmin()}
+              title="Encerrar sessão de admin"
+              className="inline-flex items-center gap-1.5 rounded-lg bg-gray-100 px-3 py-2 text-sm font-medium text-gray-600 hover:bg-red-50 hover:text-red-600 transition-colors"
+            >
+              <LogOut className="h-4 w-4" /> Sair
+            </button>
+          </div>
+        )}
       </div>
 
       <div className="mb-8">
