@@ -1,6 +1,9 @@
 User-agent: *
 Allow: /
+Disallow: /blog/novo
+Disallow: /admin/
 
 Host: https://vamosortear.com.br
 
 Sitemap: https://vamosortear.com.br/sitemap.xml
+
