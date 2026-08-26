@@ -30,8 +30,29 @@ const Perguntas = () => {
 
   if (perguntasFiltradas.length === 0) return null;
 
+  // JSON-LD FAQPage para Rich Snippets no Google
+  const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": perguntasFiltradas.map((item) => ({
+      "@type": "Question",
+      "name": item.pergunta,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": item.resposta
+      }
+    }))
+  };
+
   return (
     <div className="w-full">
+
+      {/* JSON-LD FAQPage para Rich Snippets */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+      />
+
       <h2 className='text-center mb-4 font-bold text-xl text-gray-800'>Perguntas frequentes</h2>
       
       {perguntasFiltradas.map((item, index) => {

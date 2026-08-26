@@ -120,7 +120,31 @@ export async function generateMetadata(
   };
 }
 
-// Renderiza o componente cliente
+// Renderiza o componente cliente com JSON-LD
 export default function Page() {
-  return <NumberDrawClient />;
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'SoftwareApplication',
+    name: 'Sorteador de Números VamoSortear',
+    applicationCategory: 'UtilityApplication',
+    operatingSystem: 'Any',
+    offers: {
+      '@type': 'Offer',
+      price: '0',
+      priceCurrency: 'BRL',
+    },
+    description: 'Ferramenta online gratuita para sortear números aleatórios. Defina o intervalo e a quantidade de números.',
+    featureList: 'Sorteio de números, intervalo personalizado, sem repetição',
+    url: 'https://vamosortear.com.br/Sortear-Numero',
+  };
+
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <NumberDrawClient />
+    </>
+  );
 }

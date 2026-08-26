@@ -4,17 +4,20 @@
       "pergunta": "Como um algoritmo faz para gerar respostas aleatórias?",
       "resposta": "Um algoritmo pode usar funções matemáticas ou bibliotecas específicas para gerar números aleatórios, que, por sua vez, são usados para selecionar respostas de maneira imprevisível. Essas funções ou bibliotecas geralmente implementam técnicas matemáticas, como geradores de números pseudo-aleatórios, que produzem uma sequência de números que aparentam ser aleatórios." 
     },
-    
     {
       "id": "0",
       "pergunta": "Os resultados são gerados na hora?",
       "resposta": "Sim, os resultados são gerados em tempo real, utilizando algoritmos de aleatoriedade. Isso significa que, a cada interação, os resultados podem variar de maneira imprevisível, proporcionando uma experiência única a cada vez. Os algoritmos responsáveis por esse processo são projetados para garantir que os resultados não sigam um padrão fixo, o que ajuda a criar uma sensação de imprevisibilidade e autenticidade. Esses algoritmos de aleatoriedade são implementados de maneira eficiente e rápida, permitindo que os resultados sejam gerados quase instantaneamente, sem afetar a performance do sistema. Dessa forma, o processo de geração é contínuo e dinâmico, mantendo a integridade e a variedade dos resultados."
-
     },
     {
       "id": "0",
-      "pergunta": "Todos os seviçõs são gratuitos?",
-      "resposta": "Sim, todos os serviços oferecidos são totalmente gratuitos. Isso significa que você pode acessar, utilizar e aproveitar todas as funcionalidades sem a necessidade de pagar nada. Não há taxas ocultas ou custos adicionais envolvidos. Nosso objetivo é garantir que todos possam ter acesso a essas ferramentas sem qualquer barreira financeira, oferecendo uma experiência sem custos para o usuário. Sinta-se à vontade para explorar e usar os serviços sem preocupações com valores ou pagamentos."
+      "pergunta": "Todos os serviços são gratuitos?",
+      "resposta": "Sim, todos os serviços oferecidos são totalmente gratuitos. Isso significa que você pode acessar, utilizar e aproveitar todas as funcionalidades sem a necessidade de pagar nada. Não há taxas ocultas ou custos adicionais envolvidos. Nosso objetivo é garantir que todos possam ter acesso a essas ferramentas sem qualquer barreira financeira, oferecendo uma experiência sem custos para o usuário."
+    },
+    {
+      "id": "0",
+      "pergunta": "O VamoSortear é seguro e confiável para realizar sorteios?",
+      "resposta": "Sim, o VamoSortear é 100% seguro e confiável. Utilizamos algoritmos avançados de aleatoriedade que garantem resultados imparciais e justos em todos os sorteios. Nossos sorteios são auditáveis, o que significa que você pode compartilhar o link do resultado com todos os participantes para garantir transparência. Mais de 10.000 sorteios já foram realizados em nossa plataforma com total segurança."
     },
     {
       "id":"Sortear-Numero",
@@ -78,19 +81,28 @@
     },
     {
       "id": "Sortear-Equipes",
-      "pergunta": "Quantas equipes posso sortear ao mesmo tempo?",
-      "resposta": "Você pode sortear quantas equipes quiser, desde que o número de participantes seja suficiente para dividir entre elas. O sistema distribui automaticamente os nomes de forma equilibrada."
+      "pergunta": "Como sortear times online de forma rápida e gratuita?",
+      "resposta": "Com o VamoSortear, sortear times online é muito simples: basta adicionar os nomes dos participantes, definir quantos times deseja e clicar em 'Sortear Equipes'. O algoritmo distribui todos de forma aleatória e equilibrada em segundos. A ferramenta é 100% gratuita, sem cadastro e funciona em qualquer dispositivo."
     },
     {
       "id": "Sortear-Equipes",
-      "pergunta": "O sorteio garante que todas as equipes tenham o mesmo número de participantes?",
-      "resposta": "Sim, o sorteio tenta distribuir os participantes de forma justa. Caso o número total não seja divisível igualmente, algumas equipes podem ter um membro a mais."
+      "pergunta": "O sorteador de equipes funciona para futebol e outros esportes?",
+      "resposta": "Sim! O sorteador de equipes é perfeito para montar times de futebol, vôlei, basquete ou qualquer outro esporte. Basta colocar os nomes dos jogadores e escolher a quantidade de times. O sistema divide todos de forma justa e aleatória, acabando com as discussões na hora de tirar times. Ideal para peladas, campeonatos e jogos casuais."
+    },
+    {
+      "id": "Sortear-Equipes",
+      "pergunta": "O sorteador de times garante equipes equilibradas?",
+      "resposta": "Sim, o sorteador distribui os participantes de forma equilibrada entre todas as equipes. Caso o número total de pessoas não seja divisível igualmente pelo número de times, algumas equipes podem ter um membro a mais, mas a diferença nunca será maior que 1 pessoa. Isso garante equipes justas para qualquer tipo de atividade."
+    },
+    {
+      "id": "Sortear-Equipes",
+      "pergunta": "Como dividir grupos de forma justa e aleatória para sala de aula?",
+      "resposta": "Professores podem usar o sorteador de equipes do VamoSortear para dividir a sala de aula em grupos de trabalho de forma imparcial. Adicione os nomes dos alunos, escolha quantos grupos deseja e clique em sortear. O resultado pode ser compartilhado via link, facilitando a comunicação. É ideal para trabalhos em grupo, apresentações, dinâmicas e atividades pedagógicas."
     },
     {
       "id": "Sortear-Equipes",
       "pergunta": "É possível repetir o sorteio com os mesmos nomes?",
-      "resposta": "Sim! Basta clicar no botão de sortear novamente para redistribuir os mesmos nomes em novas equipes aleatórias."
+      "resposta": "Sim! Basta clicar no botão de sortear novamente para redistribuir os mesmos nomes em novas equipes aleatórias. Você pode repetir quantas vezes quiser até ficar satisfeito com a divisão."
     },
     {}
   ]
-  

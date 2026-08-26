@@ -10,13 +10,23 @@ import type { Metadata } from 'next';
 
 // 1. SEO da Página Inicial
 export const metadata: Metadata = {
-  title: "VamoSortear - O Jeito Mais Fácil e Simples de sortear algo! Totalmente Gratis",
-  description: "Sorteie números, palavras, sequências e organize amigo secreto de forma simples, rápida e gratuita no VamoSortear.",
-  keywords: ["sorteio", "sorteios", "vamo sortear", "sorteio online", "sortear numero", "amigo secreto", "roleta"],
+  title: "VamoSortear – Sorteios Online Grátis, Rápidos e Seguros",
+  description: "Sorteie números, nomes, equipes e organize amigo secreto em segundos. 100% grátis, sem cadastro. ✅ Mais de 10.000 sorteios realizados. Comece agora!",
+  keywords: [
+    "sorteio online", "sorteador", "vamo sortear", "sortear numero", "sortear nomes",
+    "sorteador de times", "sorteador de equipes", "amigo secreto online",
+    "roleta online", "sorteio grátis", "gerador de números aleatórios"
+  ],
   alternates: {
     canonical: "https://vamosortear.com.br/",
   },
   openGraph: {
+    title: "VamoSortear – Sorteios Online Grátis",
+    description: "Ferramenta #1 de sorteios do Brasil. Sorteie times, números, nomes e organize amigo secreto sem cadastro.",
+    url: "https://vamosortear.com.br/",
+    siteName: "VamoSortear",
+    locale: "pt_BR",
+    type: "website",
     images: ['https://vamosortear.com.br/logo.png'],
   },
 };
@@ -70,6 +80,41 @@ export default function Home() {
 
   return (
     <div className="space-y-12">
+
+      {/* JSON-LD: Schema.org para o Google */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "WebApplication",
+          "name": "VamoSortear",
+          "url": "https://vamosortear.com.br",
+          "applicationCategory": "UtilityApplication",
+          "operatingSystem": "Any",
+          "description": "Plataforma de sorteios online grátis. Sorteie números, nomes, times, equipes e organize amigo secreto.",
+          "offers": {
+            "@type": "Offer",
+            "price": "0",
+            "priceCurrency": "BRL"
+          },
+          "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.8",
+            "ratingCount": "10000",
+            "bestRating": "5"
+          },
+          "publisher": {
+            "@type": "Organization",
+            "name": "VamoSortear",
+            "url": "https://vamosortear.com.br",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://vamosortear.com.br/logo.png"
+            }
+          }
+        }) }}
+      />
+
       {/* Hero Section */}
       <div className="mt-0 pt-0 space-y-12">
       

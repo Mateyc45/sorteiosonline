@@ -24,15 +24,22 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-BR">
+      <head>
+        {/* Preconnect para recursos externos — acelera o carregamento */}
+        <link rel="preconnect" href="https://pagead2.googlesyndication.com" />
+        <link rel="preconnect" href="https://afebslcshsjegmecryct.supabase.co" />
+        <link rel="preconnect" href="https://images.unsplash.com" />
+        <link rel="dns-prefetch" href="https://pagead2.googlesyndication.com" />
+      </head>
       <body className={`${inter.className} bg-gray-50 text-gray-900 min-h-screen flex flex-col`}>
         
-        {/* 2. Adicione este bloco Script. Ele carrega o AdSense globalmente uma única vez. */}
+        {/* AdSense — lazyOnload para não bloquear Core Web Vitals */}
         <Script
           id="adsense-init"
           async
           src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6732428339083295"
           crossOrigin="anonymous"
-          strategy="afterInteractive"
+          strategy="lazyOnload"
         />
 
         {/* --- TOPO --- */}

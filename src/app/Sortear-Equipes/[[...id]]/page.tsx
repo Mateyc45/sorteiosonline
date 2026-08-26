@@ -21,12 +21,13 @@ export async function generateMetadata(
   // --- Caso 1: Título Padrão (Landing Page da Ferramenta) ---
   if (!id) {
     return {
-      title: 'Sorteador de Equipes e Times Aleatórios | VamoSortear',
-      description: 'Ferramenta grátis para dividir grupos e tirar times aleatoriamente. Ideal para futebol, vôlei, sala de aula, jogos e dinâmicas de grupo. Rápido e justo.',
+      title: 'Sorteador de Times Online Grátis – Tire Equipes em Segundos | VamoSortear',
+      description: 'O melhor sorteador de times e equipes da internet. Cole os nomes, escolha quantos times quer e pronto! ⚽ Ideal para futebol, vôlei, sala de aula e jogos. 100% grátis, sem cadastro.',
       keywords: [
-        'sorteador de equipes', 'tirar times', 'gerador de times', 
-        'dividir grupos', 'sorteio de times futebol', 'randomizar equipes', 
-        'formar duplas', 'separar times', 'vamosortear'
+        'sorteador de times', 'sorteador de equipes', 'sortear times', 'sorteador de time',
+        'tirar times', 'gerador de times', 'dividir grupos', 'sorteio de times futebol',
+        'randomizar equipes', 'formar duplas', 'separar times', 'como sortear times online',
+        'sorteador de equipes online', 'vamosortear'
       ],
       alternates: {
         canonical: `${BASE_URL}/Sortear-Equipes`,
